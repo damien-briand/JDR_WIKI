@@ -13,9 +13,20 @@ import {
 import { isPointInRing } from "../utils/geo"
 import type { MarkerData, ZoneData } from "../types/map"
 
+type LocationPoint = {
+  id: number
+  name: string
+  lat: number
+  lng: number
+}
+
 type MapViewProps = {
   markers: MarkerData[]
   zones: ZoneData[]
+  locationPoints?: LocationPoint[]
+  focusedLocationId?: number | null
+  focusLatLng?: LatLngTuple | null
+  onOpenLocation?: (locationId: number) => void
   editEnabled: boolean
   zoneDrawEnabled: boolean
   showGrid: boolean
@@ -96,9 +107,23 @@ function createSpriteIcon(spriteIndex: number): L.DivIcon {
   })
 }
 
+function createLocationIcon(focused: boolean): L.DivIcon {
+  return L.divIcon({
+    className: focused ? "location-marker-wrapper is-focused" : "location-marker-wrapper",
+    html: '<span class="location-marker-dot" aria-hidden="true"></span>',
+    iconSize: [16, 16],
+    iconAnchor: [8, 8],
+    tooltipAnchor: [0, -10],
+  })
+}
+
 export function MapView({
   markers,
   zones,
+  locationPoints,
+  focusedLocationId,
+  focusLatLng,
+  onOpenLocation,
   editEnabled,
   zoneDrawEnabled,
   showGrid,
@@ -116,11 +141,15 @@ export function MapView({
   const mapRef = useRef<LeafletMap | null>(null)
   const markerLayersRef = useRef<Map<string, L.Marker>>(new Map())
   const markerIconCacheRef = useRef<Map<number, L.DivIcon>>(new Map())
+  const locationLayersRef = useRef<Map<number, L.Marker>>(new Map())
+  const locationIconRef = useRef<L.DivIcon | null>(null)
+  const focusedLocationIconRef = useRef<L.DivIcon | null>(null)
   const zoneLayersRef = useRef<Map<string, L.Polygon>>(new Map())
   const gridLayerRef = useRef<L.LayerGroup | null>(null)
   const hexLayerRef = useRef<L.LayerGroup | null>(null)
   const fogLayerRef = useRef<L.Polygon | null>(null)
   const draftLineRef = useRef<L.Polyline | null>(null)
+  const lastFocusRef = useRef<string | null>(null)
 
   const worldRing = useMemo<LatLngTuple[]>(() => {
     return [
@@ -180,6 +209,94 @@ export function MapView({
       mapRef.current = null
     }
   }, [])
+
+  useEffect(() => {
+    const map = mapRef.current
+    if (!map || !focusLatLng) {
+      return
+    }
+
+    const key = `${focusLatLng[0].toFixed(6)},${focusLatLng[1].toFixed(6)}`
+    if (lastFocusRef.current === key) {
+      return
+    }
+
+    lastFocusRef.current = key
+    map.setView(focusLatLng, Math.max(map.getZoom(), MAP_CONFIG.initialZoom))
+  }, [focusLatLng])
+
+  useEffect(() => {
+    const map = mapRef.current
+    if (!map) {
+      return
+    }
+
+    const points = locationPoints ?? []
+    const layerMap = locationLayersRef.current
+    const pointById = new Map(points.map((entry) => [entry.id, entry]))
+
+    layerMap.forEach((layer, id) => {
+      if (!pointById.has(id)) {
+        map.removeLayer(layer)
+        layerMap.delete(id)
+      }
+    })
+
+    if (!locationIconRef.current) {
+      locationIconRef.current = createLocationIcon(false)
+    }
+    if (!focusedLocationIconRef.current) {
+      focusedLocationIconRef.current = createLocationIcon(true)
+    }
+
+    points.forEach((point) => {
+      const existing = layerMap.get(point.id)
+      const icon =
+        focusedLocationId && focusedLocationId === point.id
+          ? focusedLocationIconRef.current
+          : locationIconRef.current
+
+      if (existing) {
+        existing.setLatLng([point.lat, point.lng])
+        if (icon) {
+          existing.setIcon(icon)
+        }
+        if (point.name.trim()) {
+          existing.bindTooltip(point.name.trim(), {
+            direction: "top",
+            offset: [0, -10],
+          })
+        } else {
+          existing.unbindTooltip()
+        }
+        if (!map.hasLayer(existing)) {
+          existing.addTo(map)
+        }
+        return
+      }
+
+      const marker = L.marker([point.lat, point.lng], {
+        title: point.name,
+        icon: icon ?? undefined,
+        bubblingMouseEvents: false,
+        keyboard: false,
+      })
+
+      if (point.name.trim()) {
+        marker.bindTooltip(point.name.trim(), {
+          direction: "top",
+          offset: [0, -10],
+        })
+      }
+
+      marker.on("click", () => {
+        onOpenLocation?.(point.id)
+      })
+
+      marker.addTo(map)
+      layerMap.set(point.id, marker)
+    })
+  }, [focusedLocationId, locationPoints, onOpenLocation])
 
   useEffect(() => {
     const map = mapRef.current
