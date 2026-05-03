@@ -1,0 +1,113 @@
+.xmap-label-content {  
+color: #fff;
+  display: flex;
+  justify-content: center;
+  white-space: break-spaces;
+  text-align: center;
+  font-size: 1.25em;
+  text-shadow: 1px 1px 2px black;
+    line-height:16px}
+    
+.leaflet-control-search .search-button {
+  display: block;
+  float: left;
+  width: 30px;
+  height: 30px;
+  background: url('/file/Elden-Ring/search-icon-map.png') no-repeat 4px 4px #222222b8;
+  border-radius: 4px;
+}
+
+
+.leaflet-touch .leaflet-control-layers, .leaflet-touch .leaflet-bar {
+  border: 2px solid rgba(0,0,0,0.2);
+  background-clip: padding-box;
+  background-color: #222;
+}
+
+
+.leaflet-control-layers-overlays {
+  color: #fafafa;
+}
+
+
+.leaflet-touch .leaflet-control-layers, .leaflet-touch .leaflet-bar {
+  border: 2px solid rgba(0,0,0,0.2);
+  background-clip: padding-box;
+  background-color: #222222b8;
+  font-color: #fafafa;
+  border: 10px solid transparent;
+    border-image-repeat: stretch;
+    border-image-slice: 100%;
+    border-image-source: none;
+    border-image-width: 1;
+  border-image-source: url("https://eldenring.wiki.fextralife.com/file/Elden-Ring/elden-ring-wiki-guide-infobox-border.png");
+  border-image-width: 20px 40px;
+  border-image-repeat: round;
+  border-image-slice: 30 50 fill;
+}
+
+
+.leaflet-bar a:hover {
+  background-color: #aa8330;
+}
+.leaflet-bar a, .leaflet-bar a:hover {
+  background-color: #222222b8;
+  border-bottom: 1px solid #ab966f;
+  width: 30px; 
+  height: 30px;
+  line-height: 30px;
+  display: block;
+  text-align: center;
+  text-decoration: none;
+  color: #fff;
+}
+.leaflet-sidebar > .leaflet-control {
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 8px 24px;
+  font-size: 1.1em;
+  background: #222222ed;
+    background-clip: border-box;
+  box-shadow: 0 1px 7px rgba(0,0,0,.65);
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
+  color: #fafafa;
+}
+
+.leaflet-control-search .search-input {
+  display: block;
+  float: left;
+  background: #0a0909;
+  border: 1px solid #666;
+  border-radius: 2px;
+  height: 22px;
+  padding: 0 20px 0 2px;
+  margin: 4px 0 4px 4px;
+  color: white;
+}
+
+.leaflet-control-search .search-tip {
+  margin: 2px;
+  padding: 2px 4px;
+  display: block;
+  color: white;
+  background: #252220;
+  border-radius: .25em;
+  text-decoration: none;
+  white-space: nowrap;
+  vertical-align: center;
+}
+
+.leaflet-control-search .search-tip-select, .leaflet-control-search .search-tip:hover {
+  background-color: #ab966f;
+}
+
+.leaflet-control-search .search-button:hover {
+  background-color: #ab966f;
+}
+

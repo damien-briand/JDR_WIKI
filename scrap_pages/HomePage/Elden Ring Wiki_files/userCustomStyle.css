@@ -1,0 +1,1853 @@
+/* Calculator */
+.calc-in-runes, .calc-in-att, .calc-in-total, .calc-in-added, .calc-in-equip, .calc-in-get-build, .calc-search-bar,
+.calc-in-runes-sm, .calc-in-att-sm, .calc-in-total-sm, .calc-in-added-sm, .calc-in-equip-sm, .calc-in-get-build-sm, .calc-search-bar-sm {background: #080808; color: beige; font-family: Ovo, serif; text-align: center; border: 1px solid #555; box-shadow: 0 0 10px #666; transition: 1.5s}
+.calc-in-runes {height: 40px;}
+.calc-in-runes-sm {height: 20px; max-width: 120px;}
+.calc-in-att, .calc-in-added, .calc-in-equip, .calc-in-total {height: 40px; width: 40px}
+.calc-in-get-build {height: 30px; width: 150px}
+.calc-search-bar {width: 100%;}
+.calc-sel-spirit, .calc-sel-classes, .calc-sel-great-runes, .calc-sel-wl, .calc-sel-aff, .calc-sel-memory,
+.calc-sel-spirit-sm, .calc-sel-classes-sm, .calc-sel-great-runes-sm, .calc-sel-wl-sm, .calc-sel-aff-sm, .calc-sel-memory-sm {background: #080808; color: beige; font-family: Ovo, serif; text-align: center; border: 1px solid #555; box-shadow: 0 0 5px #666; transition: 1.5s; height: auto; padding: 6px 12px;}
+.calc-sel-spirit {min-width: 75px; max-width: 100px; width:100%;}
+.calc-sel-wl, .calc-sel-aff, .calc-sel-classes, .calc-sel-great-runes {min-width: 200px; max-width: 300px; width: 100%;}
+.calc-sel-wl-sm, .calc-sel-aff-sm, .calc-sel-classes-sm, .calc-sel-great-runes-sm {min-width: 150px; max-width: 250px; width: 150px;}
+.calc-sel-memory {width:auto; height: 30px; min-width: 20px}
+.calc-sel-weapon, .calc-sel-armor {cursor: pointer; line-height: 25px; border: 1px solid #555; box-shadow: 0 0 5px #666; transition: 1.5s; width: 90%}
+.calc-lbl-vert {vertical-align: -webkit-baseline-middle; }
+.calc-lbl-att {width: 90px;}
+.calc-lbl-small, .calc-span-search {font-size: 11px; white-space: nowrap;}
+.calc-lbl-small {min-width: 75px;}
+.calc-h2 {text-align: center; color: #7a629e; font-family:"Spectral SC, serif"; margin-bottom: 0}
+.calc-h3 {color: #7a629e; font-family:"Spectral SC, serif"; margin-bottom: 0}
+.calc-h4 {color: #7a629e; font-family:"Spectral SC, serif"; margin-bottom: 0}
+.calc-span-plus, .calc-span-minus, .calc-span-revert, .calc-span-warn {display: inline-block; text-align: center; font-family: Arial, Helvetica, sans-serif; transition: 1.5s; vertical-align: middle;}
+.calc-btn-minus {cursor: pointer; color: #b40000; font-size: 0px; line-height: 16px; text-shadow: 0 0 3px red; text-align: end;}
+.calc-btn-plus {cursor: pointer; color: #08a508; font-size: 0px; line-height: 16px; text-shadow: 0px 0px 10px lime; text-align: start;}
+.calc-span-warn {color: #ebc247; font-size: 25px; display:none}
+.calc-span-text-left {padding-left: 5px}
+.calc-span-text-right {padding-right: 50px}
+.calc-dropdown-menu {background-color: #080808}
+.calc-container {background: #080808;color: white;padding: 20px;}
+.calc-equip-select {margin-top: 5px;margin-bottom: 2px;cursor: pointer;line-height: 25px;transition: 1.5s; min-width: 150px;}
+.calc-selector {z-index: 4; cursor: inherit;position: absolute;border: 2px solid #222;width: 100%;}
+.calc-item, .calc-item-weapon, .calc-item-armor, .calc-item-armor-set, .calc-item-ammo, .calc-item-spirit, .calc-item-spell {border-bottom: 1px solid #444;padding: 10px;transition: .8s; display: block; color: #FFFFFF;}
+.calc-span-item {margin-right: 15px;}
+.calc-img-item {margin-right: 3px; height: 16px; width: 16px;}
+.calc-btn-select, .calc-editable-spell,
+.calc-btn-select-sm, .calc-editable-spell-sm {background-color: black; overflow-x: hidden; border: 1px solid #555;}
+.calc-btn-select, .calc-editable-spell {min-width: 150px; max-width: 300px; width: 100%;}
+.calc-btn-select-sm, .calc-editable-spell-sm {min-width: 150px; max-width: 200px; width: 150px;}
+.calc-btn-spirit {min-width: 250px; max-width: 350px; width: 100%;}
+.calc-btn-auto-assign {background-color: black; overflow: hidden; border: 1px solid #555; font-size: 10px;}
+.calc-btn-get-build {background-color: black; width: 120px;}
+.calc-td, .calc-th {padding-left: 10px; padding-right: 10px; text-align: center;}
+.calc-a-vert {vertical-align: text-top;}
+.calc-highlighted {border: 1px solid #7a629e;}
+.calc-img-qm {width: 8px; height: 8px; background-color: white; border-radius: 10px; vertical-align: super;}
+.calc-tab-items>li>a {padding:10px 10px;}
+.calc-span-phys {color: #ffffff}
+.calc-span-magi {color: #3fbddd}
+.calc-span-fire {color: #cc9d57}
+.calc-span-ligh {color: #d5d559}
+.calc-span-holy {color: #ffcc99}
+.calc-span-crit {color: #c64949}
+.calc-span-boos {color: #666699}
+.calc-span-pois {color: #139c40}
+.calc-span-scar {color: #c86f68}
+.calc-span-bloo {color: #791110}
+.calc-span-fros {color: #8ea1b3}
+.calc-span-slee {color: #7a798e}
+.calc-span-madn {color: #aa9e2a}
+.calc-span-deat {color: #817c7c}
+.open>.calc-dropdown-menu {max-height: 280px; overflow-y: scroll;}
+.calc-equip-select .dropdown-backdrop {display: none;}		/* Allows dropdowns to work on mobile*/
+.calc-btn-icon {height:70px; width:70px; border: 0px;}
+#calc-popup {left: 0; position: absolute; top: 0; z-index: 1001;}
+.content-popup {margin:0px auto; margin-top:120px; position:relative; padding:10px; width:500px; min-height:250px; border-radius:4px; background-color:#FFFFFF; box-shadow: 0 2px 5px #666666; } 
+.content-popup h2 {color:#48484B; border-bottom: 1px solid #48484B; margin-top: 0; padding-bottom: 4px;}
+.popup-overlay {left: 0; position: absolute; top: 0; width: 100%; z-index: 999; display:none; background-color: #777777; cursor: pointer; opacity: 0.7;}
+.close { position: absolute; right: 15px;}
+.calc-view {background-image: url(/file/Elden-Ring/calc_b_background_elden_ring_wiki_guide.png); background-size: cover; color: beige; padding: 20px;}
+#view4-editable-great-rune-1 {background-image: url(/file/Elden-Ring/great_rune_slot_elden_ring_wiki_guide.png); background-color: transparent;}
+.calc-sticky-header, .calc-li-noType {list-style-type: none;}
+.calc-sticky-header {text-align: center;}
+
+.calc-gallery {position: fixed;left: 30%;top: 75px;text-align: center;display: none;z-index: 10;width: 750px; min-width:650px;max-width: 750px;height: 80%; overflow-y:scroll;background-image: url("https://eldenring.wiki.fextralife.com/file/Elden-Ring/calc_eldenlist_background_elden_ring_wiki_guide.png");}
+.calc-gallery-item {background-image: url("https://eldenring.wiki.fextralife.com/file/Elden-Ring/calc_gallery_item1_elden_ring_wiki_guide.png"); padding-top: 15px;}
+.calc-gallery-item:hover {background-image: url("https://eldenring.wiki.fextralife.com/file/Elden-Ring/calc_gallery_item_hover_elden_ring_wiki_guide.png");}
+.calc-gallery-item.calc-highlighted {background-image: url("https://eldenring.wiki.fextralife.com/file/Elden-Ring/calc_gallery_item_active_elden_ring_wiki_guide.png");}
+.calc-gallery-item.calc-highlighted:hover {background-image: url("https://eldenring.wiki.fextralife.com/file/Elden-Ring/calc_gallery_item_active_hover_elden_ring_wiki_guide.png");}
+
+
+/* Trevor Hover Tabs --- START */
+
+.eldentabs {
+  font-family: garamond;
+  font-size: 13pt;
+}
+
+.eldentabs>.tabtitle {
+  border-image-source: url('/file/Elden-Ring/elden_tab_non_active_c_calc_elden_ring_wiki_guide.png');
+  border-image-width: 5px 5px 5px 5px;
+  border-image-repeat: stretch stretch;
+  border-image-slice: 20 fill;
+  border-top-left-radius: 0px;
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+  border-bottom-left-radius: 0px;
+  background-color: transparent;
+  padding: 20px 15px;
+  color: white;
+}
+
+.eldentabs>.tabtitle:hover {
+  border-image-source: url('/file/Elden-Ring/elden_tab_non_active_c_hover_calc_elden_ring_wiki_guide.png') ;
+  background-color: transparent;
+}
+
+.eldentabs>.tabtitle.tabcurrent {
+  border-image-source: url('/file/Elden-Ring/elden_tab_active_c_calc_elden_ring_wiki_guide.png') ;
+  background-color: transparent;
+}
+
+.eldentabs>.tabtitle.tabcurrent:hover {
+  border-image-source: url('/file/Elden-Ring/elden_tab_active_c_hover_calc_elden_ring_wiki_guide.png') ;
+  background-color: transparent;
+}
+
+.eldentabs {
+  font-family: garamond;
+  font-size: 13pt;
+}
+ 
+.nav-tabs.eldentabs {
+  border-bottom: 0px solid transparent;
+}
+
+.nav.eldentabs {
+  display: table;
+}
+
+ul.eldentabs {
+  margin: 2px auto;
+  padding-left: 0;
+}
+  
+.nav-tabs.eldentabs>li.active>a {
+  border-image-source: url('/file/Elden-Ring/elden_tab_active_c_calc_elden_ring_wiki_guide.png') ;
+  border-image-width: 5px 5px 5px 5px;
+  border-image-repeat: stretch stretch;
+  border-image-slice: 20 fill;
+  border-top-left-radius: 0px;
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+  border-bottom-left-radius: 0px;
+  background-color: transparent;
+  padding: 20px 15px;
+  color: lightgoldenrodyellow;
+}
+
+.nav-tabs.eldentabs>li.active>a:hover {
+  border-image-source: url('/file/Elden-Ring/elden_tab_active_c_hover_calc_elden_ring_wiki_guide.png') ;
+  border-image-width: 5px 5px 5px 5px;
+  border-image-repeat: stretch stretch;
+  border-image-slice: 20 fill;
+  border-top-left-radius: 0px;
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+  border-bottom-left-radius: 0px;
+  background-color: transparent;
+  padding: 20px 15px;
+  color: lightgoldenrodyellow;
+}
+
+.nav-tabs.eldentabs>li>a {
+  border-image-source: url('/file/Elden-Ring/elden_tab_non_active_c_calc_elden_ring_wiki_guide.png') ;
+  border-image-width: 5px 5px 5px 5px;
+  border-image-repeat: stretch stretch;
+  border-image-slice: 20 fill;
+  border-top-left-radius: 0px;
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+  border-bottom-left-radius: 0px;
+  background-color: transparent;
+  padding: 20px 15px;
+  color: white;
+}
+
+.nav-tabs.eldentabs>li>a:hover {
+  border-image-source: url('/file/Elden-Ring/elden_tab_non_active_c_hover_calc_elden_ring_wiki_guide.png') ;
+  border-image-width: 5px 5px 5px 5px;
+  border-image-repeat: stretch stretch;
+  border-image-slice: 20 fill;
+  border-top-left-radius: 0px;
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+  border-bottom-left-radius: 0px;
+  background-color: transparent;
+  padding: 20px 15px;
+  color: white;
+}
+
+.eldentabs>.dropdown>.dropdown-menu {
+  font-size: 12pt;
+  background-color: transparent;
+  border: none;
+  border-radius: 0px;
+  color: white;
+  padding: 5px 5px;
+  border-image-source: url('/file/Elden-Ring/dropdown_calc_elden_ring_wiki_guide.png');
+  border-image-width: 10px 10px 10px 10px;
+  border-image-repeat: stretch stretch;
+  border-image-slice: 15 fill;
+}
+
+.eldentabs>.dropdown>.dropdown-menu>li>a:focus, .eldentabs>.dropdown>.dropdown-menu>li>a:hover {
+  background-color: #56514c;
+  color: white;
+}
+
+.eldentabs>.dropdown>.dropdown-menu>li>a {
+  border-image-repeat: round;
+  border-image-slice: 30 30 fill;
+  border-image-width: 33px 33px;
+  background-color: transparent;
+  color: white;
+  border-image-source: url('/file/Elden-Ring/dropdown_li_calc_elden_ring_wiki_guide.png');
+  border-image-width: 10px 10px 10px 10px;
+  border-image-repeat: stretch stretch;
+  border-image-slice: 15 fill;
+}
+
+.eldentabs>.dropdown>.dropdown-menu>.active>a {
+  border-image-repeat: round;
+  border-image-slice: 30 30 fill;
+  border-image-width: 33px 33px;
+  background-color: #484440;
+  color: lightgoldenrodyellow;
+  padding: 5px 10px;
+  border-image-source: url('/file/Elden-Ring/dropdown_li_selected_calc_elden_ring_wiki_guide.png');
+  border-image-width: 10px 10px 10px 10px;
+  border-image-repeat: stretch stretch;
+  border-image-slice: 15 fill;
+}
+
+.eldentabs>.open>a:focus {
+  background-color: transparent
+}
+
+/* Trevor Hover Tabs --- END */
+
+
+/*Fextra styles*/
+.titlearea {text-align: center; font-size: 18px; word-wrap: normal; background: url(https://eldenring.wiki.fextralife.com/file/Elden-Ring/elden-ring-wiki-titlearea.png) no-repeat left center; background-position: 3px 4px; border-top: 3px solid #ab966f; border-bottom: 3px solid #ab966f; margin: 18px 0px; height: 45px; line-height: 40px;clear: both;}
+.special {text-align: center; font-size: 18px; word-wrap: normal; border-bottom: 3px solid #ab966f;}
+.tabtitle.tabcurrent {background-color: #ab966f;}
+.tabtitle {background-color: #484440;border: 2px solid #AB966F;border-radius: 4px 10px 4px 10px;border-top-left-radius: 4px;border-top-right-radius: 10px;border-bottom-right-radius: 4px;border-bottom-left-radius: 10px;margin-bottom: 3px;}
+.tabtitle {display: inline-block;cursor: pointer;background-color: #826f4c;margin-left: 1px;padding: 0 10px;line-height: 30px;color: #FFF;text-shadow: 1px 1px 1px #000;}
+.tabtitle {background-color: #484440;border: 2px solid #AB966F;}
+.tabtitle {display: inline-block;cursor: pointer;background-color: #826f4c;margin-left: 1px;padding: 0 10px;line-height: 30px;color: #FFF;text-shadow: 1px 1px 1px #000;}
+.fex-main {background: #00004b;background: rgba(0,0,0,0.75);color: #b4b2b0;padding-top: 10px;padding-bottom: 10px;margin-top: 10px;min-height: 2000px;}
+.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {color: inherit;font-family: "Spectral",'fallback', Helvetica, Arial, sans-serif;text-transform: uppercase!important;letter-spacing: -1px;}
+h4 {font-size: 16px;color: #dedede;}
+.h4, h4 {font-size: 18px;}
+.h4, .h5, .h6, h4, h5, h6 {margin-top: 10px;margin-bottom: 10px;}
+.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {font-family: inherit;font-weight: 500;line-height: 1.1;color: inherit;}
+.tabcontent.tabcurrent {display: block;}
+.tabcontent {display: none;}
+.tabcontent>.tab-pane {display: block!important;position:absolute;opacity:0;}
+.tab-content>.active {display: block;opacity:1;position:relative;}
+
+
+/* WIKI LOGO IN HEADER*/
+
+.icon-container-desktop {
+    background-size: cover;
+    border: 2px solid #AB966F;
+    background-image: url('/file/Elden-Ring/er-for-dd.png') !important;
+}
+
+.icon-container  {
+    background-size: cover;
+    border: 2px solid #AB966F;
+    background-image: url('/file/Elden-Ring/er-for-dd.png') !important;
+}
+
+
+/*****************************************************************
+ * Elden Ring theme  
+ * **************************************************************
+ * 
+ * **************************************************************
+ *****************************************************************/
+
+@font-face {
+  font-family: 'Spectral';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/spectral/v7/rnCr-xNNww_2s0amA9M9knj-SA.woff2) format('woff2');
+  unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Spectral';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/spectral/v7/rnCr-xNNww_2s0amA9M2knj-SA.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Spectral';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/spectral/v7/rnCr-xNNww_2s0amA9M3knj-SA.woff2) format('woff2');
+  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Spectral';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/spectral/v7/rnCr-xNNww_2s0amA9M5kng.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+html { scroll-padding-top: 100px }
+
+
+/******* Walkthrough Size *****************/
+
+@media screen and (min-width: 1920px) {
+    .walkthrough{max-width:900px;}
+  }
+@media screen and (min-width: 2220px) { 
+    .walkthrough{max-width:80%;}
+p {font-size:16px !important}
+body {font-size:16px !important}
+  }
+
+/******* HR *****************/
+.deco {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border: 0;
+    border-top: 0px;
+    background-image: url('/file/Elden-Ring/dks-remaster-wiki-hr.png');
+    height: 13px;
+    max-width: 964px;
+}
+@media only screen and (max-width: 836px) {
+.deco {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border: 0;
+    border-top: 0px;
+    background-image: url('/file/Elden-Ring/dks-remaster-wiki-hr.png');
+    height: 8px;
+    max-width: 618px;
+}
+}
+
+@media only screen and (max-width: 480px) {
+.deco {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border: 0;
+    border-top: 0px;
+    background-image: url('/file/Elden-Ring/dks-remaster-wiki-hr.png');
+    height: 8px;
+    max-width: 300px;
+}
+}
+/******* Background *****************/
+.fex-main {
+    background: rgba(0, 0, 0, 0.85);
+}
+
+/******* Detail Summary Arrow Fix *****************/
+.page-content summary {display: list-item}
+
+.expandable {max-width: 600px!important; background-color: #222222b0; padding: 5px 20px; border-radius: 15px 50px;}
+
+/******* Other Customizations *****************/
+.damage {color:#b26666;}
+.defense {color:#7f7fbf;}
+
+.xrow {display: flex}
+
+.annotation {
+  float: right;
+  width: 20px;
+  height: 20px;
+}
+
+/******* Navigation Elements *****************/
+ul#navlist li {
+  display:inline;
+}
+#navlist {
+    max-width: 100%;
+    display: inline;
+    justify-content: center;
+}
+
+.hpwidget {
+ max-width:390px;
+ margin-left:auto;
+ margin-right:auto;
+ background-color:#222222b0;
+ padding:5px 20px
+}
+
+.btn-warning {
+    color: #fff;
+    background-color: #ab966f;
+    border-color: #ab966f;
+}
+.dropdown-menu > .active > a, .dropdown-menu > .active > a:focus, .dropdown-menu > .active > a:hover {
+    color: #fff;
+    text-decoration: none;
+    background-color: #ab966f;
+    outline: 0;
+}
+
+/******* Col Spans *****************/
+
+.span_1_of_5 {
+    width: 19% !important;
+    border-style: solid;
+    border-color: #AB966F #AB966F;
+    margin: 0.4% !important;
+}
+@media (min-width: 768px) {
+  .flexrow {display: flex}
+}
+
+
+/******* Wiki Links *****************/
+.wiki_link {
+    border-bottom: none;
+    color: #AB966F ; 
+}
+
+/******* Comments *****************/
+		.cmt-ui a {
+  color: #ab966f!important;
+}
+.cmt-reply, a.cmt-reply {
+  color: #ab966f!important;
+}
+#discussions button {
+  color: #ab966f!important;
+}
+
+/******* Infobox *****************/
+.infobox{width:300px;background-color:transparent;margin: 0 0 1.5em 0.5em;float:right;clear:right;color:#E7E7E7;font-size:88%;z-index:999;position:inherit;}
+.infobox .wiki_table {
+    border-style: solid;
+border: 6px solid transparent;
+    border-image-repeat: stretch;
+    border-image-slice: 100%;
+    border-image-source: none;
+    border-image-width: 1;
+      border-image-source: url("/file/Elden-Ring/elden-ring-wiki-guide-infobox-border.png");
+border-image-width: 20px 40px;
+border-image-repeat: round;
+border-image-slice: 25 50 fill;
+font-size: 14px;}
+
+@media screen and (-webkit-min-device-pixel-ratio:0)
+{ 
+.infobox .wiki_table {border: 10px solid transparent;border-image-repeat: stretch;border-image-slice: 100%;border-image-source: none;border-image-width: 1;border-image-source: url("/file/Elden-Ring/elden-ring-wiki-guide-infobox-border.png");border-image-width: 20px 40px;border-image-repeat: round;border-image-slice: 30 50 fill;font-size: 14px;} 
+}
+
+@media only screen and (max-width: 480px) { 
+.infobox { 
+width: 100% }
+}
+.infobox th { font-family: "Spectral",'fallback', Helvetica, Arial, sans-serif; font-size: 1em; text-align: center; padding: 10px; background: transparent url("https://www.wiki.fextralife.com/file/view/eso-wiki-table.jpg") }
+.infobox tr {
+    color: #FFF;
+    font-size: inherit;
+}
+
+.lineleft {
+    /* Regular borders as a fallback for IE8 and lower. */
+
+
+    /* To be able to position generated content. */
+    position: relative;
+
+    /* Some irrelevant general styles. */
+    margin: 0 auto;
+    padding: 0 10px;
+    width: 100%;
+}
+.lineleft:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    width: 1px;
+    height: 100%;
+}
+
+.lineleft:before {left: 0; }
+
+
+.lineleft:before{
+    /* SVG gradient image as Data URI for IE9 that does not support CSS gradients. */
+    background: -moz-linear-gradient(top,  rgba(208,228,247,0) 0%, rgba(115,177,231,0.48) 24%, rgba(12,16,255,1) 50%, rgba(83,159,225,0.42) 79%, rgba(135,188,234,0) 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(208,228,247,0)), color-stop(24%,rgba(115,177,231,0.48)), color-stop(50%,rgba(12,16,255,1)), color-stop(79%,rgba(83,159,225,0.42)), color-stop(100%,rgba(135,188,234,0))); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  rgba(208,228,247,0) 0%,rgba(115,177,231,0.48) 24%,rgba(12,16,255,1) 50%,rgba(83,159,225,0.42) 79%,rgba(135,188,234,0) 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  rgba(208,228,247,0) 0%,rgba(115,177,231,0.48) 24%,rgba(12,16,255,1) 50%,rgba(83,159,225,0.42) 79%,rgba(135,188,234,0) 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  rgba(208,228,247,0) 0%,rgba(115,177,231,0.48) 24%,rgba(12,16,255,1) 50%,rgba(83,159,225,0.42) 79%,rgba(135,188,234,0) 100%); /* IE10+ */
+    background: linear-gradient(to bottom, rgba(171,150,111,0) 0%,rgba(171,150,111,0.48) 24%,rgb(171,150,111) 50%,rgba(171,150,111,0.42) 79%,rgba(171,150,111,0) 100%);; /* W3C */
+}
+
+/******* Youtube Video *****************/
+.yt-container{
+margin:10px auto;width:100%;max-width:600px}.yt-player{width:100%;height:100%;padding-bottom:56.25%;overflow:hidden;position:relative;}img.yt-thumb{display:block;position:absolute;width:100%;bottom:0;margin:auto}#yt-iframe{width:100%;height:100%;position:absolute;top:0;left:0}
+
+/******* Google + Fix *****************/
+
+ .g-plus-menu {
+    margin: 0px 0px 0px;
+}
+
+/******* NavSprite Customizations *****************/
+.navsprite {
+    background-image: url('/file/Elden-Ring/navsprite.png');
+    background-repeat: no-repeat;
+    width: 32px;
+    height: 32px;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 5px;
+}
+
+.navsprite.home{background-position:0 0}.navsprite.a{background-position:-37px 0}.navsprite.b{background-position:-74px 0}.navsprite.c{background-position:-111px 0}.navsprite.d{background-position:-148px 0}.navsprite.e{background-position:-185px 0}.navsprite.f{background-position:-222px 0}.navsprite.g{background-position:-259px 0}.navsprite.h{background-position:-296px 0}.navsprite.miniring{width:16px;height:16px;background-position:-296px 0}
+
+body {
+    background-color: #111;
+	font-size: 14px;
+	color:#fff;
+}
+
+/******* IOS compatible stupid fix *****************/
+img.bg {
+  /* Set rules to fill background */
+  min-height: 100%;
+  min-width: 1920px;
+   z-index: -1;
+	
+  /* Set up proportionate scaling */
+  width: 100%;
+  height: auto;
+	
+  /* Set up positioning */
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+}
+
+@media screen and (max-width: 1024px) { /* Specific to this particular image */
+  img.bg {
+    left: 50%;
+    margin-left: -512px;   /* 50% */
+  }
+}
+
+/******* IOS compatible stupid fix *****************/
+
+/******* 
+
+ This sucks but on IOS there is no easy solution  https://twitter.com/paul_irish/status/306818591196602368  
+ needs some testing http://fourkitchens.com/blog/article/fix-scrolling-performance-css-will-change-property  
+
+body {
+    background-attachment: fixed !important;
+    background-size: cover !important;
+	background-clip: border-box;
+	background-color: transparent;
+	background-origin: padding-box;
+	background-position: center center;
+	background-repeat: no-repeat;
+    background-color:#000000;
+	font-size: 16px;
+	color:#fff;
+}
+
+.ios-fix {
+    height:100%;
+	width:100%;
+	position:fixed;
+    background-image: url("../images/dragons-dogma-background.jpg");
+	overflow: scroll;
+}
+
+*****************/
+
+/******* Headings *****************/
+.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
+    color: inherit;
+    font-family: "Spectral",'fallback', Helvetica, Arial, sans-serif;
+    text-transform: uppercase!important;
+    letter-spacing: -1px;
+} 
+
+/******* Section group fix *****************/
+
+.section:before,
+.section:after { content:""; display:table; }
+.section:after { clear:both;}
+.section { zoom:1; /* For IE 6/7 */ }
+
+/******* NavMenu Colors and Such*****************/
+
+.section-heading a:focus,
+#navMenu li a:focus,
+.section-heading a:hover,
+
+#navMenu li a:hover {
+    color: #AB966F !important;
+}
+
+
+#navMenux, #navMenux2 {
+    font-family: "Spectral",'fallback', Helvetica, Arial, sans-serif !important;
+	text-transform: uppercase !important;
+}
+
+/* WIKI LOGO IN HEADER*/
+
+.icon-container-desktop {
+    background-size: cover;
+    border: 2px solid #AB966F;
+    background-image: url('/file/Elden-Ring/er-for-dd.png') !important;
+}
+
+.icon-container  {
+    background-size: cover;
+    border: 2px solid #AB966F;
+    background-image: url('/file/Elden-Ring/er-for-dd.png') !important;
+}
+
+
+/******* Blockquote Fixes *****************/
+
+blockquote p::before {
+    color: #AB966F !important;
+font-size:2em!important;
+}
+
+blockquote p {
+    font-family: "arial";
+	color: #B4B2B0 !important;
+	font-style: italic;
+	font-wieght: normal;
+	text-indent: 48px;
+    font-size: 20px;
+    max-width: 800px;
+}
+ 
+
+.font-test {
+	font-family: "Spectral",'fallback', Helvetica, Arial, sans-serif;
+	font-size: 16px;
+	color:#fff;
+}
+
+
+.page-segment h1::after, .page-segment h2::after, .page-segment h3::after {
+    bottom: 0px;
+    display: block;
+    width: 80px;
+    height: 3px;
+    margin-bottom: -3px;
+    content: "";
+    background-color: #897859;
+
+} 
+ 
+.page-segment h1 {
+    font-size: 1.5em;
+    text-transform: none;
+    color: #897859;
+    border-bottom: 3px solid #FFF;
+	}
+.section-heading.section-heading-light {
+    border-color: #AB966F;
+    color: #fff;
+}
+
+.simulation-hero-heading {
+    display: block;
+    margin: 16px auto;
+    margin: 1rem auto;
+    position: relative;
+    width: 100%;
+    z-index: 3;
+}
+.section-heading {
+    border-bottom: 3px solid transparent;
+    border-top: 3px solid transparent;
+    box-sizing: border-box;
+    display: block;
+    font-size: inherit;
+    max-width: 1100px;
+    padding: 17px;
+    padding: 1.0625rem;
+    text-transform: uppercase;
+    width: 100%;
+}
+ 
+.nav-header #mainnav .wrapper nav .main-nav .nav-item:not(.mobile-menu):before, .nav-header #mainnav .wrapper nav .main-nav .nav-item:not(.mobile-menu):after {
+    content: "";
+    display: block;
+    position: absolute;
+    -webkit-transform: skewX(-32deg);
+        -ms-transform: skewX(-32deg);
+            transform: skewX(-32deg);
+}
+.nav-header #mainnav .wrapper nav .main-nav .nav-item.my-rsi.loggedout:after {
+    background-color: #ff1800;
+    box-shadow: 7px 0 21px 2px rgba(187, 0, 0, 0.75), 6px 0 18px 2px rgba(255, 24, 0, 0.64), 15px 0 55px 5px rgba(187, 0, 0, 0.8), 0 0 8px 1px rgba(255, 24, 0, 0.64);
+}
+
+#navMenu > li {
+    background: rgba(0, 0, 0, 0.1) -moz-linear-gradient(center top , rgba(255, 255, 255, 0.09) 0%, transparent 100%);
+    border-bottom: 1px solid #000;
+    border-top: 1px solid #363636;
+    font-size: 1em;
+    line-height: 50px;
+    padding-left: 5px;
+    position: relative;
+    z-index: 20;
+}
+
+.navSubMenu > li {
+    position: relative;
+    font-size: 1em;
+    line-height: normal;
+}
+
+/******* Footer Fixes *****************/
+
+.footer-sticky {
+    background: rgba(0, 0, 0, 0.8) none repeat scroll 0px 0px;
+    border-top: 5px solid #AB966F;
+    color: #AB966F;
+    bottom: 0px;
+    height: 40px;
+    position: fixed;
+    width: 100%;
+    z-index: 9999;
+    font-family: "arial";
+}
+ .footer-sticky a {
+    color: #AB966F;
+}
+.fallout-input {
+    background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+    border: 2px solid #897859;
+    box-sizing: border-box;
+    color: #897859;
+	font-family: "Spectral",'fallback', Helvetica, Arial, sans-serif;
+    font-size: 22px;
+    padding: 17px 20px 17px 60px;
+    text-transform: uppercase;
+    width: 100%;
+}
+
+.fallout-input-wrapper button {
+    background: rgba(0, 0, 0, 0) url("../images/icon.png") no-repeat scroll 0 0;
+    border: 0 none;
+    cursor: pointer;
+    height: 33px;
+    left: 12px;
+    position: absolute;
+    top: 10px;
+    width: 30px;
+} 
+ 
+ 
+.login-wrapper {
+   display: block;
+   height: auto;
+   margin-top: 10%;
+   max-width: 600px;
+   width: 100%;
+   padding: 50px;
+   position: relative;
+   background: #080325;
+   background: rgba(8, 3, 37, 0.7);
+   text-align: center;
+   padding: 40px;  
+}
+
+.btn-fallout {
+    background: transparent none repeat scroll 0 0;
+	color: #fff;
+    border: 2px solid #fff;
+	font-family: "Spectral",'fallback', Helvetica, Arial, sans-serif;
+    display: inline-block;
+    font-size: 15px;
+    letter-spacing: 2px;
+    padding: 12px 34px;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+.btn-fallout:hover {
+    background: #fff none repeat scroll 0 0;
+    color: #160925;
+}
+
+
+.login-wrapper h1 {
+    color: #fff;
+    font-size: 32px;
+    font-weight: normal;
+    line-height: 34px;
+    margin: 8px 0 7px;
+}
+.lines {
+    background: rgba(0, 0, 0, 0) url("../images/lines.png") no-repeat scroll left center;
+    color: #adff6d;
+    font-size: 28px;
+    padding-left: 156px;
+}
+
+
+.form-icon {
+    position: relative;
+    margin: 0;
+}
+
+.panel-login .form-group + .form-group {
+    margin: 10px 0 16px;
+}
+
+.login-form-icon {
+    font-size: 16px;
+    line-height: 27px;
+    position: absolute;
+    z-index: 1002;
+    top: 9px;
+    bottom: 9px;
+    left: 0;
+    display: block;
+    width: 40px;
+    padding: 1px 15px;
+    -webkit-transition: all .3s ease 0s;
+            transition: all .3s ease 0s;
+    text-align: center;
+    color: #d6d6d6;
+    border-right: 1px solid #d6d6d6;
+}
+
+.fallout-login-form {
+    background: rgba(0, 0, 0, 0) url("../images/helper.png") no-repeat scroll center;
+    font-size: 16px;
+    line-height: 27px;
+    position: absolute;
+    z-index: 1002;
+    top: 9px;
+	left: 10px;
+    bottom: 9px;
+    display: block;
+    width: 40px;
+    padding: 1px 15px;
+    -webkit-transition: all .3s ease 0s;
+            transition: all .3s ease 0s;
+    text-align: center;
+    color: #d6d6d6;
+}
+
+.control-label {
+    color: #fff;
+	font-weight: inherit;
+    display: block;
+}
+
+
+
+/* iCheck plugin Square skin, aero
+----------------------------------- */
+.icheckbox_square-aero,
+.iradio_square-aero {
+    display: inline-block;
+    *display: inline;
+    vertical-align: middle;
+    margin: 0 4px 0 0;
+    padding: 0;
+    width: 22px;
+    height: 22px;
+    background: url('../images/aero.png') no-repeat;
+    border: none;
+    cursor: pointer;
+}
+
+.icheckbox_square-aero {
+    background-position: 0 0;
+}
+    .icheckbox_square-aero.hover {
+        background-position: -24px 0;
+    }
+    .icheckbox_square-aero.checked {
+        background-position: -48px 0;
+    }
+    .icheckbox_square-aero.disabled {
+        background-position: -72px 0;
+        cursor: default;
+    }
+    .icheckbox_square-aero.checked.disabled {
+        background-position: -96px 0;
+    }
+
+.iradio_square-aero {
+    background-position: -120px 0;
+}
+    .iradio_square-aero.hover {
+        background-position: -144px 0;
+    }
+    .iradio_square-aero.checked {
+        background-position: -168px 0;
+    }
+    .iradio_square-aero.disabled {
+        background-position: -192px 0;
+        cursor: default;
+    }
+    .iradio_square-aero.checked.disabled {
+        background-position: -216px 0;
+    }
+
+/* HiDPI support */
+@media (-webkit-min-device-pixel-ratio: 1.25), (min-resolution: 120dpi), (min-resolution: 1.25dppx) {
+    .icheckbox_square-aero,
+    .iradio_square-aero {
+        background-image: url('../images/aero@2x.png');
+        background-size: 240px 24px;
+    }
+}
+/* iCheck plugin Square skin, aero
+----------------------------------- */
+
+
+
+
+/* glow control for panels
+----------------------------------- */
+
+/* glow control top corners */
+.glow-corners.top-corners:before {
+    border-width: 1px 0 0 1px;
+}
+.glow-corners:before {
+    left: 0;
+}
+.glow-corners.top-corners:after {
+    border-width: 1px 1px 0 0;
+}
+.glow-corners:after {
+    right: 0;
+}
+
+/******* Top Right Icon *****************/
+
+.vault-loder{background: url('https://eldenring.wiki.fextralife.com/file/Elden-Ring/fextraicons-background-colored-border-a32.png') no-repeat;display: inline-block;vertical-align: middle;margin: -8px 4px 0 0;padding: 0;width: 52px;height: 32px;z-index: 9;}
+
+.top-right-vault {
+    position: absolute;
+	right: 20px;
+    top: -9px;
+}
+
+.glow-corners:before, .glow-corners:after {
+    border-color: #00edff;
+    border-style: solid;
+    content: "";
+    height: 28px;
+    position: absolute;
+    -webkit-transform: translateZ(0px);
+            transform: translateZ(0px);
+    -webkit-transition-duration: 0.3s;
+            transition-duration: 0.3s;
+    width: 28px;
+}
+.glow-corners.top-corners {
+    top: 0;
+}
+.glow-corners {
+    position: absolute;
+    -webkit-transition-duration: 0.3s;
+            transition-duration: 0.3s;
+    width: 100%;
+    z-index: 3;
+}
+
+
+
+/* glow control bottom corners */
+.glow-corners.bottom-corners:before {
+    border-width: 0 0 1px 1px;
+}
+.glow-corners:before {
+    left: 0;
+}
+.glow-corners.bottom-corners:after {
+    border-width: 0 1px 1px 0;
+}
+.glow-corners:after {
+    right: 0;
+}
+.glow-corners.bottom-corners {
+    bottom: 13px;
+}
+
+
+
+
+
+/* glow control some position override */
+.glow-corners:before {
+    left: 0;
+}
+.glow-corners:after {
+    right: 0;
+}
+
+/* glow control some thickness override top */
+.glow-corners.top-corners:before {
+    border-width: 2px 0 0 2px;
+}
+.glow-corners.top-corners:after {
+    border-width: 2px 2px 0 0;
+}
+
+
+/* glow control some thickness override bottom */
+.glow-corners.bottom-corners:before {
+    border-width: 0 0 2px 2px;
+}
+.glow-corners.bottom-corners:after {
+    border-width: 0 2px 2px 0;
+}
+
+
+
+.glow-corners:before, .glow-corners:after {
+    border-color: #AB966F ;
+	height: 16px;
+	width: 100%;
+}
+/* glow control for panels
+----------------------------------- */ 
+
+
+.wikis-link img {
+    max-width: 100%;
+    width: 160px;
+}
+
+
+.wiki_table tr:nth-child(2n+1) {
+    background-color: #222222;
+}
+
+.wiki_table tr {
+    background-color: inherit;
+}
+
+thead tr {
+    background-color: #484440 !important;
+}
+
+tfoot tr {
+    background-color: #484440 !important;
+}
+
+.wiki_table th, .wiki_table td {
+    border: 2px solid #282828;
+}
+
+.wiki_table tr:hover {
+    background: rgba(0, 0, 0, 0) url("../images/bg-maintitle.png") repeat-x;
+	background-size:cover;
+}
+
+
+table {
+    border: 2px solid #AB966F ;
+	border-collapse: separate;
+}
+
+
+.wiki_table th, .wiki_table td {
+    border: 1px solid #282828;
+}
+
+
+.feed_item_title a {
+    color: #AB966F ;
+}
+
+.wiki_link {
+border-bottom: none;
+color: #AB966F ;
+}
+
+
+a.wiki_link:hover{color: #897859;text-decoration:underline;}
+
+
+.wiki_link_ext:after {
+   content: "\e164";
+  font-family: 'Glyphicons Halflings';
+  font-size: 12px;
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  text-decoration: none;
+  padding-left: 3px;
+}
+
+a.wiki_link_ext:hover {
+  color: #897859;
+}
+
+.page-segment a:hover {
+    color: #897859 !Important;
+	text-decoration:none;
+}
+
+/******* Revisiondate Formatting *****************/
+
+.revisiondate {
+    color: #AB966F ;
+    font-family: "arial";
+    font-size: 0.8em;
+	
+}
+
+a.collapse-trigger:focus, a.collapse-trigger:hover {
+    color: #AB966F ;
+	outline:none;
+}
+
+/******* Breadcrumb Formatting *****************/
+
+.breadcrumbs {
+    margin-bottom: 20px;
+    font-style: italic;
+    font-size: 0.8em;
+	max-width: 50%;
+}
+
+/******* Page Include Formatting *****************/
+
+.includePageListPageUrl {
+    color: #AB966F ;
+}
+
+/******* Tab Formatting *****************/
+
+.tabtitle {
+    background-color: #484440;
+    border: 2px solid #AB966F;
+}
+
+/******* Table of contents Formatting *****************/
+#toc {
+    border: 1px solid #DCDCDC;
+    background: #F3F3F3 none repeat scroll 0% 0%;
+    padding: 6px;
+    margin: 0px 0px 10px 10px;
+    width: 25%;
+    float: right;
+    clear: right;
+    border-radius: 6px;
+background-color: #100C08;
+}
+
+/* Tooltip CSS */
+.fextratip {display: inline-block;position: relative;}
+.fextratip ul {margin: 5px 0;padding-left: 15px;}
+.fextratip .center {text-align: center;}
+
+.popover {display: none;position: absolute;top: 0;z-index: 999999;min-width: 300px;max-width: 300px;background-color: transparent;color: #e8e4e0;white-space: normal;}
+.popover.left {left: auto;}
+.popover-content {padding: 0px;font-family: Arial,Helvetica,sans-serif;font-size: 11px;line-height: 14px;text-align :left;}
+.popover-title {margin: -5px -5px 5px;height: 24px;line-height: 24px;background-color: #777;color: #fd8;font-family: "Spectral",'fallback', Helvetica, Arial, sans-serif;font-size: 16px;text-align: center;text-shadow: #000 1px 1px 1px;}.arro$
+.popover.right .arrow {top: 50%;left: -11px;margin-top: -11px;border-left-width: 0;border-right-color: #585450;}
+.popover.right .arrow:after {content: " ";left: 1px;bottom: -10px;border-left-width: 0;border-right-color: #585450;}
+.popover.left .arrow {top: 50%;right: -11px;margin-top: -11px;border-right-width: 0;border-left-color: #585450;}
+.popover.left .arrow:after {content: " ";right: 1px;border-right-width: 0;border-left-color: #585450;bottom: -10px;}
+
+.popover-content th {
+    font-size: 1em;
+    text-align: center;
+    padding: 10px;
+    background: url(/file/Elden-Ring/eso-wiki-table.jpg);
+}
+#<style>
+#li.CompItem {
+#    list-style: none;
+#    border-bottom: 1px dashed #CCCCCC;
+#    margin: 0 0 7px 0;
+#    padding: 0 0 7px 0;
+#}
+#ul.CompItems {
+#    list-style: none;
+#    -webkit-padding-start: 0px !important;
+#    -webkit-padding-after: 1em !important;
+#}
+#.CompItemTitle a {
+#color: #DEC58C !important;
+#}
+#a.CompItemLink {
+#    color: #fff;
+#    text-decoration: none!Important;
+#}
+#span.CompItemAuthor {
+#    color: #aaa;
+#    font-size: small;
+#}
+#span.CompItemDate {
+#    color: aaa;
+#    font-size: xx-small;
+#}
+#.CompItemDescription {
+#    color: #bbb;
+#    font-size: small;
+#}
+#</style>
+
+# Posts/Articles Css
+li.CompItem{list-style:none;border-bottom:1px dashed #CCC;margin:0 0 7px;padding:0 0 7px}ul.CompItems{list-style:none;-webkit-padding-start:0!important;-webkit-padding-after:1em!important;padding-left: 0px;}.CompItemTitle a{color:#DEC58C!important}a.CompItemLink{color:#fff}span.CompItemAuthor{color:#aaa;font-size:small}span.CompItemDate{color:aaa;font-size:xx-small}.CompItemDescription{color:#bbb;font-size:small}
+
+
+/* Map Container */
+
+.interactivemapcontainer {
+  width: 100%;
+  height: 910px;
+  border: 13px solid transparent;
+    border-image-repeat: stretch;
+    border-image-slice: 100%;
+    border-image-source: none;
+    border-image-width: 1;
+  border-image-source: url("/file/Elden-Ring/elden-ring-wiki-guide-infobox-border.png");
+  border-image-width: 20px 40px;
+  border-image-repeat: round;
+  border-image-slice: 30 50 fill;
+}
+@media only screen and (max-width: 480px) {
+    .interactivemapcontainer {
+        max-height:600px!important
+     }
+}
+
+ul {
+  text-align: left!important;
+}
+
+/* Map Progress Tracker */
+#wiki-content-block .dropdown-menu {
+    background-color:#222;
+}
+#wiki-content-block .dropdown-menu > li > a
+{color:white}
+
+.tabtitle p {color:#fafafa;margin:5px;}
+
+.tabtitle {
+  background-color: #484440;
+  border: 2px solid #AB966F;
+  border-radius: 4px 10px 4px 10px;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 4px;
+    border-bottom-left-radius: 10px;
+  margin-bottom: 3px;}
+
+.progress {background-color:#222;}
+
+.progress-bar {
+  color: #222;
+  background-color: #ab966f;}
+/* End of Map Progress Tracker*/
+
+/* Trevor Visual Calculator Addons (start) */
+
+#view4-editable-armorSet-1 {
+	background-color: transparent;
+	background-image: url('/file/Elden-Ring/armor_set_slot_elden_ring_wiki_guide.png')
+}
+
+#view4-editable-armor-helm {
+	background-color: transparent;
+	background-image: url('/file/Elden-Ring/armor_helm_slot_elden_ring_wiki_guide.png')
+}
+
+#view4-editable-armor-chest {
+	background-color: transparent;
+	background-image: url('/file/Elden-Ring/armor_chest_slot_elden_ring_wiki_guide.png')
+}
+
+#view4-editable-armor-gauntlet {
+	background-color: transparent;
+	background-image: url('/file/Elden-Ring/armor_gauntlet_slot_elden_ring_wiki_guide.png')
+}
+
+#view4-editable-armor-leg {
+	background-color: transparent;
+	background-image: url('/file/Elden-Ring/armor_leg_slot_elden_ring_wiki_guide.png')
+}
+
+#view4-editable-talisman-1 {
+	background-color: transparent;
+	background-image: url('/file/Elden-Ring/talisman_slot_elden_ring_wiki_guide.png')
+}
+
+#view4-editable-talisman-2 {
+	background-color: transparent;
+	background-image: url('/file/Elden-Ring/talisman_slot_elden_ring_wiki_guide.png')
+}
+
+#view4-editable-talisman-3 {
+	background-color: transparent;
+	background-image: url('/file/Elden-Ring/talisman_slot_elden_ring_wiki_guide.png')
+}
+
+#view4-editable-talisman-4 {
+	background-color: transparent;
+	background-image: url('/file/Elden-Ring/talisman_slot_elden_ring_wiki_guide.png')
+}
+
+#view4-editable-spell-1 {
+	background-color: transparent;
+	background-image: url('/file/Elden-Ring/spell_slot_elden_ring_wiki_guide.png')
+}
+
+#view4-editable-spell-2 {
+	background-color: transparent;
+	background-image: url('/file/Elden-Ring/spell_slot_elden_ring_wiki_guide.png')
+}
+
+#view4-editable-spell-3 {
+	background-color: transparent;
+	background-image: url('/file/Elden-Ring/spell_slot_elden_ring_wiki_guide.png')
+}
+
+#view4-editable-spell-4 {
+	background-color: transparent;
+	background-image: url('/file/Elden-Ring/spell_slot_elden_ring_wiki_guide.png')
+}
+
+#view4-editable-spell-5 {
+	background-color: transparent;
+	background-image: url('/file/Elden-Ring/spell_slot_elden_ring_wiki_guide.png')
+}
+
+#view4-editable-spell-6 {
+	background-color: transparent;
+	background-image: url('/file/Elden-Ring/spell_slot_elden_ring_wiki_guide.png')
+}
+
+#view4-editable-spell-7 {
+	background-color: transparent;
+	background-image: url('/file/Elden-Ring/spell_slot_elden_ring_wiki_guide.png')
+}
+
+#view4-editable-spell-8 {
+	background-color: transparent;
+	background-image: url('/file/Elden-Ring/spell_slot_elden_ring_wiki_guide.png')
+}
+
+#view4-editable-spell-9 {
+	background-color: transparent;
+	background-image: url('/file/Elden-Ring/spell_slot_elden_ring_wiki_guide.png')
+}
+
+#view4-editable-spell-10 {
+	background-color: transparent;
+	background-image: url('/file/Elden-Ring/spell_slot_elden_ring_wiki_guide.png')
+}
+
+#view4-editable-weapon-left1 {
+	background-color: transparent;
+	background-image: url('/file/Elden-Ring/weapon_left_slot_elden_ring_wiki_guide.png')
+}
+
+#view4-editable-weapon-left2 {
+	background-color: transparent;
+	background-image: url('/file/Elden-Ring/weapon_left_slot_elden_ring_wiki_guide.png')
+}
+
+#view4-editable-weapon-left3 {
+	background-color: transparent;
+	background-image: url('/file/Elden-Ring/weapon_left_slot_elden_ring_wiki_guide.png')
+}
+
+#view4-editable-slot1-ammo-arrow {
+	background-color: transparent;
+	background-image: url('/file/Elden-Ring/arrow_slot_elden_ring_wiki_guide.png')
+}
+
+#view4-editable-slot1-ammo-greatArrow {
+	background-color: transparent;
+	background-image: url('/file/Elden-Ring/arrow_slot_elden_ring_wiki_guide.png')
+}
+
+#view4-editable-weapon-right1 {
+	background-color: transparent;
+	background-image: url('/file/Elden-Ring/weapon_right_slot_elden_ring_wiki_guide.png')
+}
+
+#view4-editable-weapon-right2 {
+	background-color: transparent;
+	background-image: url('/file/Elden-Ring/weapon_right_slot_elden_ring_wiki_guide.png')
+}
+
+#view4-editable-weapon-right3 {
+	background-color: transparent;
+	background-image: url('/file/Elden-Ring/weapon_right_slot_elden_ring_wiki_guide.png')
+}
+
+#view4-editable-slot1-ammo-bolt {
+	background-color: transparent;
+	background-image: url('/file/Elden-Ring/bolt_slot_elden_ring_wiki_guide.png')
+}
+
+#view4-editable-slot1-ammo-greatBolt {
+	background-color: transparent;
+	background-image: url('/file/Elden-Ring/bolt_slot_elden_ring_wiki_guide.png')
+}
+
+#view4-editable-armorSet-1:hover {
+	background-image: url('/file/Elden-Ring/armor_set_slot_hover_elden_ring_wiki_guide.png')
+}
+
+#view4-editable-armor-helm:hover {
+	background-image: url('/file/Elden-Ring/armor_helm_slot_hover_elden_ring_wiki_guide.png')
+}
+
+#view4-editable-armor-chest:hover {
+	background-image: url('/file/Elden-Ring/armor_chest_slot_hover_elden_ring_wiki_guide.png')
+}
+
+#view4-editable-armor-gauntlet:hover {
+	background-image: url('/file/Elden-Ring/armor_gauntlet_slot_hover_elden_ring_wiki_guide.png')
+}
+
+#view4-editable-armor-leg:hover {
+	background-image: url('/file/Elden-Ring/armor_leg_slot_hover_elden_ring_wiki_guide.png')
+}
+
+#view4-editable-talisman-1:hover {
+	background-image: url('/file/Elden-Ring/talisman_slot_hover_elden_ring_wiki_guide.png')
+}
+
+#view4-editable-talisman-2:hover {
+	background-image: url('/file/Elden-Ring/talisman_slot_hover_elden_ring_wiki_guide.png')
+}
+
+#view4-editable-talisman-3:hover {
+	background-image: url('/file/Elden-Ring/talisman_slot_hover_elden_ring_wiki_guide.png')
+}
+
+#view4-editable-talisman-4:hover {
+	background-image: url('/file/Elden-Ring/talisman_slot_hover_elden_ring_wiki_guide.png')
+}
+
+#view4-editable-spell-1:hover {
+	background-image: url('/file/Elden-Ring/spell_slot_hover_elden_ring_wiki_guide.png')
+}
+
+#view4-editable-spell-2:hover {
+	background-image: url('/file/Elden-Ring/spell_slot_hover_elden_ring_wiki_guide.png')
+}
+
+#view4-editable-spell-3:hover {
+	background-image: url('/file/Elden-Ring/spell_slot_hover_elden_ring_wiki_guide.png')
+}
+
+#view4-editable-spell-4:hover {
+	background-image: url('/file/Elden-Ring/spell_slot_hover_elden_ring_wiki_guide.png')
+}
+
+#view4-editable-spell-5:hover {
+	background-image: url('/file/Elden-Ring/spell_slot_hover_elden_ring_wiki_guide.png')
+}
+
+#view4-editable-spell-6:hover {
+	background-image: url('/file/Elden-Ring/spell_slot_hover_elden_ring_wiki_guide.png')
+}
+
+#view4-editable-spell-7:hover {
+	background-image: url('/file/Elden-Ring/spell_slot_hover_elden_ring_wiki_guide.png')
+}
+
+#view4-editable-spell-8:hover {
+	background-image: url('/file/Elden-Ring/spell_slot_hover_elden_ring_wiki_guide.png')
+}
+
+#view4-editable-spell-9:hover {
+	background-image: url('/file/Elden-Ring/spell_slot_hover_elden_ring_wiki_guide.png')
+}
+
+#view4-editable-spell-10:hover {
+	background-image: url('/file/Elden-Ring/spell_slot_hover_elden_ring_wiki_guide.png')
+}
+
+#view4-editable-weapon-left1:hover {
+	background-image: url('/file/Elden-Ring/weapon_left_slot_hover_elden_ring_wiki_guide.png')
+}
+
+#view4-editable-weapon-left2:hover {
+	background-image: url('/file/Elden-Ring/weapon_left_slot_hover_elden_ring_wiki_guide.png')
+}
+
+#view4-editable-weapon-left3:hover {
+	background-image: url('/file/Elden-Ring/weapon_left_slot_hover_elden_ring_wiki_guide.png')
+}
+
+#view4-editable-slot1-ammo-arrow:hover {
+	background-image: url('/file/Elden-Ring/arrow_slot_hover_elden_ring_wiki_guide.png')
+}
+
+#view4-editable-slot1-ammo-greatArrow:hover {
+	background-image: url('/file/Elden-Ring/arrow_slot_hover_elden_ring_wiki_guide.png')
+}
+
+#view4-editable-weapon-right1:hover {
+	background-image: url('/file/Elden-Ring/weapon_right_slot_hover_elden_ring_wiki_guide.png')
+}
+
+#view4-editable-weapon-right2:hover {
+	background-image: url('/file/Elden-Ring/weapon_right_slot_hover_elden_ring_wiki_guide.png')
+}
+
+#view4-editable-weapon-right3:hover {
+	background-image: url('/file/Elden-Ring/weapon_right_slot_hover_elden_ring_wiki_guide.png')
+}
+
+#view4-editable-slot1-ammo-bolt:hover {
+	background-image: url('/file/Elden-Ring/bolt_slot_hover_elden_ring_wiki_guide.png')
+}
+
+#view4-editable-slot1-ammo-greatBolt:hover {
+	background-image: url('/file/Elden-Ring/bolt_slot_hover_elden_ring_wiki_guide.png')
+}
+
+#view4-editable-armorSet-1:focus {
+	background-image: url('/file/Elden-Ring/armor_set_slot_focus_elden_ring_wiki_guide.png')
+}
+
+#view4-editable-armor-helm:focus {
+	background-image: url('/file/Elden-Ring/armor_helm_slot_focus_elden_ring_wiki_guide.png')
+}
+
+#view4-editable-armor-chest:focus {
+	background-image: url('/file/Elden-Ring/armor_chest_slot_focus_elden_ring_wiki_guide.png')
+}
+
+#view4-editable-armor-gauntlet:focus {
+	background-image: url('/file/Elden-Ring/armor_gauntlet_slot_focus_elden_ring_wiki_guide.png')
+}
+
+#view4-editable-armor-leg:focus {
+	background-image: url('/file/Elden-Ring/armor_leg_slot_focus_elden_ring_wiki_guide.png')
+}
+
+#view4-editable-talisman-1:focus {
+	background-image: url('/file/Elden-Ring/talisman_slot_focus_elden_ring_wiki_guide.png')
+}
+
+#view4-editable-talisman-2:focus {
+	background-image: url('/file/Elden-Ring/talisman_slot_focus_elden_ring_wiki_guide.png')
+}
+
+#view4-editable-talisman-3:focus {
+	background-image: url('/file/Elden-Ring/talisman_slot_focus_elden_ring_wiki_guide.png')
+}
+
+#view4-editable-talisman-4:focus {
+	background-image: url('/file/Elden-Ring/talisman_slot_focus_elden_ring_wiki_guide.png')
+}
+
+#view4-editable-spell-1:focus {
+	background-image: url('/file/Elden-Ring/spell_slot_focus_elden_ring_wiki_guide.png')
+}
+
+#view4-editable-spell-2:focus {
+	background-image: url('/file/Elden-Ring/spell_slot_focus_elden_ring_wiki_guide.png')
+}
+
+#view4-editable-spell-3:focus {
+	background-image: url('/file/Elden-Ring/spell_slot_focus_elden_ring_wiki_guide.png')
+}
+
+#view4-editable-spell-4:focus {
+	background-image: url('/file/Elden-Ring/spell_slot_focus_elden_ring_wiki_guide.png')
+}
+
+#view4-editable-spell-5:focus {
+	background-image: url('/file/Elden-Ring/spell_slot_focus_elden_ring_wiki_guide.png')
+}
+
+#view4-editable-spell-6:focus {
+	background-image: url('/file/Elden-Ring/spell_slot_focus_elden_ring_wiki_guide.png')
+}
+
+#view4-editable-spell-7:focus {
+	background-image: url('/file/Elden-Ring/spell_slot_focus_elden_ring_wiki_guide.png')
+}
+
+#view4-editable-spell-8:focus {
+	background-image: url('/file/Elden-Ring/spell_slot_focus_elden_ring_wiki_guide.png')
+}
+
+#view4-editable-spell-9:focus {
+	background-image: url('/file/Elden-Ring/spell_slot_focus_elden_ring_wiki_guide.png')
+}
+
+#view4-editable-spell-10:focus {
+	background-image: url('/file/Elden-Ring/spell_slot_focus_elden_ring_wiki_guide.png')
+}
+
+#view4-editable-weapon-left1:focus {
+	background-image: url('/file/Elden-Ring/weapon_left_slot1_focus_elden_ring_wiki_guide.png')
+}
+
+#view4-editable-weapon-left2:focus {
+	background-image: url('/file/Elden-Ring/weapon_left_slot1_focus_elden_ring_wiki_guide.png')
+}
+
+#view4-editable-weapon-left3:focus {
+	background-image: url('/file/Elden-Ring/weapon_left_slot1_focus_elden_ring_wiki_guide.png')
+}
+
+#view4-editable-slot1-ammo-arrow:focus {
+	background-image: url('/file/Elden-Ring/arrow_slot_focus_elden_ring_wiki_guide.png')
+}
+
+#view4-editable-slot1-ammo-greatArrow:focus {
+	background-image: url('/file/Elden-Ring/arrow_slot_focus_elden_ring_wiki_guide.png')
+}
+
+#view4-editable-weapon-right1:focus {
+	background-image: url('/file/Elden-Ring/weapon_right_slot_focus_elden_ring_wiki_guide.png')
+}
+
+#view4-editable-weapon-right2:focus {
+	background-image: url('/file/Elden-Ring/weapon_right_slot_focus_elden_ring_wiki_guide.png')
+}
+
+#view4-editable-weapon-right3:focus {
+	background-image: url('/file/Elden-Ring/weapon_right_slot_focus_elden_ring_wiki_guide.png')
+}
+
+#view4-editable-slot1-ammo-bolt:focus {
+	background-image: url('/file/Elden-Ring/bolt_slot_focus_elden_ring_wiki_guide.png')
+}
+
+#view4-editable-slot1-ammo-greatBolt:focus {
+	background-image: url('/file/Elden-Ring/bolt_slot_focus_elden_ring_wiki_guide.png')
+}
+
+#view4-editable-armorSet-1:focus:hover {
+	background-image: url('/file/Elden-Ring/armor_set_slot_focus_hover_elden_ring_wiki_guide.png')
+}
+
+#view4-editable-armor-helm:focus:hover {
+	background-image: url('/file/Elden-Ring/armor_helm_slot_focus_hover_elden_ring_wiki_guide.png')
+}
+
+#view4-editable-armor-chest:focus:hover {
+	background-image: url('/file/Elden-Ring/armor_chest_slot_focus_hover_elden_ring_wiki_guide.png')
+}
+
+#view4-editable-armor-gauntlet:focus:hover {
+	background-image: url('/file/Elden-Ring/armor_gauntlet_slot_focus_hover_elden_ring_wiki_guide.png')
+}
+
+#view4-editable-armor-leg:focus:hover {
+	background-image: url('/file/Elden-Ring/armor_leg_slot_focus_hover_elden_ring_wiki_guide.png')
+}
+
+#view4-editable-talisman-1:focus:hover {
+	background-image: url('/file/Elden-Ring/talisman_slot_focus_hover_elden_ring_wiki_guide.png')
+}
+
+#view4-editable-talisman-2:focus:hover {
+	background-image: url('/file/Elden-Ring/talisman_slot_focus_hover_elden_ring_wiki_guide.png')
+}
+
+#view4-editable-talisman-3:focus:hover {
+	background-image: url('/file/Elden-Ring/talisman_slot_focus_hover_elden_ring_wiki_guide.png')
+}
+
+#view4-editable-talisman-4:focus:hover {
+	background-image: url('/file/Elden-Ring/talisman_slot_focus_hover_elden_ring_wiki_guide.png')
+}
+
+#view4-editable-spell-1:focus:hover {
+	background-image: url('/file/Elden-Ring/spell_slot_focus_hover_elden_ring_wiki_guide.png')
+}
+
+#view4-editable-spell-2:focus:hover {
+	background-image: url('/file/Elden-Ring/spell_slot_focus_hover_elden_ring_wiki_guide.png')
+}
+
+#view4-editable-spell-3:focus:hover {
+	background-image: url('/file/Elden-Ring/spell_slot_focus_hover_elden_ring_wiki_guide.png')
+}
+
+#view4-editable-spell-4:focus:hover {
+	background-image: url('/file/Elden-Ring/spell_slot_focus_hover_elden_ring_wiki_guide.png')
+}
+
+#view4-editable-spell-5:focus:hover {
+	background-image: url('/file/Elden-Ring/spell_slot_focus_hover_elden_ring_wiki_guide.png')
+}
+
+#view4-editable-spell-6:focus:hover {
+	background-image: url('/file/Elden-Ring/spell_slot_focus_hover_elden_ring_wiki_guide.png')
+}
+
+#view4-editable-spell-7:focus:hover {
+	background-image: url('/file/Elden-Ring/spell_slot_focus_hover_elden_ring_wiki_guide.png')
+}
+
+#view4-editable-spell-8:focus:hover {
+	background-image: url('/file/Elden-Ring/spell_slot_focus_hover_elden_ring_wiki_guide.png')
+}
+
+#view4-editable-spell-9:focus:hover {
+	background-image: url('/file/Elden-Ring/spell_slot_focus_hover_elden_ring_wiki_guide.png')
+}
+
+#view4-editable-spell-10:focus:hover {
+	background-image: url('/file/Elden-Ring/spell_slot_focus_hover_elden_ring_wiki_guide.png')
+}
+
+#view4-editable-weapon-left1:focus:hover {
+	background-image: url('/file/Elden-Ring/weapon_left_slot_focus_hover_elden_ring_wiki_guide.png')
+}
+
+#view4-editable-weapon-left2:focus:hover {
+	background-image: url('/file/Elden-Ring/weapon_left_slot_focus_hover_elden_ring_wiki_guide.png')
+}
+
+#view4-editable-weapon-left3:focus:hover {
+	background-image: url('/file/Elden-Ring/weapon_left_slot_focus_hover_elden_ring_wiki_guide.png')
+}
+
+#view4-editable-slot1-ammo-arrow:focus:hover {
+	background-image: url('/file/Elden-Ring/arrow_slot_focus_hover_elden_ring_wiki_guide.png')
+}
+
+#view4-editable-slot1-ammo-greatArrow:focus:hover {
+	background-image: url('/file/Elden-Ring/arrow_slot_focus_hover_elden_ring_wiki_guide.png')
+}
+
+#view4-editable-weapon-right1:focus:hover {
+	background-image: url('/file/Elden-Ring/weapon_right_slot_focus_hover_elden_ring_wiki_guide.png')
+}
+
+#view4-editable-weapon-right2:focus:hover {
+	background-image: url('/file/Elden-Ring/weapon_right_slot_focus_hover_elden_ring_wiki_guide.png')
+}
+
+#view4-editable-weapon-right3:focus:hover {
+	background-image: url('/file/Elden-Ring/weapon_right_slot_focus_hover_elden_ring_wiki_guide.png')
+}
+
+#view4-editable-slot1-ammo-bolt:focus:hover {
+	background-image: url('/file/Elden-Ring/bolt_slot_focus_hover_elden_ring_wiki_guide.png')
+}
+
+#view4-editable-slot1-ammo-greatBolt:focus:hover {
+	background-image: url('/file/Elden-Ring/bolt_slot_focus_hover_elden_ring_wiki_guide.png')
+}
+
+#view4-editable-great-rune-1 {
+	background-color: transparent;
+	background-image: url('/file/Elden-Ring/great_rune_slot_elden_ring_wiki_guide.png');
+	background-size: cover;
+}
+
+#view4-editable-great-rune-1:hover {
+	background-image: url('/file/Elden-Ring/great_rune_slot_hover_elden_ring_wiki_guide.png')
+}
+
+#view4-editable-great-rune-1e:focus {
+	background-image: url('/file/Elden-Ring/great_rune_slot_focus_elden_ring_wiki_guide.png')
+}
+
+#view4-editable-great-rune-1:focus:hover {
+	background-image: url('/file/Elden-Ring/great_rune_slot_focus_hover_elden_ring_wiki_guide.png')
+}
+
+.calc-equip-select {
+	margin-top: 0px;
+}
+
+.calc-btn-icon:focus:hover {
+    outline: 0px;
+}
+
+.calc-silhouette {
+	background-image: url('/file/Elden-Ring/silhouette_a_calculator_elden_ring_wiki_guide.png')
+}
+
+/* Trevor Visual Calculator Addons (end) */
+
+ /* Trevor Calculator Background (START) */
+
+.calc-view {
+    background-image: url('/file/Elden-Ring/calc_b_background_elden_ring_wiki_guide.png');
+    background-size: cover;
+}
+
+/* Trevor Calculator Background (END) */ 
+
+/**** Tooltip Fix START ****/
+
+.tooltip_table {
+	width: 100%;
+	line-height: 1.42857143;
+	border: 10px solid transparent;
+	border-image-source: url(/file/Elden-Ring/elden-ring-wiki-guide-infobox-border.png);
+	border-image-width: 20px 40px;
+	border-image-repeat: round;
+	border-image-slice: 30 50 fill;
+	font-size: 14px;
+}
+
+.tooltip_table tbody {
+	background: #0c0c0c;
+}
+
+.tooltip_table th {
+	font-family: "Spectral", 'fallback', Helvetica, Arial, sans-serif;
+	border: 1px solid #282828;
+}
+
+.tooltip_table td {
+	border: 1px solid #282828;
+}
+
+.tooltip_table tr:nth-child(2n+1) {
+    background-color: #222222;
+}
+
+/**** Tooltip Fix END ****/

@@ -1,0 +1,1545 @@
+<!DOCTYPE =>
+<html style="height:100%; margin:0;" class=" idc0_343 yqisjhmz"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<meta name="robots" content="noindex, nofollow">
+		<title>Interactive Map</title>
+		<link rel="stylesheet" href="map-9d02bccc-081b-4a1d-b26e-a363f366fb40_data/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin="">
+		<script src="map-9d02bccc-081b-4a1d-b26e-a363f366fb40_data/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="map-9d02bccc-081b-4a1d-b26e-a363f366fb40_data/L.Control.Sidebar.css">
+		<link rel="stylesheet" href="map-9d02bccc-081b-4a1d-b26e-a363f366fb40_data/L.Control.MousePosition.css">
+		<link rel="stylesheet" href="map-9d02bccc-081b-4a1d-b26e-a363f366fb40_data/Control.FullScreen.css">
+		<link rel="stylesheet" href="map-9d02bccc-081b-4a1d-b26e-a363f366fb40_data/leaflet-search.css">
+		<link rel="stylesheet" href="map-9d02bccc-081b-4a1d-b26e-a363f366fb40_data/leafletoverridecss-v1.css">
+		<link rel="stylesheet" href="map-9d02bccc-081b-4a1d-b26e-a363f366fb40_data/glyphiconfallback6-min.css">
+		<script data-cfasync="false" type="text/javascript" src="map-9d02bccc-081b-4a1d-b26e-a363f366fb40_data/L.Control.Sidebar.js"></script>
+		<script data-cfasync="false" type="text/javascript" src="map-9d02bccc-081b-4a1d-b26e-a363f366fb40_data/L.Control.MousePosition.js"></script>
+		<script data-cfasync="false" type="text/javascript" src="map-9d02bccc-081b-4a1d-b26e-a363f366fb40_data/leaflet-search.min.js"></script>
+		<script data-cfasync="false" type="text/javascript" src="map-9d02bccc-081b-4a1d-b26e-a363f366fb40_data/jquery-3.4.0.min.js"></script>
+		<script data-cfasync="false" type="text/javascript" src="map-9d02bccc-081b-4a1d-b26e-a363f366fb40_data/Control.FullScreen.js"></script>
+		<style>
+			.map-btn-default{width:100%;color:A4906B;background-color: black;font-family: inherit;font-weight: bold;border-bottom: double;border-top: double;border-left: double;border-right: double;}
+.leaflet-center {left: 50%;transform: translate(-50%, 0%);}.leaflet-middle {top: 50%;position: absolute;z-index: 1000;pointer-events: none;transform: translate(0%, -50%);}
+.leaflet-center.leaflet-middle {transform: translate(-50%, -50%);}
+.leaflet-div-icon {background: transparent;border: none;}
+.map-label-content {border: 0;color: white;text-shadow: #fc0 1px 0 10px;cursor: pointer;min-width: 100px;text-align: center;margin-bottom: 0px;}
+.map-label-contentx {order: 1;background-color: #fff;border-radius: 5px;border-width: 2px;border-color: #444;white-space: nowrap;}
+.map-item-title {color: #ffeb3b;padding: 1px;position: absolute;text-align: center;}
+.leaflet-container a {color: #9f957e;text-decoration: none;font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;}
+.leaflet-popup-tip {display: none;}
+/* Button Displays */
+.form-control, .btn-default {background-color: #383430;color: #c8c6c4;border-color: #999}
+.btn-default:hover, .btn-default:focus, .btn-default.focus, .btn-default:active, .btn-default.active, .open>.dropdown-toggle.btn-default {background-color: #444;color: #eee}
+.btn-default {background-color: #444 !important;border-color: #3d3d3d !important;color: #DDD !important}
+.btn-default:hover {background-color: #3d3d3d !important;border-color: #363636 !important}
+.btn-warning {background-color: #ab966f !important;border-color: #ab966f !important;color: #fff !important;}
+/* Fixing Popup Displays */
+.leaflet-popup-content-wrapper, .leaflet-popup-tip {background: #100f0feb;color: #9f957e;max-width: 300px;}
+.leaflet-popup-content p {margin: 5px;}
+.leaflet-popup-content img {max-width: 250px;padding-bottom: 5px;}
+.leaflet-popup-content {line-height: 1;}
+.leaflet-popup-content-wrapper,
+.leaflet-popup-tip {color: #dadada;}
+.leaflet-popup-pane a:hover {color: #e5a047;}
+.leaflet-container a {color: #a4906b;text-decoration: none;font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;}
+.leaflet-popup-pane h4 a[target="_blank"]:after {content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' fill='white' viewBox='0 0 16 16'%3E%3Cpath fill-rule='evenodd' d='M8.636 3.5a.5.5 0 0 0-.5-.5H1.5A1.5 1.5 0 0 0 0 4.5v10A1.5 1.5 0 0 0 1.5 16h10a1.5 1.5 0 0 0 1.5-1.5V7.864a.5.5 0 0 0-1 0V14.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5z'/%3E%3Cpath fill-rule='evenodd' d='M16 .5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793L6.146 9.146a.5.5 0 1 0 .708.708L15 1.707V5.5a.5.5 0 0 0 1 0v-5z'/%3E%3C/svg%3E");padding-left: 3px;}
+.leaflet-popup-content h4 {margin: 5px;text-transform: uppercase;}
+.leaflet-control-search .search-button {display: block;float: left;width: 30px;height: 30px;background: url('/file/Elden-Ring/search-icon-map.png') no-repeat 4px 4px #222222b8;border-radius: 4px;}
+
+hr {margin-top: 0px;margin-bottom: 0px;}
+
+.h4, h4 {font-size: 14px;}
+
+#closeSideBarOut {background-image: url(https://eldenring.wiki.fextralife.com/file/Elden-Ring/er-icon-map-info.png);		}
+
+@media screen and (max-width:480px) {
+.leaflet-bottom img {max-width: 200px;}
+.leaflet-popup-content-wrapper,
+.leaflet-popup-tip .leaflet-popup-content {background: #100f0feb; max-width: 200px !important;}
+.leaflet-popup-content img {max-width: 150px !important;}
+}
+
+
+
+
+@media screen and (max-width:480px) {
+.leaflet-bottom img {max-width: 200px;}
+.leaflet-popup-content-wrapper,
+.leaflet-popup-tip .leaflet-popup-content {background: #100f0feb; max-width: 200px !important;}
+.leaflet-popup-content img {max-width: 150px !important;}
+}
+
+.d4_map_popup{width:initial !important;}
+.d4_popup_button {
+	background-image: url("https://swcdn.fextralife.com/images/map_popup_button.png");
+	background-size: 100% 100%;
+	width: 100%;
+	padding-bottom: 8px;
+	color: white;
+	border: 0px;
+}
+		</style>
+	</head>
+	<body style="margin:0" class="">
+		<div id="map" style="width: 100%; height: 100%; background-color: rgb(34, 34, 34); margin: 0px; position: relative; outline: none;" class="leaflet-container leaflet-touch leaflet-fade-anim leaflet-grab leaflet-touch-drag leaflet-touch-zoom" tabindex="0">
+			
+		<div class="leaflet-pane leaflet-map-pane" style="transform: translate3d(15px, -364px, 0px);"><div class="leaflet-pane leaflet-tile-pane"><div class="leaflet-layer " style="z-index: 1; opacity: 1;"><div class="leaflet-tile-container leaflet-zoom-animated" style="z-index: 6; transform: translate3d(-802px, -1090px, 0px) scale(1.41421);"></div><div class="leaflet-tile-container leaflet-zoom-animated" style="z-index: 7; transform: translate3d(0px, 0px, 0px) scale(0.707107);"><img alt="" role="presentation" src="map-96747699-d8a3-44b4-b2d6-cf6b45c579c6_data/7_006.jpg" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(707px, 1134px, 0px); opacity: 1;"><img alt="" role="presentation" src="map-96747699-d8a3-44b4-b2d6-cf6b45c579c6_data/7_002.jpg" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(963px, 1134px, 0px); opacity: 1;"><img alt="" role="presentation" src="map-96747699-d8a3-44b4-b2d6-cf6b45c579c6_data/6_005.jpg" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(707px, 878px, 0px); opacity: 1;"><img alt="" role="presentation" src="map-96747699-d8a3-44b4-b2d6-cf6b45c579c6_data/6_004.jpg" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(963px, 878px, 0px); opacity: 1;"><img alt="" role="presentation" src="map-96747699-d8a3-44b4-b2d6-cf6b45c579c6_data/8_006.jpg" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(707px, 1390px, 0px); opacity: 1;"><img alt="" role="presentation" src="map-96747699-d8a3-44b4-b2d6-cf6b45c579c6_data/8_003.jpg" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(963px, 1390px, 0px); opacity: 1;"><img alt="" role="presentation" src="map-96747699-d8a3-44b4-b2d6-cf6b45c579c6_data/7_005.jpg" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(451px, 1134px, 0px); opacity: 1;"><img alt="" role="presentation" src="map-96747699-d8a3-44b4-b2d6-cf6b45c579c6_data/7.jpg" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(1219px, 1134px, 0px); opacity: 1;"><img alt="" role="presentation" src="map-96747699-d8a3-44b4-b2d6-cf6b45c579c6_data/6_003.jpg" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(451px, 878px, 0px); opacity: 1;"><img alt="" role="presentation" src="map-96747699-d8a3-44b4-b2d6-cf6b45c579c6_data/6_002.jpg" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(1219px, 878px, 0px); opacity: 1;"><img alt="" role="presentation" src="map-96747699-d8a3-44b4-b2d6-cf6b45c579c6_data/8_004.jpg" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(451px, 1390px, 0px); opacity: 1;"><img alt="" role="presentation" src="map-96747699-d8a3-44b4-b2d6-cf6b45c579c6_data/8_008.jpg" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(1219px, 1390px, 0px); opacity: 1;"><img alt="" role="presentation" src="map-96747699-d8a3-44b4-b2d6-cf6b45c579c6_data/5_006.jpg" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(707px, 622px, 0px); opacity: 1;"><img alt="" role="presentation" src="map-96747699-d8a3-44b4-b2d6-cf6b45c579c6_data/5.jpg" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(963px, 622px, 0px); opacity: 1;"><img alt="" role="presentation" src="map-96747699-d8a3-44b4-b2d6-cf6b45c579c6_data/9_006.jpg" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(707px, 1646px, 0px); opacity: 1;"><img alt="" role="presentation" src="map-96747699-d8a3-44b4-b2d6-cf6b45c579c6_data/9_002.jpg" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(963px, 1646px, 0px); opacity: 1;"><img alt="" role="presentation" src="map-96747699-d8a3-44b4-b2d6-cf6b45c579c6_data/5_003.jpg" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(451px, 622px, 0px); opacity: 1;"><img alt="" role="presentation" src="map-96747699-d8a3-44b4-b2d6-cf6b45c579c6_data/5_004.jpg" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(1219px, 622px, 0px); opacity: 1;"><img alt="" role="presentation" src="map-96747699-d8a3-44b4-b2d6-cf6b45c579c6_data/7_008.jpg" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(195px, 1134px, 0px); opacity: 1;"><img alt="" role="presentation" src="map-96747699-d8a3-44b4-b2d6-cf6b45c579c6_data/7_003.jpg" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(1475px, 1134px, 0px); opacity: 1;"><img alt="" role="presentation" src="map-96747699-d8a3-44b4-b2d6-cf6b45c579c6_data/9_005.jpg" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(451px, 1646px, 0px); opacity: 1;"><img alt="" role="presentation" src="map-96747699-d8a3-44b4-b2d6-cf6b45c579c6_data/9_008.jpg" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(1219px, 1646px, 0px); opacity: 1;"><img alt="" role="presentation" src="map-96747699-d8a3-44b4-b2d6-cf6b45c579c6_data/6.jpg" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(195px, 878px, 0px); opacity: 1;"><img alt="" role="presentation" src="map-96747699-d8a3-44b4-b2d6-cf6b45c579c6_data/6_008.jpg" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(1475px, 878px, 0px); opacity: 1;"><img alt="" role="presentation" src="map-96747699-d8a3-44b4-b2d6-cf6b45c579c6_data/8_005.jpg" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(195px, 1390px, 0px); opacity: 1;"><img alt="" role="presentation" src="map-96747699-d8a3-44b4-b2d6-cf6b45c579c6_data/8_002.jpg" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(1475px, 1390px, 0px); opacity: 1;"><img alt="" role="presentation" src="map-96747699-d8a3-44b4-b2d6-cf6b45c579c6_data/5_005.jpg" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(195px, 622px, 0px); opacity: 1;"><img alt="" role="presentation" src="map-96747699-d8a3-44b4-b2d6-cf6b45c579c6_data/5_007.jpg" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(1475px, 622px, 0px); opacity: 1;"><img alt="" role="presentation" src="map-96747699-d8a3-44b4-b2d6-cf6b45c579c6_data/9_003.jpg" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(195px, 1646px, 0px); opacity: 1;"><img alt="" role="presentation" src="map-96747699-d8a3-44b4-b2d6-cf6b45c579c6_data/9.jpg" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(1475px, 1646px, 0px); opacity: 1;"><img alt="" role="presentation" src="map-96747699-d8a3-44b4-b2d6-cf6b45c579c6_data/7_007.jpg" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(-61px, 1134px, 0px); opacity: 1;"><img alt="" role="presentation" src="map-96747699-d8a3-44b4-b2d6-cf6b45c579c6_data/7_004.jpg" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(1731px, 1134px, 0px); opacity: 1;"><img alt="" role="presentation" src="map-96747699-d8a3-44b4-b2d6-cf6b45c579c6_data/6_006.jpg" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(-61px, 878px, 0px); opacity: 1;"><img alt="" role="presentation" src="map-96747699-d8a3-44b4-b2d6-cf6b45c579c6_data/6_007.jpg" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(1731px, 878px, 0px); opacity: 1;"><img alt="" role="presentation" src="map-96747699-d8a3-44b4-b2d6-cf6b45c579c6_data/8_007.jpg" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(-61px, 1390px, 0px); opacity: 1;"><img alt="" role="presentation" src="map-96747699-d8a3-44b4-b2d6-cf6b45c579c6_data/8.jpg" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(1731px, 1390px, 0px); opacity: 1;"><img alt="" role="presentation" src="map-96747699-d8a3-44b4-b2d6-cf6b45c579c6_data/5_008.jpg" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(-61px, 622px, 0px); opacity: 1;"><img alt="" role="presentation" src="map-96747699-d8a3-44b4-b2d6-cf6b45c579c6_data/5_002.jpg" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(1731px, 622px, 0px); opacity: 1;"><img alt="" role="presentation" src="map-96747699-d8a3-44b4-b2d6-cf6b45c579c6_data/9_004.jpg" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(-61px, 1646px, 0px); opacity: 1;"><img alt="" role="presentation" src="map-96747699-d8a3-44b4-b2d6-cf6b45c579c6_data/9_007.jpg" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(1731px, 1646px, 0px); opacity: 1;"><img alt="" role="presentation" src="map-96747699-d8a3-44b4-b2d6-cf6b45c579c6_data/4_003.jpg" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(707px, 366px, 0px); opacity: 1;"><img alt="" role="presentation" src="map-96747699-d8a3-44b4-b2d6-cf6b45c579c6_data/4.jpg" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(451px, 366px, 0px); opacity: 1;"><img alt="" role="presentation" src="map-96747699-d8a3-44b4-b2d6-cf6b45c579c6_data/4_006.jpg" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(963px, 366px, 0px); opacity: 1;"><img alt="" role="presentation" src="map-96747699-d8a3-44b4-b2d6-cf6b45c579c6_data/4_007.jpg" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(195px, 366px, 0px); opacity: 1;"><img alt="" role="presentation" src="map-96747699-d8a3-44b4-b2d6-cf6b45c579c6_data/4_005.jpg" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(1219px, 366px, 0px); opacity: 1;"><img alt="" role="presentation" src="map-96747699-d8a3-44b4-b2d6-cf6b45c579c6_data/4_002.jpg" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(-61px, 366px, 0px); opacity: 1;"><img alt="" role="presentation" src="map-96747699-d8a3-44b4-b2d6-cf6b45c579c6_data/4_004.jpg" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(1475px, 366px, 0px); opacity: 1;"></div></div></div><div class="leaflet-pane leaflet-shadow-pane"></div><div class="leaflet-pane leaflet-overlay-pane"></div><div class="leaflet-pane leaflet-marker-pane"><div class="leaflet-marker-icon leaflet-div-icon leaflet-zoom-animated leaflet-interactive" style="margin-left: -40px; margin-top: -40px; width: 80px; height: 80px; transform: translate3d(612px, 639px, 0px); z-index: 639;" title="Auriza Hero's Grave" tabindex="0"><div class="map-item-title"><img style="width:80px;height:80px;" src="map-96747699-d8a3-44b4-b2d6-cf6b45c579c6_data/herosgrave.png"><div class="xmap-label-content">Auriza Hero's Grave</div><div class="map-label-arrow"></div></div></div><div class="leaflet-marker-icon leaflet-div-icon leaflet-zoom-animated leaflet-interactive" style="margin-left: -40px; margin-top: -40px; width: 80px; height: 80px; transform: translate3d(619px, 598px, 0px); z-index: 598;" title="Auriza Side Tomb" tabindex="0"><div class="map-item-title"><img style="width:80px;height:80px;" src="map-96747699-d8a3-44b4-b2d6-cf6b45c579c6_data/catacomb.png"><div class="xmap-label-content">Auriza Side Tomb</div><div class="map-label-arrow"></div></div></div><div class="leaflet-marker-icon leaflet-div-icon leaflet-zoom-animated leaflet-interactive" style="margin-left: -40px; margin-top: -40px; width: 80px; height: 80px; transform: translate3d(769px, 784px, 0px); z-index: 784;" title="Divine Tower of East Altus" tabindex="0"><div class="map-item-title"><img style="width:80px;height:80px;" src="map-96747699-d8a3-44b4-b2d6-cf6b45c579c6_data/divinetower.png"><div class="xmap-label-content">Divine Tower of East Altus</div><div class="map-label-arrow"></div></div></div><div class="leaflet-marker-icon leaflet-div-icon leaflet-zoom-animated leaflet-interactive" style="margin-left: -40px; margin-top: -40px; width: 80px; height: 80px; transform: translate3d(437px, 535px, 0px); z-index: 535;" title="Hermit Merchant's Shack" tabindex="0"><div class="map-item-title"><img style="width:80px;height:80px;" src="map-96747699-d8a3-44b4-b2d6-cf6b45c579c6_data/shack.png"><div class="xmap-label-content">Hermit Merchant's Shack</div><div class="map-label-arrow"></div></div></div><div class="leaflet-marker-icon leaflet-div-icon leaflet-zoom-animated leaflet-interactive" style="margin-left: -40px; margin-top: -40px; width: 80px; height: 80px; transform: translate3d(495px, 656px, 0px); z-index: 656;" title="Leyndell, Ashen Capital" tabindex="0"><div class="map-item-title"><img style="width:80px;height:80px;" src="map-96747699-d8a3-44b4-b2d6-cf6b45c579c6_data/leyndell.png"><div class="xmap-label-content">Leyndell, Ashen Capital</div><div class="map-label-arrow"></div></div></div><div class="leaflet-marker-icon leaflet-div-icon leaflet-zoom-animated leaflet-interactive" style="margin-left: -40px; margin-top: -40px; width: 80px; height: 80px; transform: translate3d(541px, 553px, 0px); z-index: 553;" title="Minor Erdtree" tabindex="0"><div class="map-item-title"><img style="width:80px;height:80px;" src="map-96747699-d8a3-44b4-b2d6-cf6b45c579c6_data/tree.png"><div class="xmap-label-content">Minor Erdtree</div><div class="map-label-arrow"></div></div></div><div class="leaflet-marker-icon leaflet-div-icon leaflet-zoom-animated leaflet-interactive" style="margin-left: -40px; margin-top: -40px; width: 80px; height: 80px; transform: translate3d(534px, 678px, 0px); z-index: 678;" title="Subterranean Shunning-Grounds" tabindex="0"><div class="map-item-title"><img style="width:80px;height:80px;" src="map-96747699-d8a3-44b4-b2d6-cf6b45c579c6_data/subterranean-shunning-grounds.png" class=""><div class="xmap-label-content">Subterranean Shunning-Grounds</div><div class="map-label-arrow"></div></div></div></div><div class="leaflet-pane leaflet-tooltip-pane"></div><div class="leaflet-pane leaflet-popup-pane"></div><div class="leaflet-proxy leaflet-zoom-animated" style="transform: translate3d(1335.5px, 1216px, 0px) scale(5.65685);"></div></div><div class="leaflet-control-container"><div class="leaflet-sidebar left"><div id="sidebar" class="leaflet-control" style="background: rgba(34, 34, 34, 0.93);"><a id="closeSideBarIn" class="close">�</a><br><h3 style="font-size:18px;border-bottom: 5px solid #ab966f;">Select Map Layer</h3>
+<div class="btn-group fullwidth" align="center">
+	<button id="map-overground" class="btn btn-default fullwidth"><span class="glyphicon glyphicon-chevron-up"></span> Overland Map</button>
+	<button id="map-underground" class="btn btn-default fullwidth"><span class="glyphicon glyphicon-chevron-down"></span> Underground Map</button>
+	<button id="map-endgame" class="btn btn-warning fullwidth"><span class="glyphicon glyphicon-chevron-down"></span> Endgame Map</button>
+	<button id="map-shadowoftheerdtree" class="btn btn-default fullwidth"><span class="glyphicon glyphicon-chevron-down"></span> Shadow of the Erdtree Map</button>
+</div>
+<br>
+<h3 style="font-size:18px;border-bottom: 5px solid #ab966f;">Map Key</h3>
+<div class="btn-group fullwidth">
+				<button class="btn btn-default btn-md" type="button">Armor Pieces: <img title="helmet" src="map-9d02bccc-081b-4a1d-b26e-a363f366fb40_data/helmet.png" alt="helmet" width="28"><img style="width: 28px; height: 28px;" title="bodyarmor" src="map-9d02bccc-081b-4a1d-b26e-a363f366fb40_data/bodyarmor.png" alt="bodyarmor" width="28" height="28"><img title="gauntlets" src="map-9d02bccc-081b-4a1d-b26e-a363f366fb40_data/gauntlets.png" alt="gauntlets" width="28"><img style="width: 28px; height: 28px;" title="leggins" src="map-9d02bccc-081b-4a1d-b26e-a363f366fb40_data/leggins.png" alt="leggins" width="28" height="28"></button>
+				<button class="btn btn-default btn-md" type="button">Ashes of War: <img style="width: 28px; height: 28px;" title="ashofwar" src="map-9d02bccc-081b-4a1d-b26e-a363f366fb40_data/ashofwar.png" alt="ashofwar" width="28" height="28"></button>
+				<button class="btn btn-default btn-md" type="button">Bosses: <img style="width: 28px; height: 28px;" title="boss" src="map-9d02bccc-081b-4a1d-b26e-a363f366fb40_data/boss.png" alt="boss" width="28" height="28"><img style="width: 28px; height: 28px;" title="miniboss" src="map-9d02bccc-081b-4a1d-b26e-a363f366fb40_data/miniboss.png" alt="miniboss" width="28" height="28">
+				</button>
+				<button class="btn btn-default btn-md" type="button">Consumables: <img style="width: 28px; height: 28px;" title="consumable" src="map-9d02bccc-081b-4a1d-b26e-a363f366fb40_data/consumable.png" alt="consumable" width="28" height="28"></button>
+				<button class="btn btn-default btn-md" type="button">Cookbooks: <img style="width: 28px; height: 28px;" title="cookbook" src="map-9d02bccc-081b-4a1d-b26e-a363f366fb40_data/cookbook.png" alt="cookbook" width="28" height="28"></button>
+				<button class="btn btn-default btn-md" type="button">Crafting Materials: <img style="width: 28px; height: 28px;" title="crafting" src="map-9d02bccc-081b-4a1d-b26e-a363f366fb40_data/crafting.png" alt="crafting" width="28" height="28"></button>
+				<button class="btn btn-default btn-md" type="button">Flask Items:<img style="width: 28px; height: 28px;" title="flask" src="map-9d02bccc-081b-4a1d-b26e-a363f366fb40_data/flask.png" alt="flask" width="28" height="28"></button>
+				<button class="btn btn-default btn-md" type="button">Hostile NPCs: <img style="width: 28px; height: 28px;" title="npcinvader" src="map-9d02bccc-081b-4a1d-b26e-a363f366fb40_data/npcinvader.png" alt="npcinvader" width="28" height="28"></button>
+				<button class="btn btn-default btn-md" type="button">Keys: <img style="width: 28px; height: 28px;" title="key" src="map-9d02bccc-081b-4a1d-b26e-a363f366fb40_data/key.png" alt="key" width="28" height="28"> </button>
+				<button class="btn btn-default btn-md" type="button">Map Fragments: <img style="width: 28px; height: 28px;" title="mapfragment" src="map-9d02bccc-081b-4a1d-b26e-a363f366fb40_data/mapshard.png" alt="mapfragment" width="28" height="28"></button>
+				<button class="btn btn-default btn-md" type="button">NPCs: <img style="width: 28px; height: 28px;" title="npc" src="map-9d02bccc-081b-4a1d-b26e-a363f366fb40_data/npc.png" alt="npc" width="28" height="28"></button>
+				<button class="btn btn-default btn-md" type="button">Shields: <img style="width: 28px; height: 28px;" title="shield" src="map-9d02bccc-081b-4a1d-b26e-a363f366fb40_data/shield.png" alt="shield" width="28" height="28"><img style="width: 28px; height: 28px;" title="shield" src="map-9d02bccc-081b-4a1d-b26e-a363f366fb40_data/smallshield.png" alt="shield" width="28" height="28"></button>
+				<button class="btn btn-default btn-md" type="button">Site of Grace: <img style="width: 28px; height: 28px;" title="grace" src="map-9d02bccc-081b-4a1d-b26e-a363f366fb40_data/grace.png" alt="grace" width="28" height="28"></button>
+				<button class="btn btn-default btn-md" type="button">Spells: <img style="width: 28px; height: 28px;" title="yellowspell" src="map-9d02bccc-081b-4a1d-b26e-a363f366fb40_data/yellowspell.png" alt="yellowspell" width="28" height="28"><img style="width: 28px; height: 28px;" title="redspell" src="map-9d02bccc-081b-4a1d-b26e-a363f366fb40_data/redspell.png" alt="redspell" width="28" height="28"><img style="width: 28px; height: 28px;" title="spelliconcyan" src="map-9d02bccc-081b-4a1d-b26e-a363f366fb40_data/cyanspell.png" alt="spelliconcyan" width="28" height="28"><img style="width: 28px; height: 28px;" title="spellicongreen" src="map-9d02bccc-081b-4a1d-b26e-a363f366fb40_data/greenspell.png" alt="spellicongreen" width="28" height="28"><img style="width: 28px; height: 28px;" title="spelliconpurple" src="map-9d02bccc-081b-4a1d-b26e-a363f366fb40_data/purplespell.png" alt="spelliconpurple" width="28" height="28"></button> <button class="btn btn-default btn-md" type="button">Spirit Ashes: <img style="width: 28px; height: 28px;" title="spiritash" src="map-9d02bccc-081b-4a1d-b26e-a363f366fb40_data/spiritash.png" alt="spiritash" width="28" height="28"></button>
+				<button class="btn btn-default btn-md" type="button">Upgrade Materials: <img style="width: 28px; height: 28px;" title="upgrades" src="map-9d02bccc-081b-4a1d-b26e-a363f366fb40_data/upgradematerial.png" alt="upgrades" width="28" height="28"><img style="width: 28px; height: 28px;" title="glovewort" src="map-9d02bccc-081b-4a1d-b26e-a363f366fb40_data/glovewort.png" alt="glovewort" width="28" height="28"></button> 
+				<button class="btn btn-default btn-md" type="button">Talismans: <img style="width: 28px; height: 28px;" title="talisman" src="map-9d02bccc-081b-4a1d-b26e-a363f366fb40_data/talisman.png" alt="talisman" width="28" height="28"></button> 
+				<button class="btn btn-default btn-md" type="button">Waygate: <img style="width: 28px; height: 28px;" title="waygate" src="map-9d02bccc-081b-4a1d-b26e-a363f366fb40_data/waygate.png" alt="waygate" width="28" height="28"></button> 
+				<button class="btn btn-default btn-md" type="button">Weapons:<br> <img style="width: 28px; height: 28px;" title="axe" src="map-9d02bccc-081b-4a1d-b26e-a363f366fb40_data/axe.png" alt="axe" width="28" height="28"><img style="width: 28px; height: 28px;" title="axe" src="map-9d02bccc-081b-4a1d-b26e-a363f366fb40_data/ballista.png" alt="ballista" width="28" height="28"><img style="width: 28px; height: 28px;" title="bow" src="map-9d02bccc-081b-4a1d-b26e-a363f366fb40_data/bow.png" alt="bow" width="28" height="28"><img style="width: 28px; height: 28px;" title="claws" src="map-9d02bccc-081b-4a1d-b26e-a363f366fb40_data/claws.png" alt="claws" width="28" height="28"><img style="width: 28px; height: 28px;" title="colossal swords" src="map-9d02bccc-081b-4a1d-b26e-a363f366fb40_data/colossalsword.png" alt="colossal-sword" width="28" height="28"><img style="width: 28px; height: 28px;" title="colossal weapon" src="map-9d02bccc-081b-4a1d-b26e-a363f366fb40_data/colossal_weapon.png" alt="colossal-weapon" width="28" height="28"><img style="width: 28px; height: 28px;" title="curved greatsword" src="map-9d02bccc-081b-4a1d-b26e-a363f366fb40_data/curvedgreatsword.png" alt="curvedgreatsword" width="28" height="28"><img style="width: 28px; height: 28px;" title="curvedsword" src="map-9d02bccc-081b-4a1d-b26e-a363f366fb40_data/curvedsword.png" alt="curvedswords" width="28" height="28"><img style="width: 28px; height: 28px;" title="dagger" src="map-9d02bccc-081b-4a1d-b26e-a363f366fb40_data/dagger.png" alt="daggers" width="28" height="28"><img style="width: 28px; height: 28px;" title="fist" src="map-9d02bccc-081b-4a1d-b26e-a363f366fb40_data/fist.png" alt="fist" width="28" height="28"><br><img style="width: 28px; height: 28px;" title="flail" src="map-9d02bccc-081b-4a1d-b26e-a363f366fb40_data/flail.png" alt="flail" width="28" height="28"><img style="width: 28px; height: 28px;" title="greataxe" src="map-9d02bccc-081b-4a1d-b26e-a363f366fb40_data/greataxe.png" alt="greataxe" width="28" height="28"><img style="width: 28px; height: 28px;" title="greatspear" src="map-9d02bccc-081b-4a1d-b26e-a363f366fb40_data/greatspear.png" alt="greatspear" width="28" height="28"><img style="width: 28px; height: 28px;" title="greatsword" src="map-9d02bccc-081b-4a1d-b26e-a363f366fb40_data/greatsword.png" alt="greatsword" width="28" height="28"><img style="width: 28px; height: 28px;" title="halberd" src="map-9d02bccc-081b-4a1d-b26e-a363f366fb40_data/halberd.png" alt="halberd" width="28" height="28"><img style="width: 28px; height: 28px;" title="hammer" src="map-9d02bccc-081b-4a1d-b26e-a363f366fb40_data/hammer.png" alt="hammer" width="28" height="28"><img style="width: 28px; height: 28px;" title="katana" src="map-9d02bccc-081b-4a1d-b26e-a363f366fb40_data/katana.png" alt="katana" width="28" height="28"><img style="width: 28px; height: 28px;" title="reaper" src="map-9d02bccc-081b-4a1d-b26e-a363f366fb40_data/reaper.png" alt="reaper" width="28" height="28"><img style="width: 28px; height: 28px;" title="sacredseal" src="map-9d02bccc-081b-4a1d-b26e-a363f366fb40_data/sacredseal.png" alt="sacredseal" width="28" height="28"><img style="width: 28px; height: 28px;" title="spear" src="map-9d02bccc-081b-4a1d-b26e-a363f366fb40_data/spear.png" alt="spear" width="28" height="28"><br><img style="width: 28px; height: 28px;" title="staff" src="map-9d02bccc-081b-4a1d-b26e-a363f366fb40_data/staff.png" alt="staff" width="28" height="28"><img style="width: 28px; height: 28px;" title="straight sword" src="map-9d02bccc-081b-4a1d-b26e-a363f366fb40_data/straightsword.png" alt="straightsword" width="28" height="28"><img style="width: 28px; height: 28px;" title="thrusting sword" src="map-9d02bccc-081b-4a1d-b26e-a363f366fb40_data/thrusting_sword.png" alt="thrustingsword" width="28" height="28"><img style="width: 28px; height: 28px;" title="twinblade" src="map-9d02bccc-081b-4a1d-b26e-a363f366fb40_data/doubleedgedswords.png" alt="twinblade" width="28" height="28"><img style="width: 28px; height: 28px;" title="warhammer" src="map-9d02bccc-081b-4a1d-b26e-a363f366fb40_data/warhammer.png" alt="warhammer" width="28" height="28"><img style="width: 28px; height: 28px;" title="whip" src="map-9d02bccc-081b-4a1d-b26e-a363f366fb40_data/whip.png" alt="whip" width="28" height="28"></button>
+</div></div></div><div class="leaflet-top leaflet-left"><div class="leaflet-bar leaflet-control"><div style="display:flex;"><img id="closeSideBarOut" src="map-9d02bccc-081b-4a1d-b26e-a363f366fb40_data/er-icon-map-info.png" title="More Info" role="button" aria-label="Zoom out" style="outline: currentcolor none medium;"></div></div><div class="leaflet-control-search search-exp leaflet-control leaflet-bar"><label class="search-input" for="searchtext9" style="display: none;"></label><input class="search-input" type="text" size="9" autocomplete="off" autocorrect="on" autocapitalize="none" placeholder="Search..." style="display: block; max-width: 1084px;" role="search" id="searchtext9"><ul class="search-tooltip" style="display: none;"></ul><a class="search-cancel" href="#" title="Cancel" style="display: none;"><span>⊗</span></a><a class="search-button" href="#" title="Search..."></a><div class="search-alert" style="display: none;"></div></div></div><div class="leaflet-top leaflet-right"><div class="leaflet-control-layers leaflet-control-layers-expanded leaflet-control" aria-haspopup="true"><a class="leaflet-control-layers-toggle" href="#" title="Layers"></a><section class="leaflet-control-layers-list leaflet-control-layers-scrollbar"><div class="leaflet-control-layers-base"></div><div class="leaflet-control-layers-separator" style="display: none;"></div><div class="leaflet-control-layers-overlays"><label><div><input type="checkbox" class="leaflet-control-layers-selector"><span> All</span></div></label><label><div><input type="checkbox" class="leaflet-control-layers-selector"><span> Armor</span></div></label><label><div><input type="checkbox" class="leaflet-control-layers-selector"><span> Ashes of War</span></div></label><label><div><input type="checkbox" class="leaflet-control-layers-selector"><span> Bosses</span></div></label><label><div><input type="checkbox" class="leaflet-control-layers-selector"><span> Consumables</span></div></label><label><div><input type="checkbox" class="leaflet-control-layers-selector"><span> Key Items</span></div></label><label><div><input type="checkbox" class="leaflet-control-layers-selector" checked="checked"><span> Locations</span></div></label><label><div><input type="checkbox" class="leaflet-control-layers-selector"><span> NPCs</span></div></label><label><div><input type="checkbox" class="leaflet-control-layers-selector"><span> Sites of Grace</span></div></label><label><div><input type="checkbox" class="leaflet-control-layers-selector"><span> Spells</span></div></label><label><div><input type="checkbox" class="leaflet-control-layers-selector"><span> Summoning Pools</span></div></label><label><div><input type="checkbox" class="leaflet-control-layers-selector"><span> Talismans</span></div></label><label><div><input type="checkbox" class="leaflet-control-layers-selector"><span> Upgrade Materials</span></div></label><label><div><input type="checkbox" class="leaflet-control-layers-selector"><span> Weapons</span></div></label></div></section></div></div><div class="leaflet-bottom leaflet-left"><img class="map_logo leaflet-control" src="map-96747699-d8a3-44b4-b2d6-cf6b45c579c6_data/elden-ring-bottom-logo-map-wiki-guide.png" style="transition: opacity 0.5s; opacity: 1; width: 300px;"></div><div class="leaflet-bottom leaflet-right"><div class="leaflet-control-zoom leaflet-bar leaflet-control"><a class="leaflet-control-zoom-in" href="#" title="Zoom in" role="button" aria-label="Zoom in">+</a><a class="leaflet-control-zoom-out" href="#" title="Zoom out" role="button" aria-label="Zoom out">−</a></div></div><div class="leaflet-top leaflet-center"></div><div class="leaflet-middle leaflet-center"></div><div class="leaflet-middle leaflet-left"></div><div class="leaflet-middle leaflet-right"></div><div class="leaflet-bottom leaflet-center"><div class="leaflet-control-mouseposition leaflet-control"> -82.55472 : 74.3346</div></div></div></div>
+
+		<script type="text/javascript">
+var isMobile = window.parent.innerWidth < 860;
+var isIconCentered = false;
+var isNewSearch = false;
+var isMenuCollapsed = false;
+var categories = [{"id":"Armor","name":"Armor","loadDefault":false},{"id":"AshesofWar","name":"Ashes of War","loadDefault":false},{"id":"Bosses","name":"Bosses","loadDefault":false},{"id":"Consumables","name":"Consumables","loadDefault":false},{"id":"KeyItems","name":"Key Items","loadDefault":false},{"id":"Locations","name":"Locations","image":"https://diablo4.wiki.fextralife.com/file/Diablo-4/side-testicon-0.png","loadDefault":true},{"id":"NPCs","name":"NPCs","loadDefault":false},{"id":"SitesofGrace","name":"Sites of Grace","loadDefault":false},{"id":"Spells","name":"Spells","loadDefault":false},{"id":"SummoningPools","name":"Summoning Pools","loadDefault":false},{"id":"Talismans","name":"Talismans","loadDefault":false},{"id":"UpgradeMaterials","name":"Upgrade Materials","loadDefault":false},{"id":"Weapons","name":"Weapons","loadDefault":false}];
+var items = [{"id":7718,"category":"Armor","name":"All-Knowing Set","image":"/file/Elden-Ring/map-d8dc59f2-67df-452e-a9ea-d2c00ddc3a2b/maps-icons/armor.png","imageSize":40,"imageSizeW":40,"imageSizeH":40,"x":"-106.625","y":"116.425507","hasLabel":false,"hasPageLink":true,"hasCoordsLink":true,"clickable":false,"description":"Dropped together with \u003ca target\u003d\"blank\" href\u003d\"/Scepter+of+the+All-Knowing\"\u003eScepter of the All-Knowing\u003c/a\u003e upon defeating \u003ca target\u003d\"blank\" href\u003d\"/Sir+Gideon+Ofnir,+the+All-Knowing+(Boss)\"\u003eSir Gideon Ofnir, the All-Knowing\u003c/a\u003e in \u003ca target\u003d\"blank\" href\u003d\"/leyndell,+ashen+capital\"\u003eLeyndell, Ashen Capital\u003c/a\u003e. \u003cp\u003eComprised of:\u003c/p\u003e\u003cul\u003e\u003cli\u003e\u003ca target\u003d\"blank\" href\u003d\"/All-Knowing+Helm\"\u003eAll-Knowing Helm\u003c/a\u003e\u003c/li\u003e\u003cli\u003e\u003ca target\u003d\"blank\" href\u003d\"/All-Knowing+Armor\"\u003eAll-Knowing Armor\u003c/a\u003e\u003c/li\u003e\u003cli\u003e\u003ca target\u003d\"blank\" href\u003d\"/All-Knowing+Gauntlets\"\u003eAll-Knowing Gauntlets\u003c/a\u003e\u003c/li\u003e\u003cli\u003e\u003ca target\u003d\"blank\" href\u003d\"/All-Knowing+Greaves\"\u003eAll-Knowing Greaves\u003c/a\u003e\u003c/li\u003e\u003c/ul\u003e"},{"id":5104,"category":"Ashes of War","name":"Ash of War: Golden Land","image":"/file/Elden-Ring/map-d8dc59f2-67df-452e-a9ea-d2c00ddc3a2b/maps-icons/ashofwar.png","imageSize":40,"imageSizeW":40,"imageSizeH":40,"x":"-111.552083","y":"126.982773","hasLabel":false,"hasPageLink":true,"hasCoordsLink":true,"clickable":false,"description":"Dropped from a \u003ca href\u003d\"/Teardrop+Scarab\" target\u003d\"_blank\"\u003e Teardrop Scarab\u003c/a\u003e"},{"id":7253,"category":"Sites of Grace","name":"Auriza Hero's Grave","image":"/file/Elden-Ring/map-d8dc59f2-67df-452e-a9ea-d2c00ddc3a2b/maps-icons/grace.png","imageSize":40,"imageSizeW":40,"imageSizeH":40,"pageLink":"/Sites+of+Grace","x":"-97.648437","y":"121.10847","hasLabel":false,"hasPageLink":true,"hasCoordsLink":true,"clickable":false,"description":"\u003ca target\u003d\"blank\" href\u003d\"/sites+of+grace\"\u003eSite of Grace\u003c/a\u003e within \u003ca target\u003d\"blank\" href\u003d\"/auriza+hero's+grave\"\u003eAuriza Hero's Grave\u003c/a\u003e."},{"id":7254,"category":"Locations","name":"Auriza Hero's Grave","image":"/file/Elden-Ring/map-d8dc59f2-67df-452e-a9ea-d2c00ddc3a2b/maps-icons/locations/herosgrave.png","imageSize":80,"imageSizeW":80,"imageSizeH":80,"x":"-97.578125","y":"121.926501","hasLabel":true,"hasPageLink":true,"hasCoordsLink":true,"clickable":false,"description":"\u003cimg src\u003d\"/file/Elden-Ring/auriza_heros_grave_locations_elden_ring_wiki_guide.jpg\"/\u003eA tomb found within the outskirts of the \u003cem\u003eAshen Capital\u003c/em\u003e. Larger than most catacombs, this was built to honor a fallen champion and is heavily guarded to this day."},{"id":7670,"category":"Locations","name":"Auriza Side Tomb","image":"/file/Elden-Ring/map-d8dc59f2-67df-452e-a9ea-d2c00ddc3a2b/maps-icons/locations/catacomb.png","imageSize":80,"imageSizeW":80,"imageSizeH":80,"x":"-93.960937","y":"122.481104","hasLabel":true,"hasPageLink":true,"hasCoordsLink":true,"clickable":false,"description":"\u003cimg src\u003d\"https://eldenring.wiki.fextralife.com/file/Elden-Ring/auriza-side-tomb-location-elden-ring-wiki-guide.jpg\" /\u003e A catacomb at the east-most area of \u003ca target\u003d\"blank\" href\u003d\"/leyndell,+ashen+capital\"\u003eLeyndell, Ashen Capital\u003c/a\u003e for fallen \u003cem\u003eAuriza\u003c/em\u003e warriors"},{"id":7671,"category":"Sites of Grace","name":"Auriza Side Tomb","image":"/file/Elden-Ring/map-d8dc59f2-67df-452e-a9ea-d2c00ddc3a2b/maps-icons/grace.png","imageSize":40,"imageSizeW":40,"imageSizeH":40,"pageLink":"/Sites+of+Grace","x":"-94.554687","y":"122.30923","hasLabel":false,"hasPageLink":true,"hasCoordsLink":true,"clickable":false,"description":"Site of Grace within \u003ca target\u003d\"blank\" href\u003d\"/auriza+side+tomb\"\u003eAuriza Side Tomb\u003c/a\u003e."},{"id":7716,"category":"NPCs","name":"Brother Corhyn","image":"/file/Elden-Ring/map-d8dc59f2-67df-452e-a9ea-d2c00ddc3a2b/maps-icons/npc.png","imageSize":40,"imageSizeW":40,"imageSizeH":40,"x":"-104","y":"116","hasLabel":false,"hasPageLink":true,"hasCoordsLink":true,"clickable":false,"description":"\u003cimg src\u003d\"/file/Elden-Ring/brother_corhyn_ashen_capital_guides_elden_ring_wiki_600px.jpg\"/\u003eAt the end of his \u003ca target\u003d\"blank\" href\u003d\"/side+quests#corhyn_side_quest\"\u003eQuestline\u003c/a\u003e, \u003cstrong\u003eBrother Corhyn\u003c/strong\u003e is found on his knees in sorrow, near the base of the giant spiral spear. After reloading the area, you can find \u003ca target\u003d\"blank\" href\u003d\"/Corhyn's+Bell+Bearing\"\u003eCorhyn's Bell Bearing\u003c/a\u003e and \u003ca target\u003d\"blank\" href\u003d\"/Corhyn's+Robe\"\u003eCorhyn's Robe\u003c/a\u003e where he was sitting."},{"id":7252,"category":"Sites of Grace","name":"Capital Rampart","image":"/file/Elden-Ring/map-d8dc59f2-67df-452e-a9ea-d2c00ddc3a2b/maps-icons/grace.png","imageSize":40,"imageSizeW":40,"imageSizeH":40,"pageLink":"/Sites+of+Grace","x":"-96.007812","y":"118.571929","hasLabel":false,"hasPageLink":true,"hasCoordsLink":true,"clickable":false,"description":"\u003ca target\u003d\"blank\" href\u003d\"/sites+of+grace\"\u003eSite of grace\u003c/a\u003e at the \u003cem\u003eAshen Capital's\u003c/em\u003e rampart."},{"id":7673,"category":"Sites of Grace","name":"Cathedral of the Forsaken","image":"/file/Elden-Ring/map-d8dc59f2-67df-452e-a9ea-d2c00ddc3a2b/maps-icons/grace.png","imageSize":40,"imageSizeW":40,"imageSizeH":40,"pageLink":"/Sites+of+Grace","x":"-99.515625","y":"121.918303","hasLabel":false,"hasPageLink":true,"hasCoordsLink":true,"clickable":false,"description":"Site of Grace at the \u003ca target\u003d\"blank\" href\u003d\"/cathedral+of+the+forsaken\"\u003eCathedral of the Forsaken\u003c/a\u003e."},{"id":7301,"category":"Talismans","name":"Crimson Amber Medallion","image":"/file/Elden-Ring/map-d8dc59f2-67df-452e-a9ea-d2c00ddc3a2b/maps-icons/talisman.png","imageSize":40,"imageSizeW":40,"imageSizeH":40,"x":"-98.242187","y":"121.128119","hasLabel":false,"hasPageLink":true,"hasCoordsLink":true,"clickable":false,"description":"\u003cstrong\u003eCrimson Amber Medallion +2\u003c/strong\u003e. Held by a corpse hanging over one of the wooden beams on your way down."},{"id":7555,"category":"Talismans","name":"Crucible Scale Talisman","image":"/file/Elden-Ring/map-d8dc59f2-67df-452e-a9ea-d2c00ddc3a2b/maps-icons/talisman.png","imageSize":40,"imageSizeW":40,"imageSizeH":40,"x":"-102.921875","y":"116.524797","hasLabel":false,"hasPageLink":true,"hasCoordsLink":true,"clickable":false,"description":"Within the chapel accessed by using one of the flame throwing sculptures as a lift. Located next to the statue guarded by an \u003ca target\u003d\"blank\" href\u003d\"/omen\"\u003eOmen\u003c/a\u003e."},{"id":7663,"category":"Locations","name":"Divine Tower of East Altus","image":"/file/Elden-Ring/map-d8dc59f2-67df-452e-a9ea-d2c00ddc3a2b/maps-icons/locations/divinetower.png","imageSize":80,"imageSizeW":80,"imageSizeH":80,"x":"-110.4375","y":"135.793948","hasLabel":true,"hasPageLink":true,"hasCoordsLink":true,"clickable":false,"description":"Found at the very east of the \u003ca target\u003d\"blank\" href\u003d\"/leyndell,+ashen+capital\"\u003eLeyndell, Ashen Capital region\u003c/a\u003e. Seen last before accessing to the \u003ca target\u003d\"blank\" href\u003d\"/forbidden+lands\"\u003eForbidden Lands\u003c/a\u003e."},{"id":7664,"category":"Sites of Grace","name":"Divine Tower of East Altus","image":"/file/Elden-Ring/map-d8dc59f2-67df-452e-a9ea-d2c00ddc3a2b/maps-icons/grace.png","imageSize":40,"imageSizeW":40,"imageSizeH":40,"pageLink":"/Sites+of+Grace","x":"-110.53125","y":"134.808985","hasLabel":false,"hasPageLink":true,"hasCoordsLink":true,"clickable":false,"description":"Site of Grace for the \u003ca target\u003d\"blank\" href\u003d\"/divine+tower+of+east+altus\"\u003eDivine Tower of East Altus\u003c/a\u003e."},{"id":7665,"category":"Sites of Grace","name":"Divine Tower of East Altus: Gates","image":"/file/Elden-Ring/map-d8dc59f2-67df-452e-a9ea-d2c00ddc3a2b/maps-icons/grace.png","imageSize":40,"imageSizeW":40,"imageSizeH":40,"pageLink":"/Sites+of+Grace","x":"-108.609375","y":"134.575845","hasLabel":false,"hasPageLink":true,"hasCoordsLink":true,"clickable":false,"description":"Site of Grace at the gates of the \u003ca target\u003d\"blank\" href\u003d\"/divine+tower+of+east+altus\"\u003eDivine Tower of East Altus\u003c/a\u003e."},{"id":7551,"category":"Sites of Grace","name":"East Capital Rampart","image":"/file/Elden-Ring/map-d8dc59f2-67df-452e-a9ea-d2c00ddc3a2b/maps-icons/grace.png","imageSize":40,"imageSizeW":40,"imageSizeH":40,"pageLink":"/Sites+of+Grace","x":"-99.46875","y":"119.16561","hasLabel":false,"hasPageLink":true,"hasCoordsLink":true,"clickable":false,"description":"\u003ca target\u003d\"blank\" href\u003d\"/sites+of+grace\"\u003eSite of Grace\u003c/a\u003e at the East side of \u003ca target\u003d\"blank\" href\u003d\"/leyndell,+royal+capital\"\u003eLeyndell\u003ca\u003e."},{"id":8277,"category":"Summoning Pools","name":"Effigy of the Martyr: Elden Beast","image":"/file/Elden-Ring/map-d8dc59f2-67df-452e-a9ea-d2c00ddc3a2b/maps-icons/locations/summoning-pool.png","imageSize":40,"imageSizeW":40,"imageSizeH":40,"pageLink":"/Effigies+of+the+Martyr","x":"-109.923","y":"123.456","hasLabel":false,"hasPageLink":true,"hasCoordsLink":true,"clickable":false,"description":"Summoning Pool Effigy found just before the Elden Beast boss arena in Leyndell, Capital of Ash. Activate this effigy to send your summon sign to this summoning pool."},{"id":8276,"category":"Summoning Pools","name":"Effigy of the Martyr: Elden Throne","image":"/file/Elden-Ring/map-d8dc59f2-67df-452e-a9ea-d2c00ddc3a2b/maps-icons/locations/summoning-pool.png","imageSize":40,"imageSizeW":40,"imageSizeH":40,"pageLink":"/Effigies+of+the+Martyr","x":"-106.344","y":"119.884","hasLabel":false,"hasPageLink":true,"hasCoordsLink":true,"clickable":false,"description":"Summoning Pool Effigy found on the bridge just before Godfrey's Boss Arena in Leyndell, Capital of Ash. Activate this effigy to send your summon sign to this summoning pool."},{"id":8278,"category":"Summoning Pools","name":"Effigy of the Martyr: Erdtree Sanctuary","image":"/file/Elden-Ring/map-d8dc59f2-67df-452e-a9ea-d2c00ddc3a2b/maps-icons/locations/summoning-pool.png","imageSize":40,"imageSizeW":40,"imageSizeH":40,"pageLink":"/Effigies+of+the+Martyr","x":"-107.142","y":"115.397","hasLabel":false,"hasPageLink":true,"hasCoordsLink":true,"clickable":false,"description":"Summoning Pool Effigy found just before Sir Gideon Ofnir, The All-Knowing's boss arena in Leyndell, Capital of Ash. Activate this effigy to send your summon sign to this summoning pool."},{"id":7721,"category":"Key Items","name":"Elden Remembrance","image":"/file/Elden-Ring/map-d8dc59f2-67df-452e-a9ea-d2c00ddc3a2b/maps-icons/key.png","imageSize":40,"imageSizeW":40,"imageSizeH":40,"x":"-112.273437","y":"124.363817","hasLabel":false,"hasPageLink":true,"hasCoordsLink":true,"clickable":false,"description":"Dropped by the \u003ca target\u003d\"blank\" href\u003d\"/Elden+Beast\"\u003eElden Beast\u003c/a\u003e upon defeat."},{"id":7660,"category":"Sites of Grace","name":"Elden Throne Site of Grace","image":"/file/Elden-Ring/map-d8dc59f2-67df-452e-a9ea-d2c00ddc3a2b/maps-icons/grace.png","imageSize":40,"imageSizeW":40,"imageSizeH":40,"pageLink":"/Sites+of+Grace","x":"-107","y":"120","hasLabel":false,"hasPageLink":true,"hasCoordsLink":true,"clickable":false,"description":"Site of Grace for the \u003ca target\u003d\"blank\" href\u003d\"/elden+throne\"\u003eElden Throne\u003c/a\u003e. Unlocked upon \u003ca target\u003d\"blank\" href\u003d\"/godfrey,+first+elden+lord\"\u003eGodfrey, First Elden Lord\u003c/a\u003e's defeat."},{"id":7659,"category":"Spells","name":"Erdtree Heal","image":"/file/Elden-Ring/map-d8dc59f2-67df-452e-a9ea-d2c00ddc3a2b/maps-icons/yellowspell.png","imageSize":40,"imageSizeW":40,"imageSizeH":40,"x":"-104.5","y":"118.84042","hasLabel":false,"hasPageLink":true,"hasCoordsLink":true,"clickable":false,"description":"Found on the large covered furniture within \u003cem\u003eQueen's Bedchamber\u003c/em\u003e, next to the \u003ca target\u003d\"blank\" href\u003d\"/sites+of+grace\"\u003eSite of Grace\u003c/a\u003e."},{"id":7657,"category":"Sites of Grace","name":"Erdtree Sanctuary","image":"/file/Elden-Ring/map-d8dc59f2-67df-452e-a9ea-d2c00ddc3a2b/maps-icons/grace.png","imageSize":40,"imageSizeW":40,"imageSizeH":40,"pageLink":"/Sites+of+Grace","x":"-106.90625","y":"116.769971","hasLabel":false,"hasPageLink":true,"hasCoordsLink":true,"clickable":false,"description":"This Site of Grace is unlocked upon \u003ca target\u003d\"blank\" href\u003d\"/sir+gideon+ofnir,+the+all-knowing\"\u003eSir Gideon Ofnir, The All-Knowing's\u003c/a\u003e defeat."},{"id":7707,"category":"Talismans","name":"Erdtree's Favor +2","image":"/file/Elden-Ring/map-d8dc59f2-67df-452e-a9ea-d2c00ddc3a2b/maps-icons/talisman.png","imageSize":40,"imageSizeW":40,"imageSizeH":40,"pageLink":"/Erdtree's+Favor+2","x":"-103.2625","y":"120.21665","hasLabel":false,"hasPageLink":true,"hasCoordsLink":true,"clickable":false,"description":"\u003ca target\u003d\"_blank\" href\u003d\"/Talismans\"\u003eUpgraded Talisman\u003c/a\u003e. This Talisman may only be accessed near endgame/post-game. Found on top of a branch jutting out of the ground in a large courtyard, guarded by three \u003ca target\u003d\"_blank\" href\u003d\"/Lesser+Ulcerated+Tree+Spirit\"\u003eUlcerated Tree Spirits\u003c/a\u003e."},{"id":7666,"category":"Sites of Grace","name":"Forbiden Lands","image":"/file/Elden-Ring/map-d8dc59f2-67df-452e-a9ea-d2c00ddc3a2b/maps-icons/grace.png","imageSize":40,"imageSizeW":40,"imageSizeH":40,"pageLink":"/Sites+of+Grace","x":"-101","y":"131","hasLabel":false,"hasPageLink":true,"hasCoordsLink":true,"clickable":false,"description":"Site of Grace at the beginning of the path connecting \u003ca target\u003d\"blank\" href\u003d\"/altus+plateau\"\u003eAltus Plateau\u003c/a\u003e with the \u003ca target\u003d\"blank\" href\u003d\"/mountaintops+of+the+giants\"\u003eMountaintops of the Giants\u003c/a\u003e."},{"id":7662,"category":"Sites of Grace","name":"Fractured Marika","image":"/file/Elden-Ring/map-d8dc59f2-67df-452e-a9ea-d2c00ddc3a2b/maps-icons/grace.png","imageSize":40,"imageSizeW":40,"imageSizeH":40,"pageLink":"/Sites+of+Grace","x":"-112.5625","y":"123.996563","hasLabel":false,"hasPageLink":true,"hasCoordsLink":true,"clickable":false,"description":"This \u003cem\u003eSite of Grace\u003c/em\u003e is unlocked once the \u003ca target\u003d\"blank\" href\u003d\"/Radagon+of+the+Golden+Order\"\u003eRadagon of the Golden Order\u003c/a\u003e and the \u003ca target\u003d\"blank\" href\u003d\"/Elden+Beast\"\u003eElden Beast\u003c/a\u003e \u003ca target\u003d\"blank\" href\u003d\"/bosses\"\u003eBossfight\u003c/a\u003e is successfully completed."},{"id":7672,"category":"Sites of Grace","name":"Frenzied Flame Proscription","image":"/file/Elden-Ring/map-d8dc59f2-67df-452e-a9ea-d2c00ddc3a2b/maps-icons/grace.png","imageSize":40,"imageSizeW":40,"imageSizeH":40,"pageLink":"/Sites+of+Grace","x":"-98.289062","y":"123.77872","hasLabel":false,"hasPageLink":true,"hasCoordsLink":true,"clickable":false,"description":"Site of Grace underneath the \u003ca target\u003d\"blank\" href\u003d\"/sites+of+grace\"\u003eCathedral of the Forsaken Site of Grace\u003c/a\u003e. Behind the altar at the \u003ca target\u003d\"blank\" href\u003d\"/cathedral+of+the+forsaken\"\u003eCathedral of the Forsaken\u003c/a\u003e is an illusory wall. Upon descending to the bottom of the accessed pit the ground collapses, leaving you next to the \u003cstrong\u003eFrenzied Flame Proscription Site of Grace\u003c/strong\u003e."},{"id":5103,"category":"Upgrade Materials","name":"Ghost Glovewort [4]","image":"/file/Elden-Ring/map-d8dc59f2-67df-452e-a9ea-d2c00ddc3a2b/maps-icons/glovewort.png","imageSize":40,"imageSizeW":40,"imageSizeH":40,"pageLink":"/Ghost+Glovewort+(4)","x":"-111.97","y":"126.062","hasLabel":false,"hasPageLink":true,"hasCoordsLink":true,"clickable":false,"description":"Found on the hill, near a yellowish small tree."},{"id":7554,"category":"Upgrade Materials","name":"Ghost Glovewort [6] - Leyndell Catacombs","image":"/file/Elden-Ring/map-d8dc59f2-67df-452e-a9ea-d2c00ddc3a2b/maps-icons/glovewort.png","imageSize":40,"imageSizeW":40,"imageSizeH":40,"pageLink":"/Ghost+Glovewort+(6)","x":"-103.460937","y":"116.962214","hasLabel":false,"hasPageLink":true,"hasCoordsLink":true,"clickable":false,"description":"Beyond the stairs southeast of the door leading to the \u003ca target\u003d\"blank\" href\u003d\"/bosses\"\u003eBossfight\u003c/a\u003e, in front of a statue guarded by \u003ca target\u003d\"blank\" href\u003d\"/skeleton\"\u003eSkeletons\u003c/a\u003e."},{"id":6059,"category":"Bosses","name":"Godfrey, First Elden Lord","image":"/file/Elden-Ring/map-d8dc59f2-67df-452e-a9ea-d2c00ddc3a2b/maps-icons/boss.png","imageSize":40,"imageSizeW":40,"imageSizeH":40,"x":"-107.114063","y":"120.409278","hasLabel":false,"hasPageLink":true,"hasCoordsLink":true,"clickable":false,"description":"\u003cimg src\u003d\"/file/Elden-Ring/godfrey_the_first_elden_lord_hoarah_loux_warrior_boss_elden_ring_wiki_300px.jpg\" /\u003e\u003cbr /\u003e\u003ch5\u003eLegend Type Boss\u003c/h5\u003e\nLocated in the chamber atop the long set of stairs southeast of the \u003ca target\u003d\"blank\" href\u003d\"/sites+of+grace\"\u003eQueen's Bedchamber Site of Grace\u003c/a\u003e where \u003ca target\u003d\"blank\" href\u003d\"/morgott,+the+omen+king\"\u003eMorgott\u003c/a\u003e was previously fought. Mid-battle, \u003cstrong\u003eGodfrey\u003c/strong\u003e assumes the role of \u003cstrong\u003eHoarah Loux, Warrior\u003c/strong\u003e."},{"id":7717,"category":"Consumables","name":"Golden Sunflower","image":"/file/Elden-Ring/map-d8dc59f2-67df-452e-a9ea-d2c00ddc3a2b/maps-icons/crafting.png","imageSize":40,"imageSizeW":40,"imageSizeH":40,"x":"-103.898437","y":"115.02682","hasLabel":false,"hasPageLink":true,"hasCoordsLink":true,"clickable":false,"description":"Held by a burnt corpse laying against one of the ruined buildings."},{"id":8402,"category":"Armor","name":"Goldmask's Set","image":"/file/Elden-Ring/map-d8dc59f2-67df-452e-a9ea-d2c00ddc3a2b/maps-icons/bodyarmor.png","imageSize":40,"imageSizeW":40,"imageSizeH":40,"x":"-108.46","y":"114.17","hasLabel":false,"hasPageLink":true,"hasCoordsLink":true,"clickable":false,"description":"After the completion of \u003ca href\"/Brother+Corhyn\"\u003eBrother Corhyn\u003c/a\u003e's questline. Head south from the Capital of Ash site of grace and go down the small path in the direction of the colosseum. Go past the plant enemies and stick to the left and you will find Goldmask. Look the rune from him, and reset the area and return to find the rest of his set on his body."},{"id":7557,"category":"Upgrade Materials","name":"Grave Glovewort [8] - 2x Leyndell Catacombs","image":"/file/Elden-Ring/map-d8dc59f2-67df-452e-a9ea-d2c00ddc3a2b/maps-icons/glovewort.png","imageSize":40,"imageSizeW":40,"imageSizeH":40,"pageLink":"/Grave+Glovewort+(8)","x":"-103.710937","y":"116.735519","hasLabel":false,"hasPageLink":true,"hasCoordsLink":true,"clickable":false,"description":"The first \u003cstrong\u003eGrave Glovewort [8]\u003c/strong\u003e is found over the central grave in one of the main halls. The second one is in front of a large statue following the stairs southeast from the first \u003cstrong\u003eGrave Glovewort\u003c/strong\u003e."},{"id":7556,"category":"Upgrade Materials","name":"Grave Glovewort [9] - Leyndell Catacombs","image":"/file/Elden-Ring/map-d8dc59f2-67df-452e-a9ea-d2c00ddc3a2b/maps-icons/glovewort.png","imageSize":40,"imageSizeW":40,"imageSizeH":40,"pageLink":"/grave+glovewort+(9)","x":"-103.351562","y":"116.579177","hasLabel":false,"hasPageLink":true,"hasCoordsLink":true,"clickable":false,"description":"Located within \u003ca target\u003d\"blank\" href\u003d\"/leyndell+catacombs\"\u003eLeyndell Catacombs\u003c/a\u003e, in one of the main halls with a large statue. Guarded by an \u003ca target\u003d\"blank\" href\u003d\"/omen\"\u003eOmen\u003c/a\u003e."},{"id":5101,"category":"Sites of Grace","name":"Great Waterfall Crest","image":"/file/Elden-Ring/map-d8dc59f2-67df-452e-a9ea-d2c00ddc3a2b/maps-icons/grace.png","imageSize":40,"imageSizeW":40,"imageSizeH":40,"pageLink":"/Sites+of+Grace","x":"-102.53125","y":"124.348306","hasLabel":false,"hasPageLink":true,"hasCoordsLink":true,"clickable":false,"description":"Site of grace, directly after leaving the resting coffin."},{"id":7667,"category":"Locations","name":"Hermit Merchant's Shack","image":"/file/Elden-Ring/map-d8dc59f2-67df-452e-a9ea-d2c00ddc3a2b/maps-icons/locations/shack.png","imageSize":80,"imageSizeW":80,"imageSizeH":80,"x":"-88.367187","y":"106.434799","hasLabel":true,"hasPageLink":true,"hasCoordsLink":true,"clickable":false,"description":"Found within the outskirts of \u003ca target\u003d\"blank\" href\u003d\"/leyndell,+ashen+capital\"\u003eLeyndell, Ashen Capital\u003c/a\u003e. It can be found atop a cliff, just inside the capital's outermost wall."},{"id":7668,"category":"Sites of Grace","name":"Hermit Merchant's Shack","image":"/file/Elden-Ring/map-d8dc59f2-67df-452e-a9ea-d2c00ddc3a2b/maps-icons/grace.png","imageSize":40,"imageSizeW":40,"imageSizeH":40,"pageLink":"/Sites+of+Grace","x":"-88.273437","y":"106.77861","hasLabel":false,"hasPageLink":true,"hasCoordsLink":true,"clickable":false,"description":"Sites of Grace at the \u003ca target\u003d\"blank\" href\u003d\"/Hermit+Merchant's+Shack\"\u003eHermit Merchant's Shack\u003c/a\u003e."},{"id":7553,"category":"Sites of Grace","name":"Leyndell Catacombs","image":"/file/Elden-Ring/map-d8dc59f2-67df-452e-a9ea-d2c00ddc3a2b/maps-icons/grace.png","imageSize":40,"imageSizeW":40,"imageSizeH":40,"pageLink":"/Sites+of+Grace","x":"-103.03125","y":"116.924217","hasLabel":false,"hasPageLink":true,"hasCoordsLink":true,"clickable":false,"description":"\u003ca target\u003d\"blank\" href\u003d\"/sites+of+grace\"\u003eSite of Grace\u003c/a\u003e within \u003ca target\u003d\"blank\" href\u003d\"/leyndell+catacombs\"\u003eLeyndell Catacombs\u003c/a\u003e."},{"id":7203,"category":"Locations","name":"Leyndell, Ashen Capital","image":"/file/Elden-Ring/map-d8dc59f2-67df-452e-a9ea-d2c00ddc3a2b/maps-icons/locations/leyndell.png","imageSize":80,"imageSizeW":80,"imageSizeH":80,"x":"-99.125","y":"111.574037","hasLabel":true,"hasPageLink":true,"hasCoordsLink":true,"clickable":false,"description":"\u003cimg src\u003d\"/file/Elden-Ring/leyndell,_ashen_capital_locations_elden_ring_wiki_600px.jpg\" /\u003eAn instance of \u003ca target\u003d\"blank\" href\u003d\"/leyndell,+royal+capital\"\u003eLeyndell, Royal Capital\u003c/a\u003e after it falls into ruins. This version of the capital is accessible only after making significant story progress and features the same structures and landmarks as its intact counterpart, albeit altered in slight or significant ways."},{"id":7251,"category":"Sites of Grace","name":"Leyndell, Capital of Ash","image":"/file/Elden-Ring/map-d8dc59f2-67df-452e-a9ea-d2c00ddc3a2b/maps-icons/grace.png","imageSize":40,"imageSizeW":40,"imageSizeH":40,"pageLink":"/Sites+of+Grace","x":"-100.476562","y":"116.70626","hasLabel":false,"hasPageLink":true,"hasCoordsLink":true,"clickable":false,"description":"\u003ca target\u003d\"blank\" href\u003d\"/sites+of+grace\"\u003eSite of Grace\u003c/a\u003e within the obliterated city."},{"id":7669,"category":"Locations","name":"Minor Erdtree","image":"/file/Elden-Ring/map-d8dc59f2-67df-452e-a9ea-d2c00ddc3a2b/maps-icons/locations/tree.png","imageSize":80,"imageSizeW":80,"imageSizeH":80,"pageLink":"/Minor+Erdtree+(Capital+Outskirts)","x":"-90.015625","y":"115.62895","hasLabel":true,"hasPageLink":true,"hasCoordsLink":true,"clickable":false,"description":"Minor Erdtree within the Capital Outskirts."},{"id":7658,"category":"Sites of Grace","name":"Queen's Bedchamber","image":"/file/Elden-Ring/map-d8dc59f2-67df-452e-a9ea-d2c00ddc3a2b/maps-icons/grace.png","imageSize":40,"imageSizeW":40,"imageSizeH":40,"pageLink":"/Sites+of+Grace","x":"-104.90625","y":"118.801351","hasLabel":false,"hasPageLink":true,"hasCoordsLink":true,"clickable":false,"description":"\u003ca target\u003d\"blank\" href\u003d\"/sites+of+grace\"\u003eSite of Grace\u003c/a\u003e at the \u003cem\u003eQueen's Bedchamber\u003c/em\u003e."},{"id":7661,"category":"Bosses","name":"Radagon of the Golden Order","image":"/file/Elden-Ring/map-d8dc59f2-67df-452e-a9ea-d2c00ddc3a2b/maps-icons/boss.png","imageSize":40,"imageSizeW":40,"imageSizeH":40,"x":"-112","y":"124","hasLabel":false,"hasPageLink":true,"hasCoordsLink":true,"clickable":false,"description":"\u003cimg src\u003d\"/file/Elden-Ring/radagon_elden_beast_dual_boss_elden_ring_wiki_600px.jpg\"/\u003e\u003ch5\u003eGod Type Boss\u003c/h5\u003e\u003cstrong\u003eFinal Boss\u003c/strong\u003e. Once \u003ca target\u003d\"blank\" href\u003d\"/radagon+of+the+golden+order\"\u003eRadagon of the Golden Order\u003c/a\u003e is defeated, \u003ca target\u003d\"blank\" href\u003d\"/elden+beast\"\u003eElden Beast\u003c/a\u003e, the \u003cstrong\u003etrue\u003c/strong\u003e form of the \u003cem\u003eElden Ring\u003c/em\u003e, must be fought."},{"id":7720,"category":"Key Items","name":"Remembrance of Hoarah Loux","image":"/file/Elden-Ring/map-d8dc59f2-67df-452e-a9ea-d2c00ddc3a2b/maps-icons/key.png","imageSize":40,"imageSizeW":40,"imageSizeH":40,"x":"-106.726562","y":"120.387434","hasLabel":false,"hasPageLink":true,"hasCoordsLink":true,"clickable":false,"description":"Dropped by \u003ca target\u003d\"blank\" href\u003d\"/Godfrey,+First+Elden+Lord\"\u003eGodfrey, First Elden Lord\u003c/a\u003e (\u003ca target\u003d\"blank\" href\u003d\"/Hoarah+Loux,+Warrior\"\u003eHoarah Loux, Warrior\u003c/a\u003e) when defeated."},{"id":7654,"category":"Talismans","name":"Ritual Shield Talisman","image":"/file/Elden-Ring/map-d8dc59f2-67df-452e-a9ea-d2c00ddc3a2b/maps-icons/talisman.png","imageSize":40,"imageSizeW":40,"imageSizeH":40,"x":"-106.859375","y":"111.665744","hasLabel":false,"hasPageLink":true,"hasCoordsLink":true,"clickable":false,"description":"\u003cstrong\u003eRitual Shield Talisman\u003c/strong\u003e held by a corpse, next to the large \u003cem\u003eColloseum\u003c/em\u003e doors."},{"id":7655,"category":"Consumables","name":"Rune Arc - Eastern Rampart","image":"/file/Elden-Ring/map-d8dc59f2-67df-452e-a9ea-d2c00ddc3a2b/maps-icons/consumable.png","imageSize":40,"imageSizeW":40,"imageSizeH":40,"pageLink":"/rune+arc","x":"-103.164062","y":"117.564392","hasLabel":false,"hasPageLink":true,"hasCoordsLink":true,"clickable":false,"description":"Held by a burnt corpse sitting against one of the ruined structures."},{"id":7719,"category":"Weapons","name":"Scepter of the All-Knowing","image":"/file/Elden-Ring/map-d8dc59f2-67df-452e-a9ea-d2c00ddc3a2b/maps-icons/hammer.png","imageSize":40,"imageSizeW":40,"imageSizeH":40,"x":"-106.671875","y":"117.206896","hasLabel":false,"hasPageLink":true,"hasCoordsLink":true,"clickable":false,"description":"Dropped together with the \u003ca target\u003d\"blank\" href\u003d\"/all-knowing+set\"\u003eAll-Knowing Set\u003c/a\u003e upon defeating \u003ca target\u003d\"blank\" href\u003d\"/Sir+Gideon+Ofnir,+the+All-Knowing+(Boss)\"\u003eSir Gideon Ofnir, the All-Knowing\u003c/a\u003e in \u003ca target\u003d\"blank\" href\u003d\"/leyndell,+ashen+capital\"\u003eLeyndell, Ashen Capital\u003c/a\u003e. "},{"id":7656,"category":"Bosses","name":"Sir Gideon Ofnir, The All-Knowing","image":"/file/Elden-Ring/map-d8dc59f2-67df-452e-a9ea-d2c00ddc3a2b/maps-icons/boss.png","imageSize":40,"imageSizeW":40,"imageSizeH":40,"pageLink":"/Sir+Gideon+Ofnir,+the+All-Knowing+(Boss)","x":"-106.34375","y":"116.777567","hasLabel":false,"hasPageLink":true,"hasCoordsLink":true,"clickable":false,"description":"\u003cimg src\u003d\"/file/Elden-Ring/sir_gideon_ofnir_the_all_knowing_bosses_elden_ring_wiki_guide.jpg\"/\u003e\u003ch5\u003eGreat Enemy Boss\u003c/h5\u003e\u003cstrong\u003eSir Gideon Ofnir, The All-Knowing \u003ca target\u003d\"blank\" href\u003d\"/bosses\"\u003eBossfight\u003c/a\u003e\u003c/strong\u003e takes place at the \u003cem\u003eErdtree Sanctuary building\u003c/em\u003e. Once leader of \u003ca target\u003d\"blank\" href\u003d\"/roundtable+hold\"\u003eRoundtable Hold\u003c/a\u003e, \u003cstrong\u003eSir Gideon Ofnir\u003c/strong\u003e masters a wide range of powerful sorceries and incantations."},{"id":7715,"category":"Upgrade Materials","name":"Somber Ancient Dragon Smithing Stone (Ashen Capital)","image":"/file/Elden-Ring/map-d8dc59f2-67df-452e-a9ea-d2c00ddc3a2b/maps-icons/somber_smithing_stone.png","imageSize":40,"imageSizeW":40,"imageSizeH":40,"pageLink":"/Ancient+Dragon+Smithing+Stone","x":"-103.914062","y":"114.004391","hasLabel":false,"hasPageLink":true,"hasCoordsLink":true,"clickable":false,"description":"From the main \u003cem\u003eLeyndell, Capital of Ash Site of Grace\u003c/em\u003e, go west, along the dragon. Enter the building past it and climb the ladder. Over the railing to the right is an enemy gargoyle, guarding a corpse with the stone."},{"id":5102,"category":"Weapons","name":"Staff of the Avatar","image":"/file/Elden-Ring/map-d8dc59f2-67df-452e-a9ea-d2c00ddc3a2b/maps-icons/staff.png","imageSize":40,"imageSizeW":40,"imageSizeH":40,"x":"-110.9375","y":"126.362487","hasLabel":false,"hasPageLink":true,"hasCoordsLink":true,"clickable":false,"description":"Staff dropped by a \u003ca href\u003d\"/Erdtree+Avatar\" target\u003d\"_blank\"\u003eLesser Erdtree Avatar.\u003c/a\u003e"},{"id":7674,"category":"Locations","name":"Subterranean Shunning-Grounds","image":"/file/Elden-Ring/map-d8dc59f2-67df-452e-a9ea-d2c00ddc3a2b/maps-icons/locations/subterranean-shunning-grounds.png","imageSize":80,"imageSizeW":80,"imageSizeH":80,"x":"-101","y":"115","hasLabel":true,"hasPageLink":true,"hasCoordsLink":true,"clickable":false,"description":"A massive underground sewer network found beneath the \u003ca target\u003d\"blank\" href\u003d\"/Leyndell,+Ashen+Capital\"\u003eAshen Capital\u003c/a\u003e. The entrance can be found in a well northeast of the \u003cem\u003eAvenue Balcony\u003c/em\u003e."},{"id":14155,"category":"Bosses","name":"Ulcerated Tree Spirit","image":"/file/Elden-Ring/map-images/miniboss.png","imageSize":40,"imageSizeW":40,"imageSizeH":40,"x":"-102.75","y":"120.54","hasLabel":false,"hasPageLink":true,"hasCoordsLink":true,"clickable":false,"description":"3 Ulcerated Tree Spirits can be found romaing around this deserted sand area, it's convinient to try to encouter them one at a time."},{"id":7552,"category":"Sites of Grace","name":"Underground Roadside","image":"/file/Elden-Ring/map-d8dc59f2-67df-452e-a9ea-d2c00ddc3a2b/maps-icons/grace.png","imageSize":40,"imageSizeW":40,"imageSizeH":40,"pageLink":"/Sites+of+Grace","x":"-101.710937","y":"116.332352","hasLabel":false,"hasPageLink":true,"hasCoordsLink":true,"clickable":false,"description":"\u003ca target\u003d\"blank\" href\u003d\"/sites+of+grace\"\u003eSite of Grace\u003c/a\u003e found underground within \u003ca target\u003d\"blank\" href\u003d\"/subterranean+shunning-grounds\"\u003eSubterranean Shunning-Grounds\u003c/a\u003e."},{"id":14203,"category":"Bosses","name":"Valiant Gargoyle","image":"/file/Elden-Ring/map-d8dc59f2-67df-452e-a9ea-d2c00ddc3a2b/maps-icons/boss.png","imageSize":40,"imageSizeW":40,"imageSizeH":40,"pageLink":"/Valiant+Gargoyle","x":"-104.5","y":"114","hasLabel":false,"hasPageLink":true,"hasCoordsLink":true,"clickable":false,"description":"\u003cp\u003e\u003cimg title\u003d\"Elden Ring Valiant Gargoyle\" src\u003d\"https://eldenring.wiki.fextralife.com/file/Elden-Ring/valiant_gargoyle.png\" alt\u003d\"valiant gargoyle\" width\u003d\"300\" height\u003d\"169\" /\u003e Endgame \u003ca class\u003d\"wiki_link\" title\u003d\"\" href\u003d\"https://eldenring.wiki.fextralife.com/Bosses\" target\u003d\"blank\"\u003eBoss\u003c/a\u003e. \u003ca class\u003d\"wiki_link\" title\u003d\"\" href\u003d\"https://eldenring.wiki.fextralife.com/Leyndell,+Royal+Capital\" target\u003d\"blank\"\u003eLeyndell, Royal Capital\u003c/a\u003e.\u003c/p\u003e"}];
+var wmdpn = window.parent.location.pathname.toLowerCase() == '/interactive+map' || window.parent.location.pathname.toLowerCase() == '/interactive map' || window.parent.location.pathname.toLowerCase() == '/interactive%20map';
+console.log('_____4444____' + wmdpn);
+
+
+function getCookie(name) {var nameEQ = name + "=";var ca = document.cookie.split(';');for (var i = 0; i < ca.length; i++) {var c = ca[i];while (c.charAt(0) == ' ') c = c.substring(1, c.length);if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);}return null;}
+function iOS() {
+  return [
+    'iPad Simulator',
+    'iPhone Simulator',
+    'iPod Simulator',
+    'iPad',
+    'iPhone',
+    'iPod'
+  ].includes(navigator.platform)
+  // iPad on iOS 13 detection
+  || (navigator.userAgent.includes("Mac") && "ontouchend" in document)
+}
+
+var ua = '001';
+var uid = null;
+var c = getCookie('flwd');
+if (c != null) {
+  var u = c.split(':');
+  ua = u[5];
+  uid = u[0];
+}
+var iiv = ua != null && (ua == '211' || ua == '111' || ua == '210' || ua == '110' || ua == '100');
+var mapId = '96747699-d8a3-44b4-b2d6-cf6b45c579c6';
+var mapCode = 'mapC';
+var udata = null;
+var currentSlot = 0;
+var edindex = new Array();
+var searchLayer = new L.LayerGroup();
+var vitems = new Array();
+var markers = new Array();		// array id = item.id
+var vmarkers = new Array();		// array id = category.id
+var overlays = {};
+var olayerGroups = new Array();
+var olayerGroupsIndexes = {};
+var icompleted = new Array();
+var map = null;
+var initialBounds = null;
+
+// Get url parameters
+var params = {};
+document.referrer.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m, key, value) {
+	params[key] = value;
+});
+
+function loadUData(mid, uid, callback){
+	var xobj = new XMLHttpRequest();
+	xobj.overrideMimeType('application/json');
+	xobj.open('GET', location.protocol + '//' + location.host + '/ws/map/completed/map/' + mid + '/' + currentSlot + '/user/' + uid + '?v='+ new Date().getTime(), true);
+//	xobj.open('GET', location.protocol + '//' + location.host + '/map-custom-' + mid + '-' + uid + '-slot' + currentSlot + '.json?v='+ new Date().getTime(), true);
+	xobj.onreadystatechange = function () {
+		if (xobj.readyState == 4 && xobj.status == '200') {
+			callback(xobj.responseText);
+		} else if (xobj.readyState == 4 && xobj.status == '403') {
+			callback(null);
+		} else if (xobj.readyState == 4 && xobj.status == '404') {
+			callback(null);
+		} else if (xobj.readyState == 4 && xobj.status == '500') {
+			callback(null);
+		} else if (xobj.readyState == 4 && xobj.status == '502') {
+			callback(null);
+		}
+	};
+	xobj.send(null);
+}
+function init() {
+	if (iiv) {
+		loadUData(mapId, uid, function(response) {
+			try{udata = (response != null && response != '' ? JSON.parse(response) : null);}catch(err){udata=null;}
+			doMarkers();
+		});
+	} else {
+		doMarkers();
+	}
+	return false;
+}
+function getItem(itemId) {
+	if (items != null) {
+		for (var i = 0; i < items.length; i++) {
+			if (items[i].id == itemId) {
+				return items[i];
+			}
+		}
+	}
+	return null;
+}
+function doMarkers() {
+	// Create Icons & Markers
+	$.each(items, function() {
+		var vitem = new Object();
+		vitem['id'] = this.id;
+		if (this.hasLabel) {
+			if (iiv && udata != null && udata[this.id.toString()] != null) {
+//				vitem['object'] = L.divIcon({iconSize:[this.imageSize, this.imageSize], html:'<div class="map-item-title"><img style="width:' + this.imageSize + 'px;height:' + this.imageSize + 'px;" src="' + (this.image.replace('.png','-completed.png')) + '"/><div class="xmap-label-content">' + this.name + '</div><div class="map-label-arrow"></div></div>'});
+				vitem['object'] = L.divIcon({iconSize:[this.imageSizeW, this.imageSizeH], html:'<div class="map-item-title"><img style="width:' + this.imageSizeW + 'px;height:' + this.imageSizeH + 'px;" src="' + (this.image.replace('.png','-completed.png')) + '"/><div class="xmap-label-content">' + this.name + '</div><div class="map-label-arrow"></div></div>'});
+			} else {
+//				vitem['object'] = L.divIcon({iconSize:[this.imageSize, this.imageSize], html:'<div class="map-item-title"><img style="width:' + this.imageSize + 'px;height:' + this.imageSize + 'px;" src="' + this.image + '"/><div class="xmap-label-content">' + this.name + '</div><div class="map-label-arrow"></div></div>'});
+				vitem['object'] = L.divIcon({iconSize:[this.imageSizeW, this.imageSizeH], html:'<div class="map-item-title"><img style="width:' + this.imageSizeW + 'px;height:' + this.imageSizeH + 'px;" src="' + this.image + '"/><div class="xmap-label-content">' + this.name + '</div><div class="map-label-arrow"></div></div>'});
+			}
+		} else {
+			if (iiv && udata != null && udata[this.id.toString()] != null) {
+				if (isIconCentered) {
+//					vitem['object'] = L.icon({iconUrl: (this.image.replace('.png','-completed.png')),iconSize:[this.imageSize, this.imageSize],iconAnchor:[(this.imageSize/2), (this.imageSize/2)],});
+					vitem['object'] = L.icon({iconUrl: (this.image.replace('.png','-completed.png')),iconSize:[this.imageSizeW, this.imageSizeH],iconAnchor:[(this.imageSizeW/2), (this.imageSizeH/2)],});
+				} else {
+//					vitem['object'] = L.icon({iconUrl: (this.image.replace('.png','-completed.png')),iconSize:[this.imageSize, this.imageSize],iconAnchor:[0, 0],});
+					vitem['object'] = L.icon({iconUrl: (this.image.replace('.png','-completed.png')),iconSize:[this.imageSizeW, this.imageSizeH],iconAnchor:[0, 0],});
+				}
+			} else {
+				if (isIconCentered) {
+//					vitem['object'] = L.icon({iconUrl: this.image,iconSize:[this.imageSize, this.imageSize],iconAnchor:[(this.imageSize/2), (this.imageSize/2)],});
+					vitem['object'] = L.icon({iconUrl: this.image,iconSize:[this.imageSizeW, this.imageSizeH],iconAnchor:[(this.imageSizeW/2), (this.imageSizeH/2)],});
+				} else {
+//					vitem['object'] = L.icon({iconUrl: this.image,iconSize:[this.imageSize, this.imageSize],iconAnchor:[0, 0],});
+					vitem['object'] = L.icon({iconUrl: this.image,iconSize:[this.imageSizeW, this.imageSizeH],iconAnchor:[0, 0],});
+				}			
+			}
+		}
+		vitems[vitems.length] = vitem;
+
+		var vmarker = new L.Marker(new L.latLng([this.x, this.y]), {alt: (this.id + '-' + this.name), icon: vitem.object, title: this.name} );
+		markers[this.id] = vmarker;
+		var url = window.parent.location.toString();//window.location.toString();
+		var pageName = url.substring(url.indexOf('.wiki.fextralife.com/') + 21, url.length);
+		var pageParamsIndex = pageName.indexOf('?');
+		if (pageParamsIndex > -1) {
+			pageName = pageName.substring(0, pageParamsIndex); 
+		}
+		var hasPageLink = this.hasPageLink != null && this.hasPageLink;
+		var pageLink = (hasPageLink ? this.pageLink != null && this.pageLink.trim() != '' ? this.pageLink.trim() : '/' + this.name.replaceAll(" ", "+") : '');
+//		vmarker.bindPopup('<div data="' + this.id + '" class="d4_map_popup" style="width: 300px;"><div class="d4_map_popup_header" style="text-align: left;"><h4 style="text-align: center;">' + (this.image != null ? '<img style="width: ' + this.imageSize + 'px; height: ' + this.imageSize + 'px;" src="' + this.image + '" width="' + this.imageSize + '" height="' + this.imageSize + '" alt="map popup icon sample">&nbsp;' : '') + (hasPageLink ? '<a style="text-decoration: none;color: #FFF;text-shadow: none!Important;" title="' + this.name + '" href="' + pageLink + '" target="_blank" rel="noopener noreferrer">' + this.name + '</a>' : this.name) + '</h4></div><div class="d4_map_popup_content" style="text-align: left;"><p>' + (this.description != null ? this.description : '') + '</p></div><img style="height:25px;width: 275px; display: block; margin-left: auto; margin-right: auto;" title="star-bullet-d4-wiki-guide" src="https://swcdn.fextralife.com/images/map_popup_divider.png" alt="map popup divider"><div class="d4_map_popup_footer">' + (this.hasCoordsLink ? '<p style="text-align: center;"><a class="wiki_link map-item-xy" title="Elden Ring Interactive Map - ' + this.name + '" href="' + location.protocol + '//' + window.parent.location.host + window.parent.location.pathname + '?id=' + this.id + '&code=mapC" class="wiki_link map-item-xy" target="_blank" rel="noopener noreferrer"><img style="width: 12px;height: 15px;padding-bottom:initial;" title="map_popup_marker" src="https://swcdn.fextralife.com/images/map_popup_marker.png" alt="map popup marker" width="12" height="15"> Map Coordinates Link</a></p>' : '') + (iiv ? '<p><button id="imcb-' + this.id + '" class="d4_popup_button map-item-' + (udata != null && udata[this.id.toString()] != null ? 'reset' : 'complete') + '"><input class="d4_checkbox" type="checkbox"' + (udata != null && udata[this.id.toString()] != null ? ' checked' : '') + '>&nbsp;&nbsp;' + (udata != null && udata[this.id.toString()] != null ? 'Completed - Click to Reset' : 'Mark as Completed') + '</button></p>' : '') + '</div></div>');
+		var mapCoorsLinkPage = (window.parent.location.pathname.toLowerCase() == '/shadow+of+the+erdtree+map' || window.parent.location.pathname.toLowerCase() == '/shadow of the erdtree map' || window.parent.location.pathname.toLowerCase() == '/shadow%20of%20the%20erdtree%20map' ? '/Interactive+Map' : window.parent.location.pathname);
+//		vmarker.bindPopup('<div data="' + this.id + '" class="d4_map_popup" style="width: 300px;"><div class="d4_map_popup_header" style="text-align: left;"><h4 style="text-align: center;">' + (this.image != null ? '<img style="width: ' + this.imageSize + 'px; height: ' + this.imageSize + 'px;" src="' + this.image + '" width="' + this.imageSize + '" height="' + this.imageSize + '" alt="map popup icon sample">&nbsp;' : '') + (hasPageLink ? '<a style="text-decoration: none;color: #FFF;text-shadow: none!Important;" title="' + this.name + '" href="' + pageLink + '" target="_blank" rel="noopener noreferrer">' + this.name + '</a>' : this.name) + '</h4></div><div class="d4_map_popup_content" style="text-align: left;"><p>' + (this.description != null ? this.description : '') + '</p></div><img style="height:25px;width: 275px; display: block; margin-left: auto; margin-right: auto;" title="star-bullet-d4-wiki-guide" src="https://swcdn.fextralife.com/images/map_popup_divider.png" alt="map popup divider"><div class="d4_map_popup_footer">' + (this.hasCoordsLink ? '<p style="text-align: center;"><a class="wiki_link map-item-xy" title="Elden Ring Interactive Map - ' + this.name + '" href="' + location.protocol + '//' + window.parent.location.host + mapCoorsLinkPage + '?id=' + this.id + '&code=mapC" class="wiki_link map-item-xy" target="_blank" rel="noopener noreferrer"><img style="width: 12px;height: 15px;padding-bottom:initial;" title="map_popup_marker" src="https://swcdn.fextralife.com/images/map_popup_marker.png" alt="map popup marker" width="12" height="15"> Map Coordinates Link</a></p>' : '') + (iiv ? '<p><button id="imcb-' + this.id + '" class="d4_popup_button map-item-' + (udata != null && udata[this.id.toString()] != null ? 'reset' : 'complete') + '"><input class="d4_checkbox" type="checkbox"' + (udata != null && udata[this.id.toString()] != null ? ' checked' : '') + '>&nbsp;&nbsp;' + (udata != null && udata[this.id.toString()] != null ? 'Completed - Click to Reset' : 'Mark as Completed') + '</button></p>' : '') + '</div></div>');
+		vmarker.bindPopup('<div data="' + this.id + '" class="d4_map_popup" style="width: 300px;"><div class="d4_map_popup_header" style="text-align: left;"><h4 style="text-align: center;">' + (this.image != null ? '<img style="width: ' + this.imageSizeW + 'px; height: ' + this.imageSizeH + 'px;" src="' + this.image + '" width="' + this.imageSizeW + '" height="' + this.imageSizeH + '" alt="map popup icon sample">&nbsp;' : '') + (hasPageLink ? '<a style="text-decoration: none;color: #FFF;text-shadow: none!Important;" title="' + this.name + '" href="' + pageLink + '" target="_blank" rel="noopener noreferrer">' + this.name + '</a>' : this.name) + '</h4></div><div class="d4_map_popup_content" style="text-align: left;"><p>' + (this.description != null ? this.description : '') + '</p></div><img style="height:25px;width: 275px; display: block; margin-left: auto; margin-right: auto;" title="star-bullet-d4-wiki-guide" src="https://swcdn.fextralife.com/images/map_popup_divider.png" alt="map popup divider"><div class="d4_map_popup_footer">' + (this.hasCoordsLink ? '<p style="text-align: center;"><a class="wiki_link map-item-xy" title="Elden Ring Interactive Map - ' + this.name + '" href="' + location.protocol + '//' + window.parent.location.host + mapCoorsLinkPage + '?id=' + this.id + '&code=mapC" class="wiki_link map-item-xy" target="_blank" rel="noopener noreferrer"><img style="width: 12px;height: 15px;padding-bottom:initial;" title="map_popup_marker" src="https://swcdn.fextralife.com/images/map_popup_marker.png" alt="map popup marker" width="12" height="15"> Map Coordinates Link</a></p>' : '') + (iiv ? '<p><button id="imcb-' + this.id + '" class="d4_popup_button map-item-' + (udata != null && udata[this.id.toString()] != null ? 'reset' : 'complete') + '"><input class="d4_checkbox" type="checkbox"' + (udata != null && udata[this.id.toString()] != null ? ' checked' : '') + '>&nbsp;&nbsp;' + (udata != null && udata[this.id.toString()] != null ? 'Completed - Click to Reset' : 'Mark as Completed') + '</button></p>' : '') + '</div></div>');
+		if (iiv && udata != null && udata[this.id.toString()] != null ) {
+			if (icompleted == null) {
+				icompleted = new Array();
+			}
+			icompleted[icompleted.length] = vmarker;
+		}
+
+		searchLayer.addLayer(vmarker);
+		var makersByCat = vmarkers[this.category];
+		if (makersByCat == null) {
+			makersByCat = new Array();
+			makersByCat[makersByCat.length] = vmarker;
+			vmarkers[this.category] = makersByCat;
+		} else {
+			makersByCat[makersByCat.length] = vmarker;
+		}
+		edindex[this.id] = vmarker;
+	});
+
+
+	// Create Layer Groups & Overlays
+	var all = overlays['All'] = L.layerGroup([]);
+	olayerGroups[olayerGroups.length] = all;
+
+	if (iiv) {
+		var layerCompleted = overlays['Completed'] = (udata != null ? L.layerGroup(icompleted) : L.layerGroup([]));
+		olayerGroups[olayerGroups.length] = layerCompleted;
+	}
+
+var loadWithItem = (params != null && mapCode == params.code && params.id != null);
+
+var ocategories = $('#categories');
+var searchCategory = $('#searchCategoryList');
+searchCategory.append('<li class="searchCategoryItem selectedCategoryItem" style="background-color:"><img src="https://diablo4.wiki.fextralife.com/file/Diablo-4/side-testicon-0.png" style="height:28px;" /><span style="cursor: default;">[All Categories]</span></li>');
+	$.each(categories, function() {
+//		var lgGroup = L.layerGroup(vmarkers[this.id]);
+		var lgGroup = L.layerGroup(vmarkers[(isNewSearch ? this.id : this.name)]);
+		var index = olayerGroups.length;
+		olayerGroups[index] = lgGroup;
+////		overlays[this.name] = lgGroup;		
+////		olayerGroupsIndexes[this.name] = index;
+		if (isNewSearch) {
+			overlays[this.id] = lgGroup;		
+			olayerGroupsIndexes[this.id] = index;
+		} else {
+			overlays[this.name] = lgGroup;
+			olayerGroupsIndexes[this.name] = index;
+		}
+		// adding categories in search filter
+		var image = (this.image != null ? this.image : 'https://diablo4.wiki.fextralife.com/file/Diablo-4/side-testicon-0.png');
+		searchCategory.append('<li class="searchCategoryItem" style="background-color:"><img src="' + image + '" style="height:28px;" /><span style="cursor: default;">' + this.name + '</span></li>');
+		ocategories.append('<button id="bcat-' + this.id.replaceAll(" ", "_") + '" class="map_sidebar_category' + (!loadWithItem && (this.loadDefault || this.name == 'Locations') ? ' selected_map_category' : '') + '"><img style="width: 24px; height: 24px;" title="' + this.name + '" src="' + (this.image != null ? this.image : 'https://diablo4.wiki.fextralife.com/file/Diablo-4/side-testicon-0.png') + '" alt="' + this.name + '" width="24" height="24"> ' + this.name + '</button>');
+	});
+
+
+	// the rest
+	if (params.layers) {
+		var activeLayers = params.layers.split(',').map(function(item) { // map function not supported in IE < 9
+			return layers[item];
+		});
+	}
+
+
+	map = (window.parent.document.getElementById('main-content') != null ? L.map('map',{zoomSnap:0.25,attributionControl: false, center: [0, 0], zoom: 2, layers: olayerGroups, crs: L.CRS.Simple}) : null);
+	map.options.minZoom = 2;
+	map.options.maxZoom = 7;
+	if (map != null) {
+		if ((params == null || params.id == null) && ('96747699-d8a3-44b4-b2d6-cf6b45c579c6' == '322a1a6b-41fe-4823-b6a6-55ab63fdca67' || '96747699-d8a3-44b4-b2d6-cf6b45c579c6' == 'd8dc59f2-67df-452e-a9ea-d2c00ddc3a2b')) {
+			map.setView([-189.25,106.125], 3);
+		}
+		if (iiv && !iOS()) {
+			if (!isMobile) {
+				var fsControl = L.control.fullscreen({position: 'bottomright', zoomDelta:0.10});
+				map.addControl(fsControl);
+			} else {
+				var fsControl = L.control.fullscreen({position: 'bottomright', forceSeparateButton: true, zoomDelta:0.10});
+				map.addControl(fsControl);
+			}
+		} else {
+			if (!isMobile) {
+				map.zoomControl.setPosition('bottomright');
+			}
+		}
+
+		// Create additional Control placeholders
+		function addControlPlaceholders(map) {
+			var corners = map._controlCorners, l = 'leaflet-', container = map._controlContainer;
+	
+			function createCorner(vSide, hSide) {
+				var className = l + vSide + ' ' + l + hSide;
+				corners[vSide + hSide] = L.DomUtil.create('div', className, container);
+			}
+	
+			createCorner('top', 'center');
+			createCorner('middle', 'center');
+			createCorner('middle', 'left');
+			createCorner('middle', 'right');
+			createCorner('bottom', 'center');
+		}
+		addControlPlaceholders(map);
+	
+		// Reference the Titles
+		L.tileLayer('/file/Elden-Ring/map-96747699-d8a3-44b4-b2d6-cf6b45c579c6/map-tiles.1/{z}/{x}/{y}.jpg', {minZoom:0, maxZoom:7, continuousWorld:false, noWrap:true, crs: L.CRS.Simple,}).addTo(map);
+		var mapSW = [0, 35000], mapNE = [35000, 0];
+		if ('null' == 'null' || 'null' == 'null' || 'null' == 'null' || 'null' == 'null') {
+			map.setMaxBounds(new L.LatLngBounds(map.unproject(mapSW, map.getMaxZoom()), map.unproject(mapNE, map.getMaxZoom()),));
+		} else {
+			map.setMaxBounds([[null,null],[null,null]]);
+		}
+
+
+
+		// Adding SideBar
+		try {
+			if (!isNewSearch) {
+				$('#sidebar').css('background', '#222222ed');
+				var command = L.control({position: 'topleft'});
+				command.onAdd = function (map) {
+					var div = L.DomUtil.create('div', 'leaflet-bar');
+					div.innerHTML = '<div style="display:flex;"><image id="closeSideBarOut" src="https://swcdn.fextralife.com/images/er-icon-map-info.png" title="More Info" role="button" aria-label="Zoom out" style="outline: currentcolor none medium;"/>' + (iiv ? '&nbsp;&nbsp;' + (isNewSearch ? '' : '<div class="btn-group" style="width:98px;"><div class="template-selector col-sm-10"><select id="slot-selector" class="form-control" style="width: 80px;"><option selected="selected" value="0">Slot 1</option><option value="1">Slot 2</option><option value="2">Slot 3</option><option value="3">Slot 4</option><option value="4">Slot 5</option></select></div></div>') : '') + '</div>';
+					return div;
+				};
+				command.addTo(map);
+			}
+			var sidebar = L.control.sidebar('sidebar', {autoPan: false, closeButton: false, position: 'left',});
+			map.addControl(sidebar);
+			if (isNewSearch) {
+				$('#sidebar').show();		// only for new search
+				sidebar.show();				// only for new search
+			}
+			// add the event handler
+			document.getElementById('closeSideBarOut').addEventListener('click', function (event) {
+				const clickedClass = event.target.classList;
+				const clickedElement = event.target;
+				if (clickedClass == 'map_sidebar_toggle_button_close') {
+					clickedElement.classList.replace('map_sidebar_toggle_button_close', 'map_sidebar_toggle_button_open');
+					var wmmi = document.getElementById('wmmi');
+					if (wmmi != null) {
+						wmmi.style.display = 'none';
+					}
+				} else {
+					clickedElement.classList.replace('map_sidebar_toggle_button_open', 'map_sidebar_toggle_button_close');
+				}
+				sidebar.toggle();
+				return false;
+			});
+			if (!isNewSearch) {
+				document.getElementById('closeSideBarIn').addEventListener('click', function (event) {
+					const clickedClass = event.target.classList;
+					const clickedElement = event.target;
+					if (clickedClass == 'map_sidebar_toggle_button_close') {
+						clickedElement.classList.replace('map_sidebar_toggle_button_close', 'map_sidebar_toggle_button_open');
+						var wmmi = document.getElementById('wmmi');
+						if (wmmi != null) {
+							wmmi.style.display = 'none';
+						}
+					} else {
+						clickedElement.classList.replace('map_sidebar_toggle_button_open', 'map_sidebar_toggle_button_close');
+					}
+					sidebar.toggle();
+					return false;
+				});
+			}
+
+var mapLogoOpacity = 0;
+			// collapse menu desktop (when required)
+			if (isNewSearch && isMenuCollapsed) {
+				var button = document.getElementById("closeSideBarOut");
+				button.classList.replace('map_sidebar_toggle_button_close', 'map_sidebar_toggle_button_open');
+
+				mapLogoOpacity = 1;
+				sidebar.toggle();
+				var wmmi = document.getElementById('wmmi');
+				if (wmmi != null) {
+					wmmi.style.display = 'initial';
+				}
+			}
+		} catch (error) {
+			alert('error' + error);
+		}
+
+		// Search here
+		map.addLayer(searchLayer);
+
+		initialBounds = map.getBounds();
+
+		const results = [];
+		var resultsLayer = L.featureGroup();
+		const MultipleResultsLeafletSearch = L.Control.Search.extend({
+			_createTip: function(text, val) {
+				var tip;
+				var xtext = text.substring(text.indexOf('-') + 1, text.length);
+				if (this.options.buildTip) {
+					tip = this.options.buildTip.call(this, text, val); //custom tip node or html string
+					if (typeof tip === 'string') {
+						var tmpNode = L.DomUtil.create('div');
+						tmpNode.innerHTML = tip;
+						tip = tmpNode.firstChild;
+					}
+				} else {
+					tip = L.DomUtil.create('li', '');
+					tip.innerHTML = xtext;
+				}
+			
+				L.DomUtil.addClass(tip, 'search-tip');
+				tip._text = text; //value replaced in this._input and used by _autoType
+	
+				if (this.options.tipAutoSubmit)
+					L.DomEvent
+						.disableClickPropagation(tip)		
+						.on(tip, 'click', L.DomEvent.stop, this)
+						.on(tip, 'click', function(e) {
+							this._input.value = xtext;
+							this._handleAutoresize();
+							this._input.focus();
+							this._hideTooltip();	
+							this._handleSubmit();
+						}, this);
+					return tip;
+			},
+		});
+		var controlSearch = new MultipleResultsLeafletSearch({
+			propertyName: 'alt',
+			position:'topleft',
+			layer: searchLayer,
+			initial: false,
+			zoom: 12,
+			marker: false,
+			collapsed: isMobile,
+			buildTip: (text, loc) => {
+				results.push(loc);
+				const tip = L.DomUtil.create('div');
+				var xtext = text.substring(text.indexOf('-') + 1, text.length);
+				tip.innerHTML = xtext;
+				tip.id = 666;
+				L.DomEvent.disableClickPropagation(tip).on(tip, 'click', L.DomEvent.stop, controlSearch).on(tip, 'click', function (e) {
+					controlSearch._input.value = text;
+					controlSearch._handleAutoresize();
+					controlSearch._input.focus();
+					controlSearch._hideTooltip();
+					controlSearch._handleSubmit();
+				}, controlSearch);
+	
+				olayerGroups[olayerGroups.length] = loc.layer;
+				const marker = loc.layer;
+				map.addLayer(marker);
+	
+				return tip;
+			},
+		});
+		controlSearch.on('search:locationfound', function(e) {
+			map.addLayer(e.layer);
+			e.layer.openPopup();
+		});
+
+		if (!isNewSearch) {
+			map.addControl(controlSearch);
+			$('.leaflet-control-search').addClass('leaflet-bar');
+
+			document.getElementById('searchtext9').addEventListener('input', function (evt) {
+				$.each(olayerGroups, function() {
+					map.removeLayer(this);
+				});
+				return false;
+			});
+
+			// Adding Layer Control
+			var categoriesLayer = L.control.layers(null, overlays, {collapsed: isMobile }).addTo(map);
+		}
+
+		// Adding Watermark
+		if ('/file/Elden-Ring/map-96747699-d8a3-44b4-b2d6-cf6b45c579c6/elden-ring-bottom-logo-map-wiki-guide.png' != '') {
+			L.Control.Watermark = L.Control.extend({
+				onAdd:function(map){
+					var img = L.DomUtil.create('img');
+					img.src = '/file/Elden-Ring/map-96747699-d8a3-44b4-b2d6-cf6b45c579c6/elden-ring-bottom-logo-map-wiki-guide.png';
+					img.setAttribute('class', 'map_logo');
+					img.setAttribute('style', 'transition: opacity 0.5s ease 0s; opacity: ' + mapLogoOpacity + ';');
+					img.style.width = '300px';
+					return img;
+				},
+				onRemove:function(map){},
+			});
+			L.control.watermark = function(opts){
+				return new L.Control.Watermark(opts);
+			}
+			L.control.watermark({position:'bottomleft'}).addTo(map);
+		}
+
+		// Watermark fade tied to side bar
+		var image = document.querySelector(".map_logo");
+		if (image != null) {
+			var button = document.getElementById("closeSideBarOut");
+			button.addEventListener("click", function() {
+				if (image.style.opacity === "0") {
+					image.style.opacity = "1";
+				} else {
+					image.style.opacity = "0";
+				}
+			});
+			image.style.transition = "opacity 0.5s";
+		}
+
+		// Adding Mouse Position
+		L.control.mousePosition({position: 'bottomcenter'}).addTo(map);
+
+		if (params != null && mapCode == params.code && params.id != null) {
+			$.each(categories, function() {
+////				var overlayGroupsIndex = olayerGroupsIndexes[this.id];
+				var overlayGroupsIndex = olayerGroupsIndexes[(isNewSearch ? this.id : this.name)];
+//				var overlayGroupsIndex = olayerGroupsIndexes[this.id];
+				map.removeLayer(olayerGroups[overlayGroupsIndex]);
+			});
+			$('#closeSideBarOut').click();
+			$('#closeSideBarOut').click();
+			var sio = edindex[params.id];
+			if (sio != null) {
+				map.addLayer(sio);
+				map.setView(sio.getLatLng(), map.getMaxZoom());
+				sio.openPopup();
+			}
+		}
+	}
+
+	if (iiv) {
+		if (params != null && mapCode == params.code && params.id != null) {
+			var controlCategories = $('.leaflet-control-layers-selector');
+			if (controlCategories != null && Array.isArray(controlCategories) && controlCategories.length > 0) {
+				controlCategories[0].click();
+			}
+		} else {
+			if (isNewSearch) {
+		   		$.each(categories, function() {
+					if (!this.loadDefault) {
+						var overlayGroupsIndex = olayerGroupsIndexes[this.id];
+						map.removeLayer(olayerGroups[overlayGroupsIndex]);
+		   			}
+				});
+			} else {
+				var controlCategories = $('.leaflet-control-layers-selector');
+				if (controlCategories != null && controlCategories.length > 0) {
+					controlCategories[0].click();
+					$.each($('.leaflet-control-layers-selector'), function() {
+						var group = $(this).next().text().trim().toLowerCase();
+						if (group == 'locations') {
+							$(this).click();
+						}
+					});
+				}
+			}
+		}
+		$('#sidebar').show();
+	} else {
+		if (params != null && mapCode == params.code && params.id != null) {
+			$('#closeSideBarOut').click();
+			$('#closeSideBarOut').click();
+			var sio = edindex[params.id];
+			if (sio != null) {
+				map.setView(sio.getLatLng(), map.getMaxZoom());
+				sio.openPopup();
+			}
+		}
+		document.addEventListener('DOMContentLoaded', (event) => {
+			if (params != null && mapCode == params.code && params.id != null) {
+			} else {
+				if (isNewSearch) {
+			   		$.each(categories, function() {
+						if (!this.loadDefault) {
+							var overlayGroupsIndex = olayerGroupsIndexes[this.id];
+							map.removeLayer(olayerGroups[overlayGroupsIndex]);
+		   				}
+					});
+				} else {
+					$('.leaflet-control-layers-selector')[0].click();
+					$.each($('.leaflet-control-layers-selector'), function() {
+						var group = $(this).next().text();
+						if (group.trim().toLowerCase() == 'locations') {
+							$(this).click();
+						}
+					});
+				}
+			}
+			$('#sidebar').show();
+			return false;
+		});
+	}
+
+	return false;
+}
+function markCompleted(isCompleted, itemId) {
+	var item = getItem(itemId);
+	var vmarker = edindex[itemId];
+	var icon = null;
+	if (isCompleted) {
+		var imageu = (item.image.replace('.png','-completed.png'));
+		if (item.hasLabel) {
+//			icon = L.divIcon({iconSize:[item.imageSize, item.imageSize], html:'<div class="map-item-title"><img style="width:' + item.imageSize + 'px;height:' + item.imageSize + 'px;" src="' + imageu + '"/><div class="xmap-label-content">' + item.name + '</div><div class="map-label-arrow"></div></div>'});
+			icon = L.divIcon({iconSize:[item.imageSizeW, item.imageSizeH], html:'<div class="map-item-title"><img style="width:' + item.imageSizeW + 'px;height:' + item.imageSizeH + 'px;" src="' + imageu + '"/><div class="xmap-label-content">' + item.name + '</div><div class="map-label-arrow"></div></div>'});
+		} else {
+			if (isIconCentered) {
+//				icon = L.icon({iconUrl: imageu,iconSize:[item.imageSize, item.imageSize],iconAnchor:[(item.imageSize/2), (item.imageSize/2)],});
+				icon = L.icon({iconUrl: imageu,iconSize:[item.imageSizeW, item.imageSizeH],iconAnchor:[(item.imageSizeW/2), (item.imageSizeH/2)],});
+			} else {
+//				icon = L.icon({iconUrl: imageu,iconSize:[item.imageSize, item.imageSize],iconAnchor:[0, 0],});
+				icon = L.icon({iconUrl: imageu,iconSize:[item.imageSizeW, item.imageSizeH],iconAnchor:[0, 0],});
+			}
+		}
+	} else {
+		if (item.hasLabel) {
+//			icon = L.divIcon({iconSize:[item.imageSize, item.imageSize], html:'<div class="map-item-title"><img style="width:' + item.imageSize + 'px;height:' + item.imageSize + 'px;" src="' + item.image + '"/><div class="xmap-label-content">' + item.name + '</div><div class="map-label-arrow"></div></div>'});
+			icon = L.divIcon({iconSize:[item.imageSizeW, item.imageSizeH], html:'<div class="map-item-title"><img style="width:' + item.imageSizeW + 'px;height:' + item.imageSizeH + 'px;" src="' + item.image + '"/><div class="xmap-label-content">' + item.name + '</div><div class="map-label-arrow"></div></div>'});
+		} else {
+			if (isIconCentered) {
+//				icon = L.icon({iconUrl: item.image,iconSize:[item.imageSize, item.imageSize],iconAnchor:[(item.imageSize/2), (item.imageSize/2)],});
+				icon = L.icon({iconUrl: item.image,iconSize:[item.imageSizeW, item.imageSizeH],iconAnchor:[(item.imageSizeW/2), (item.imageSizeH/2)],});
+			} else {
+//				icon = L.icon({iconUrl: item.image,iconSize:[item.imageSize, item.imageSize],iconAnchor:[0, 0],});
+				icon = L.icon({iconUrl: item.image,iconSize:[item.imageSizeW, item.imageSizeH],iconAnchor:[0, 0],});
+			}
+		}
+	}
+	var catIndex = olayerGroupsIndexes[item.category];
+	var pp = olayerGroups[catIndex].getLayer(vmarker._leaflet_id);
+	pp.setIcon(icon);
+	var url = window.parent.location.toString();
+	var pageName = url.substring(url.indexOf('.wiki.fextralife.com/') + 21, url.length);
+	var pageParamsIndex = pageName.indexOf('?');
+	if (pageParamsIndex > -1) {
+		pageName = pageName.substring(0, pageParamsIndex); 
+	}
+	var hasPageLink = item.hasPageLink != null && item.hasPageLink;
+	var pageLink = (hasPageLink ? item.pageLink != null && item.pageLink.trim() != '' ? item.pageLink.trim() : '/' + item.name.replaceAll(" ", "+") : '');
+//	pp.setPopupContent('<div data="' + item.id + '" class="d4_map_popup" style="width: 300px;"><div class="d4_map_popup_header" style="text-align: left;"><h4 style="text-align: center;">' + (item.image != null ? '<img style="width: ' + item.imageSize + 'px; height: ' + item.imageSize + 'px;" src="' + item.image + '" width="' + item.imageSize + '" height="' + item.imageSize + '" alt="map popup icon sample">&nbsp;' : '') + (hasPageLink ? '&nbsp;<a style="text-decoration: none;color: #FFF;text-shadow: none!Important;" title="' + item.name + '" href="' + pageLink + '" target="_blank" rel="noopener noreferrer">' + item.name + '</a>' : item.name) + '</h4></div><div class="d4_map_popup_content" style="text-align: left;"><p>' + (item.description != null ? item.description : '') + '</p></div><img style="height:25px;width: 275px; display: block; margin-left: auto; margin-right: auto;" title="star-bullet-d4-wiki-guide" src="https://swcdn.fextralife.com/images/map_popup_divider.png" alt="map popup divider"><div class="d4_map_popup_footer">' + (item.hasCoordsLink ? '<p style="text-align: center;"><a class="wiki_link map-item-xy" title="Elden Ring Interactive Map - ' + item.name + '" href="' + location.protocol + '//' + window.parent.location.host + window.parent.location.pathname + '?id=' + item.id + '&code=mapC" class="wiki_link map-item-xy" target="_blank" rel="noopener noreferrer"><img style="width: 12px;height: 15px;padding-bottom:initial;" title="map_popup_marker" src="https://swcdn.fextralife.com/images/map_popup_marker.png" alt="map popup marker" width="12" height="15"> Map Coordinates Link</a></p>' : '') + (iiv ? '<p><button id="imcb-' + item.id + '" class="d4_popup_button map-item-' + (isCompleted ? 'reset' : 'complete') + '"><input class="d4_checkbox" type="checkbox"' + (isCompleted ? ' checked' : '') + '>&nbsp;&nbsp;' + (isCompleted ? 'Completed - Click to Reset' : 'Mark as Completed') + '</button></p>' : '') + '</div>');
+	var mapCoorsLinkPage = (window.parent.location.pathname.toLowerCase() == '/shadow+of+the+erdtree+map' || window.parent.location.pathname.toLowerCase() == '/shadow of the erdtree map' || window.parent.location.pathname.toLowerCase() == '/shadow%20of%20the%20erdtree%20map' ? '/Interactive+Map' : window.parent.location.pathname);
+//	pp.setPopupContent('<div data="' + item.id + '" class="d4_map_popup" style="width: 300px;"><div class="d4_map_popup_header" style="text-align: left;"><h4 style="text-align: center;">' + (item.image != null ? '<img style="width: ' + item.imageSize + 'px; height: ' + item.imageSize + 'px;" src="' + item.image + '" width="' + item.imageSize + '" height="' + item.imageSize + '" alt="map popup icon sample">&nbsp;' : '') + (hasPageLink ? '&nbsp;<a style="text-decoration: none;color: #FFF;text-shadow: none!Important;" title="' + item.name + '" href="' + pageLink + '" target="_blank" rel="noopener noreferrer">' + item.name + '</a>' : item.name) + '</h4></div><div class="d4_map_popup_content" style="text-align: left;"><p>' + (item.description != null ? item.description : '') + '</p></div><img style="height:25px;width: 275px; display: block; margin-left: auto; margin-right: auto;" title="star-bullet-d4-wiki-guide" src="https://swcdn.fextralife.com/images/map_popup_divider.png" alt="map popup divider"><div class="d4_map_popup_footer">' + (item.hasCoordsLink ? '<p style="text-align: center;"><a class="wiki_link map-item-xy" title="Elden Ring Interactive Map - ' + item.name + '" href="' + location.protocol + '//' + window.parent.location.host + mapCoorsLinkPage + '?id=' + item.id + '&code=mapC" class="wiki_link map-item-xy" target="_blank" rel="noopener noreferrer"><img style="width: 12px;height: 15px;padding-bottom:initial;" title="map_popup_marker" src="https://swcdn.fextralife.com/images/map_popup_marker.png" alt="map popup marker" width="12" height="15"> Map Coordinates Link</a></p>' : '') + (iiv ? '<p><button id="imcb-' + item.id + '" class="d4_popup_button map-item-' + (isCompleted ? 'reset' : 'complete') + '"><input class="d4_checkbox" type="checkbox"' + (isCompleted ? ' checked' : '') + '>&nbsp;&nbsp;' + (isCompleted ? 'Completed - Click to Reset' : 'Mark as Completed') + '</button></p>' : '') + '</div>');
+	pp.setPopupContent('<div data="' + item.id + '" class="d4_map_popup" style="width: 300px;"><div class="d4_map_popup_header" style="text-align: left;"><h4 style="text-align: center;">' + (item.image != null ? '<img style="width: ' + item.imageSizeW + 'px; height: ' + item.imageSizeH + 'px;" src="' + item.image + '" width="' + item.imageSizeW + '" height="' + item.imageSizeH + '" alt="map popup icon sample">&nbsp;' : '') + (hasPageLink ? '&nbsp;<a style="text-decoration: none;color: #FFF;text-shadow: none!Important;" title="' + item.name + '" href="' + pageLink + '" target="_blank" rel="noopener noreferrer">' + item.name + '</a>' : item.name) + '</h4></div><div class="d4_map_popup_content" style="text-align: left;"><p>' + (item.description != null ? item.description : '') + '</p></div><img style="height:25px;width: 275px; display: block; margin-left: auto; margin-right: auto;" title="star-bullet-d4-wiki-guide" src="https://swcdn.fextralife.com/images/map_popup_divider.png" alt="map popup divider"><div class="d4_map_popup_footer">' + (item.hasCoordsLink ? '<p style="text-align: center;"><a class="wiki_link map-item-xy" title="Elden Ring Interactive Map - ' + item.name + '" href="' + location.protocol + '//' + window.parent.location.host + mapCoorsLinkPage + '?id=' + item.id + '&code=mapC" class="wiki_link map-item-xy" target="_blank" rel="noopener noreferrer"><img style="width: 12px;height: 15px;padding-bottom:initial;" title="map_popup_marker" src="https://swcdn.fextralife.com/images/map_popup_marker.png" alt="map popup marker" width="12" height="15"> Map Coordinates Link</a></p>' : '') + (iiv ? '<p><button id="imcb-' + item.id + '" class="d4_popup_button map-item-' + (isCompleted ? 'reset' : 'complete') + '"><input class="d4_checkbox" type="checkbox"' + (isCompleted ? ' checked' : '') + '>&nbsp;&nbsp;' + (isCompleted ? 'Completed - Click to Reset' : 'Mark as Completed') + '</button></p>' : '') + '</div>');
+	if (isCompleted) {
+		olayerGroups[catIndex].addLayer(pp);
+	} else {
+		olayerGroups[catIndex].removeLayer(pp);
+		olayerGroups[catIndex].addLayer(pp);
+		pp.openPopup();
+
+		// remove from array
+		var index = icompleted.findIndex(function(obj) {
+			return obj.options.alt.split('-')[0] === itemId;
+		});
+		if (index !== -1) {
+			icompleted.splice(index, 1);
+		}
+	}
+	edindex[itemId] = pp;
+	return false;
+}
+//function updateCompleted(isCompleted, mapId, itemId) {
+function updateCompleted(isCompleted, mapId, itemId, callback) {
+//	var result = true;
+	$.ajax({
+		type: (isCompleted ? 'POST' : 'DELETE'),
+//		url: '/ws/map/completed/map/' + mapId + '/' + currentSlot + '/' + itemId + '/user/' + uid,
+		url: '/ws/map/completed/' + mapId + '/' + currentSlot + '/' + itemId + '/user/' + uid,
+		success: function(data) {
+			loadUData(mapId, uid, function(response) {
+				udata = (response != null && response != '' ? JSON.parse(response) : null);
+			});
+			callback(true);
+		},
+		error: function(jqXHR, textStatus, errorThrown) {
+			console.log('There has been an error and completed could not be processed!');
+//			result = false;
+			var rerror = 'Error! Operation could not be performed!';
+			if (jqXHR.status == 403 || jqXHR.status == 405 && !isCompleted) {
+				var wlc = getCookie('gxnwc');
+				if (wlc == null) {
+					rerror = 'Error! Your session has expired! You need to sign in';
+					alert(rerror);
+					location.reload();
+				} else {
+					alert(rerror);
+				}
+			} else {
+				alert(rerror);
+			}
+			callback(false);
+		}
+	});
+//	return result;
+}
+function loadSlotData(mid, uid, callback){
+	var xobj = new XMLHttpRequest();
+	xobj.overrideMimeType('application/json');
+	xobj.open('GET', location.protocol + '//' + location.host + '/ws/map/completed-data/map/' + mid + '/' + currentSlot + '/user/' + uid + '?v='+ new Date().getTime(), true);
+//	xobj.open('GET', location.protocol + '//' + location.host + '/map-custom-' + mid + '-data-' + uid + '-slot' + currentSlot + '.json?v='+ new Date().getTime(), true);
+	xobj.onreadystatechange = function () {
+		if (xobj.readyState == 4 && xobj.status == '200') {
+			callback(xobj.responseText);
+		} else if (xobj.readyState == 4 && xobj.status == '403') {
+			callback(null);
+		} else if (xobj.readyState == 4 && xobj.status == '404') {
+			callback(null);
+		} else if (xobj.readyState == 4 && xobj.status == '500') {
+			callback(null);
+		}
+	};
+	xobj.send(null);
+}
+function refreshSlot() {
+	if (!isNewSearch) {
+		var completedOverlay = overlays['Completed'];
+		if (completedOverlay) {
+			completedOverlay.clearLayers();
+		}
+	}
+	$.each(icompleted, function() {
+		var vmarker = this;
+		var itemId = vmarker.options.alt.split('-')[0];
+		var item = getItem(itemId);
+		var icon = null;
+		if (item.hasLabel) {
+//			icon = L.divIcon({iconSize:[item.imageSize, item.imageSize], html:'<div class="map-item-title"><img style="width:' + item.imageSize + 'px;height:' + item.imageSize + 'px;" src="' + item.image + '"/><div class="xmap-label-content">' + item.name + '</div><div class="map-label-arrow"></div></div>'});
+			icon = L.divIcon({iconSize:[item.imageSizeW, item.imageSizeH], html:'<div class="map-item-title"><img style="width:' + item.imageSizeW + 'px;height:' + item.imageSizeH + 'px;" src="' + item.image + '"/><div class="xmap-label-content">' + item.name + '</div><div class="map-label-arrow"></div></div>'});
+		} else {
+			if (isIconCentered) {
+//				icon = L.icon({iconUrl: item.image,iconSize:[item.imageSize, item.imageSize],iconAnchor:[(item.imageSize/2), (item.imageSize/2)],});
+				icon = L.icon({iconUrl: item.image,iconSize:[item.imageSizeW, item.imageSizeH],iconAnchor:[(item.imageSizeW/2), (item.imageSizeH/2)],});
+			} else {
+//				icon = L.icon({iconUrl: item.image,iconSize:[item.imageSize, item.imageSize],iconAnchor:[0, 0],});
+				icon = L.icon({iconUrl: item.image,iconSize:[item.imageSizeW, item.imageSizeH],iconAnchor:[0, 0],});
+			}
+		}
+		var catIndex = olayerGroupsIndexes[item.category];
+		var pp = olayerGroups[catIndex].getLayer(vmarker._leaflet_id);	// error here!
+		pp.setIcon(icon);
+		var url = window.parent.location.toString();
+		var pageName = url.substring(url.indexOf('.wiki.fextralife.com/') + 21, url.length);
+		var pageParamsIndex = pageName.indexOf('?');
+		if (pageParamsIndex > -1) {
+		        pageName = pageName.substring(0, pageParamsIndex);
+		}
+		var hasPageLink = item.hasPageLink != null && item.hasPageLink;
+		var pageLink = (hasPageLink ? item.pageLink != null && item.pageLink.trim() != '' ? item.pageLink.trim() : '/' + item.name.replaceAll(" ", "+") : '');
+//		pp.setPopupContent('<div data="' + item.id + '" class="d4_map_popup" style="width: 300px;"><div class="d4_map_popup_header" style="text-align: left;"><h4 style="text-align: center;">' + (item.image != null ? '<img style="width: ' + item.imageSize + 'px; height: ' + item.imageSize + 'px;" src="' + item.image + '" width="' + item.imageSize + '" height="' + item.imageSize + '" alt="map popup icon sample">&nbsp;' : '') + (hasPageLink ? '<a style="text-decoration: none;color: #FFF;text-shadow: none!Important;" title="' + item.name + '" href="' + pageLink + '" target="_blank" rel="noopener noreferrer">' + item.name + '</a>' : item.name) +	'</h4></div><div class="d4_map_popup_content" style="text-align: left;"><p>' + (item.description != null ? item.description : '') + '</p></div><img style="height:25px;width: 275px; display: block; margin-left: auto; margin-right: auto;" title="star-bullet-d4-wiki-guide" src="https://swcdn.fextralife.com/images/map_popup_divider.png" alt="map popup divider"><div class="d4_map_popup_footer">' + (item.hasCoordsLink ? '<p style="text-align: center;"><a class="wiki_link map-item-xy" title="Elden Ring Interactive Map - ' + item.name + '" href="' + location.protocol + '//' + window.parent.location.host + window.parent.location.pathname + '?id=' + item.id + '&code=mapC" class="wiki_link map-item-xy" target="_blank" rel="noopener noreferrer"><img style="width: 12px;height: 15px;padding-bottom:initial;" title="map_popup_marker" src="https://swcdn.fextralife.com/images/map_popup_marker.png" alt="map popup marker" width="12" height="15"> Map Coordinates Link</a></p>' : '') + (iiv ? '<p><button id="imcb-' + item.id + '" class="d4_popup_button map-item-' + ('complete') + '"><input class="d4_checkbox" type="checkbox"' + ('') + '>&nbsp;&nbsp;' + ('Mark as Completed') + '</button></p>' : '') + '</div>');
+		var mapCoorsLinkPage = (window.parent.location.pathname.toLowerCase() == '/shadow+of+the+erdtree+map' || window.parent.location.pathname.toLowerCase() == '/shadow of the erdtree map' || window.parent.location.pathname.toLowerCase() == '/shadow%20of%20the%20erdtree%20map' ? '/Interactive+Map' : window.parent.location.pathname);
+//		pp.setPopupContent('<div data="' + item.id + '" class="d4_map_popup" style="width: 300px;"><div class="d4_map_popup_header" style="text-align: left;"><h4 style="text-align: center;">' + (item.image != null ? '<img style="width: ' + item.imageSize + 'px; height: ' + item.imageSize + 'px;" src="' + item.image + '" width="' + item.imageSize + '" height="' + item.imageSize + '" alt="map popup icon sample">&nbsp;' : '') + (hasPageLink ? '<a style="text-decoration: none;color: #FFF;text-shadow: none!Important;" title="' + item.name + '" href="' + pageLink + '" target="_blank" rel="noopener noreferrer">' + item.name + '</a>' : item.name) +	'</h4></div><div class="d4_map_popup_content" style="text-align: left;"><p>' + (item.description != null ? item.description : '') + '</p></div><img style="height:25px;width: 275px; display: block; margin-left: auto; margin-right: auto;" title="star-bullet-d4-wiki-guide" src="https://swcdn.fextralife.com/images/map_popup_divider.png" alt="map popup divider"><div class="d4_map_popup_footer">' + (item.hasCoordsLink ? '<p style="text-align: center;"><a class="wiki_link map-item-xy" title="Elden Ring Interactive Map - ' + item.name + '" href="' + location.protocol + '//' + window.parent.location.host + mapCoorsLinkPage + '?id=' + item.id + '&code=mapC" class="wiki_link map-item-xy" target="_blank" rel="noopener noreferrer"><img style="width: 12px;height: 15px;padding-bottom:initial;" title="map_popup_marker" src="https://swcdn.fextralife.com/images/map_popup_marker.png" alt="map popup marker" width="12" height="15"> Map Coordinates Link</a></p>' : '') + (iiv ? '<p><button id="imcb-' + item.id + '" class="d4_popup_button map-item-' + ('complete') + '"><input class="d4_checkbox" type="checkbox"' + ('') + '>&nbsp;&nbsp;' + ('Mark as Completed') + '</button></p>' : '') + '</div>');
+		pp.setPopupContent('<div data="' + item.id + '" class="d4_map_popup" style="width: 300px;"><div class="d4_map_popup_header" style="text-align: left;"><h4 style="text-align: center;">' + (item.image != null ? '<img style="width: ' + item.imageSizeW + 'px; height: ' + item.imageSizeH + 'px;" src="' + item.image + '" width="' + item.imageSizeW + '" height="' + item.imageSizeH + '" alt="map popup icon sample">&nbsp;' : '') + (hasPageLink ? '<a style="text-decoration: none;color: #FFF;text-shadow: none!Important;" title="' + item.name + '" href="' + pageLink + '" target="_blank" rel="noopener noreferrer">' + item.name + '</a>' : item.name) +	'</h4></div><div class="d4_map_popup_content" style="text-align: left;"><p>' + (item.description != null ? item.description : '') + '</p></div><img style="height:25px;width: 275px; display: block; margin-left: auto; margin-right: auto;" title="star-bullet-d4-wiki-guide" src="https://swcdn.fextralife.com/images/map_popup_divider.png" alt="map popup divider"><div class="d4_map_popup_footer">' + (item.hasCoordsLink ? '<p style="text-align: center;"><a class="wiki_link map-item-xy" title="Elden Ring Interactive Map - ' + item.name + '" href="' + location.protocol + '//' + window.parent.location.host + mapCoorsLinkPage + '?id=' + item.id + '&code=mapC" class="wiki_link map-item-xy" target="_blank" rel="noopener noreferrer"><img style="width: 12px;height: 15px;padding-bottom:initial;" title="map_popup_marker" src="https://swcdn.fextralife.com/images/map_popup_marker.png" alt="map popup marker" width="12" height="15"> Map Coordinates Link</a></p>' : '') + (iiv ? '<p><button id="imcb-' + item.id + '" class="d4_popup_button map-item-' + ('complete') + '"><input class="d4_checkbox" type="checkbox"' + ('') + '>&nbsp;&nbsp;' + ('Mark as Completed') + '</button></p>' : '') + '</div>');
+		olayerGroups[catIndex].removeLayer(pp);
+		olayerGroups[catIndex].addLayer(pp);
+		edindex[itemId] = pp;
+	});
+	icompleted = new Array();
+
+	loadSlotData(mapId, uid, function(response) {
+		var slotData = (response != null && response != '' ? JSON.parse(response) : null);
+		if (slotData != null) {
+			$.each(slotData, function() {
+				var vmarker = edindex[this.item];
+				markCompleted(true, this.item);
+				icompleted[icompleted.length] = vmarker;
+			});
+			if (!isNewSearch) {
+				var completedOverlay = overlays['Completed'];
+				if (completedOverlay) {
+					$.each(icompleted, function() {
+						completedOverlay.addLayer(this);
+					});
+				}
+			}
+		}
+		resetView();
+	});
+	return false;
+}
+function copyToClipboard(copyText) {
+	navigator.clipboard
+		.writeText(copyText)
+		.then(() => {
+			return true;
+		})
+		.catch(() => {
+			return false;
+	});
+}
+
+init();
+
+$(document).off('click', '.leaflet-control-layers-selector');
+$(document).on('click', '.leaflet-control-layers-selector', function(e) {
+	var value = Boolean($(this).prop('checked'));
+	var name = $(this).next().text().trim();
+	if (name == 'All') {
+		if (value) {
+	   		$.each(olayerGroups, function() {
+				map.addLayer(this);
+			});
+		} else {
+	   		$.each(olayerGroups, function() {
+				map.removeLayer(this);
+			});
+		}
+	}
+});
+$(document).off('click', '.map-item-xy');
+$(document).on('click', '.map-item-xy', function(e) {
+	var raw = $(this).attr('href');
+	try {
+		copyToClipboard(raw);
+	} catch (error) {
+		console.error(error);
+	}
+	var itemId = $(this).parent().parent().parent().attr('data');
+	var vmarker = edindex[itemId];
+	if (vmarker != null) {
+		map.flyTo(vmarker.getLatLng(), map.getMaxZoom(), {
+			animate: true,
+			duration: 0.4 // Adjust the duration as needed
+		});
+		vmarker.openPopup();
+	}
+	return false;
+});
+$(document).off('click', '.map-item-complete');
+$(document).on('click', '.map-item-complete', function(e) {
+	var itemId = $(this).parent().parent().parent().attr('data');
+//	var isSuccessfull = updateCompleted(true, mapId, itemId);
+//console.log('isSuccessfull: ' + isSuccessfull);
+//	if (isSuccessfull) {
+//		markCompleted(true, itemId);
+//		var vmarker = edindex[itemId];
+//		icompleted[icompleted.length] = vmarker;
+//		var layerCompleted = overlays['Completed'] = (L.layerGroup(icompleted));
+//		olayerGroups[olayerGroups.length] = layerCompleted;
+//		var osi = $('.map-search-res-item[data="' + itemId + '"]');
+//		if (osi != null) {
+//			var osiBtn = osi.children().eq(0).children().eq(0).children().eq(3);
+//			osiBtn.removeClass('map_search_element_completed_checkbox_unchecked');
+//			osiBtn.addClass('map_search_element_completed_checkbox_checked');
+//		}
+//	}
+	updateCompleted(true, mapId, itemId, function(result) {
+		if (result) {
+			console.log("Operation successful");
+			markCompleted(true, itemId);
+			var vmarker = edindex[itemId];
+			icompleted[icompleted.length] = vmarker;
+			var layerCompleted = overlays['Completed'] = (L.layerGroup(icompleted));
+			olayerGroups[olayerGroups.length] = layerCompleted;
+			var osi = $('.map-search-res-item[data="' + itemId + '"]');
+			if (osi != null) {
+				var osiBtn = osi.children().eq(0).children().eq(0).children().eq(3);
+				osiBtn.removeClass('map_search_element_completed_checkbox_unchecked');
+				osiBtn.addClass('map_search_element_completed_checkbox_checked');
+			}
+		} else {
+			console.log("Operation failed");
+		}
+	});
+	return false;
+});
+$(document).off('click', '.map-item-reset');
+$(document).on('click', '.map-item-reset', function(e) {
+	var itemId = $(this).parent().parent().parent().attr('data');
+//	var isSuccessfull = updateCompleted(false, mapId, itemId);
+//	if (isSuccessfull) {
+//		markCompleted(false, itemId);
+//		var osi = $('.map-search-res-item[data="' + itemId + '"]');
+//		if (osi != null) {
+//			var osiBtn = osi.children().eq(0).children().eq(0).children().eq(3);
+//			osiBtn.removeClass('map_search_element_completed_checkbox_checked');
+//			osiBtn.addClass('map_search_element_completed_checkbox_unchecked');
+//		}
+//	}
+	updateCompleted(false, mapId, itemId, function(result) {
+		if (result) {
+			markCompleted(false, itemId);
+			var osi = $('.map-search-res-item[data="' + itemId + '"]');
+			if (osi != null) {
+				var osiBtn = osi.children().eq(0).children().eq(0).children().eq(3);
+				osiBtn.removeClass('map_search_element_completed_checkbox_checked');
+				osiBtn.addClass('map_search_element_completed_checkbox_unchecked');
+			}
+		} else {
+			console.log("Operation failed");
+		}
+	});
+	return false;
+});
+$(document).off('change', '#slot-selector');
+$(document).on('change', '#slot-selector', function(e) {
+	currentSlot = $(this).val();
+	loadUData(mapId, uid, function(response) {
+		udata = (response != null && response != '' ? JSON.parse(response) : null);
+		refreshSlot();
+	});
+	return false;
+});
+$(document).bind('contextmenu',function(e){
+	return false;
+});
+
+
+// js scroll firefox
+try {
+	const searchBox = document.getElementById('search-content');
+	searchBox.addEventListener('mouseover', () => {
+		map.scrollWheelZoom.disable();
+	});
+	searchBox.addEventListener('mouseout', () => {
+		map.scrollWheelZoom.enable();
+	});
+} catch(error) {}
+
+
+// 8<-----------------------------------------------------------------------------------------------------------------------------------
+// SEARCH
+// 8<-----------------------------------------------------------------------------------------------------------------------------------
+var kumo = document.getElementsByClassName('search-res-item');
+function handleSearchResultItemClick(me) {
+	var searchedItemId = $(me).parent().parent().parent().attr('data');
+	var vmarker = markers[searchedItemId];
+	map.flyTo(vmarker.getLatLng(), map.getMaxZoom(), {
+		animate: true,
+		duration: 0.4 // Adjust the duration as needed
+	});
+	vmarker.openPopup();
+	$('#toggleMobileMenu').click();
+	return false;
+}
+function handleSearchResultItemImageClick(me) {
+	var url = $(me).attr('data');
+	window.open(url, '_blank');
+	return false;
+}
+function handleAnotherMapItemComplete(me) {
+	var itemId = $(me).parent().parent().parent().attr('data');
+	var oisComplated = udata[itemId];
+	if (oisComplated == null) {
+		var isSuccessfull = updateCompleted(true, mapId, itemId);
+		if (isSuccessfull) {
+			markCompleted(true, itemId);
+			var vmarker = edindex[itemId];
+			icompleted[icompleted.length] = vmarker;
+			var layerCompleted = overlays['Completed'] = (L.layerGroup(icompleted));
+			olayerGroups[olayerGroups.length] = layerCompleted;
+			$(me).removeClass('map_search_element_completed_checkbox_unchecked');
+			$(me).addClass('map_search_element_completed_checkbox_checked');
+		}
+	} else {
+		var isSuccessfull = updateCompleted(false, mapId, itemId);
+		if (isSuccessfull) {
+			markCompleted(false, itemId);
+			$(me).removeClass('map_search_element_completed_checkbox_checked');
+			$(me).addClass('map_search_element_completed_checkbox_unchecked');
+		}
+	}
+	return false;
+}
+function handleSearchCategoryItemClick(me) {
+	var control = $(me);
+	$('.searchCategoryItem').removeClass('selectedCategoryItem');
+	if (control.prop('tagName') == 'LI') {
+		control.addClass('selectedCategoryItem');
+	} else {
+		control.parent().addClass('selectedCategoryItem');
+	}
+	var controlValue = (control.prop('tagName') == 'IMG' ? control.parent().text() : control.text());
+	$('#searchCategorySelectionText').text(controlValue);
+	controlValue = (controlValue == '[All Categories]' ? '' : controlValue);
+	$('#searchCategorySelection').attr('data', controlValue);
+	$('#searchCategorySelection').click();
+// do search!!!
+	var category = $('#searchCategorySelection').attr('data');
+//	category = category.replace(/ /g, '');
+	if (isNewSearch) {category = category.replace(/ /g, '');}
+console.log('xcategory: ' + category);
+	var type = $('#searchType').val();
+	var text = $('#searchField').val();
+	var fcompleted = ($('#searchCompleted').hasClass('map_show_completed_button_checked') ? 'completed' : $('#searchCompleted').hasClass('map_show_completed_button_unchecked') ? 'uncompleted' : 'none');
+	doSearch(category, type, text, fcompleted);
+	$('#btn-clear').show();
+	$('#mbtn-clear').show();
+	return false;
+}
+function handleFilterCategoryClick(me) {
+	var categoryButton = $(me);
+//	var categoryId = categoryButton.text().trim();
+	var categoryId = categoryButton.attr('id').replace(/_/g, ' ').split('bcat-')[1];
+	if (categoryId == 'Show-All') {
+		if (categoryButton.hasClass('selected_map_category')) {
+			categoryButton.removeClass('selected_map_category');
+	   		$.each(categories, function() {
+				$('#bcat-' + this.id.replace(/ /g, '_')).removeClass('selected_map_category');
+				$.each(vmarkers[this.id], function() {
+					var vmarker = this;
+					var itemId = vmarker.options.alt.split('-')[0];
+					var item = getItem(itemId);
+					map.removeLayer(vmarker);
+				});
+			});
+		} else {
+			categoryButton.addClass('selected_map_category');
+	   		$.each(categories, function() {
+				$('#bcat-' + this.id.replace(/ /g, '_')).addClass('selected_map_category');
+				$.each(vmarkers[this.id], function() {
+					var vmarker = this;
+					var itemId = vmarker.options.alt.split('-')[0];
+					var item = getItem(itemId);
+					if (!(!$('#bcat-Show-Completed').hasClass('selected_map_category') && udata != null && udata[item.id.toString()] != null)) {
+						map.addLayer(vmarker);
+					}
+				});
+			});
+		}
+	} else if (categoryId == 'Show-Completed') {
+		var selectedIds = [];
+		$('.selected_map_category').each(function() {
+			var id = $(this).attr('id').replace('bcat-', '').replace(/_/g, ' ');
+			selectedIds.push(id);
+		});
+		if (categoryButton.hasClass('selected_map_category')) {
+			categoryButton.removeClass('selected_map_category');
+			$('#bcat-Show-Completed').removeClass('selected_map_category');
+			$.each(icompleted, function() {
+				var vmarker = this;
+				var itemId = vmarker.options.alt.split('-')[0];
+				var item = getItem(itemId);
+				if (selectedIds.includes(item.category)) {
+					map.removeLayer(vmarker);
+				}				
+			});
+		} else {
+			categoryButton.addClass('selected_map_category');
+			$('#bcat-Show-Completed').addClass('selected_map_category');
+			$.each(icompleted, function() {
+				var vmarker = this;
+				var itemId = vmarker.options.alt.split('-')[0];
+				var item = getItem(itemId);
+				if (selectedIds.includes(item.category)) {
+					map.addLayer(vmarker);
+				}
+			});
+		}
+	} else {
+		var locategory = overlays[categoryId];
+		if (categoryButton.hasClass('selected_map_category')) {
+			$('#bcat-Show-All').removeClass('selected_map_category');
+			categoryButton.removeClass('selected_map_category');
+			$.each(vmarkers[categoryId], function() {
+				var vmarker = this;
+				var itemId = vmarker.options.alt.split('-')[0];
+				var item = getItem(itemId);
+				if (item.category == categoryId) {
+					map.removeLayer(vmarker);
+				}
+			});
+		} else {
+			categoryButton.addClass('selected_map_category');
+			$.each(vmarkers[categoryId], function() {
+				var vmarker = this;
+				var itemId = vmarker.options.alt.split('-')[0];
+				var item = getItem(itemId);
+				if (item.category == categoryId) {
+					if (!(!$('#bcat-Show-Completed').hasClass('selected_map_category') && udata != null && udata[item.id.toString()] != null)) {
+						map.addLayer(vmarker);
+					}
+				}
+			});
+		}
+	}
+	return false;
+}
+function doSearch(category, type, text, fcompleted) {
+	var control = $('#search-content');
+	$.each($('.map-search-res-item'), function() {
+		var id = $(this).attr('data');
+		var vmarker = markers[id];
+		map.removeLayer(vmarker);
+	});
+	$('#categoriesContent').hide();
+	$('.map_sidebar_search_content').show();
+	control.empty();
+	$.each(categories, function() {
+		$.each(vmarkers[this.id], function() {
+			var vmarker = this;
+			map.removeLayer(vmarker);
+		});
+	});
+
+	$.each(items, function() {
+		var queryCategory = (category == '' ? true : (category == this.category));
+		var link = (this.pageLink != null ? this.pageLink : '/' + this.name.replace(/\s+/g, '+'));
+		var showEntry = false;
+		if (type == 'name') {
+			var queryName = (text == '' ? true : this.name.toLowerCase().includes(text.toLowerCase()));
+			if (queryCategory && queryName) {
+				showEntry = true;
+			}
+		} else if (type == 'namedescription') {
+			var queryName = (text == '' ? true : this.name.toLowerCase().includes(text.toLowerCase()) || (this.description != null && this.description.toLowerCase().includes(text.toLowerCase())));
+			if (queryCategory && queryName) {
+				showEntry = true;
+			}
+		} else if (type == 'description') {
+			var queryName = (text == '' ? true : this.description != null && this.description.toLowerCase().includes(text.toLowerCase()));
+			if (queryCategory && queryName) {
+				showEntry = true;
+			}
+		}
+		var isCompleted = (udata != null && udata[this.id.toString()] != null);
+		if (showEntry && !(fcompleted == 'uncompleted' && isCompleted)) {
+			control.append('<hr class="d4breakline"' + (isSearchResultCollapsed ? ' style="display:none;"' : '') + '><div class="sidebar2 map_sidebar_search_element map-search-res-item" ' + (isSearchResultCollapsed ? ' style="padding-top:unset;padding-bottom:unset;" ' : '') + ' data="' + this.id + '"><h5 class="sidebar2 map_sidebar_title"><div><img class="map_sidebar_search_result_image search-res-item" src="' + this.image + '" alt="' + this.name + '" /><label class="map_sidebar_search_result_title search-res-item" style="width: 21rem;">' + this.name + '</label><img class="link_icon" src="https://diablo4.wiki.fextralife.com/file/Diablo-4/external_link_icon.png" alt="Alina" data="' + (this.hasPageLink != null && this.hasPageLink && this.pageLink != null && this.pageLink != '' ? this.pageLink : '/' + this.name.replaceAll(" ", "+")) + '" style="margin-right: 0;vertical-align: bottom;"><button type="button" style="width: 30px;height: 30px;" class="another-map-search-res-item ' + (isCompleted ? 'map_search_element_completed_checkbox_checked' : 'map_search_element_completed_checkbox_unchecked') + '" title="Mark as completed."></button></div></h5><div class="sidebar2 map_sidebar_tags"' + (isSearchResultCollapsed ? ' style="display:none;"' : '') + '><span class="othertags">' + this.category + '</span>' + (isCompleted ? '<span class="clustertag">Completed</span>' : '') + '</div><div class="sidebar2 map_sidebar_description"' + (isSearchResultCollapsed ? ' style="display:none;"' : '') + '>' + (this.description != null ? this.description : '') + '</div></div>');
+			var vmarker = markers[this.id];
+			map.addLayer(vmarker);
+		}
+	});
+
+	return false;
+}
+function reloadDefaultData() {
+
+	return false;
+}
+function resetView() {
+	$('#btn-clear').hide();
+	$('#mbtn-clear').hide();
+
+	$('#searchCategorySelection').attr('data', '');
+	$('#searchCategorySelectionText').text('[All Categories]');
+	$('#searchCompleted').removeClass('map_show_completed_button_unchecked');
+	$('#searchCompleted').addClass('map_show_completed_button_checked');
+	$('#searchType').val('namedescription');
+	$.each(categories, function() {
+		$.each(vmarkers[this.id], function() {
+			var vmarker = this;
+			map.removeLayer(vmarker);
+		});
+	});
+
+	$('.selected_map_category').removeClass('selected_map_category');
+	$('#bcat-Show-Completed').addClass('selected_map_category');
+	$.each(categories, function() {
+		if (this.loadDefault) {
+			var categoryId = this.id;
+if (isNewSearch) {
+			$('#bcat-' + categoryId.replace(/ /g, '_')).addClass('selected_map_category');
+			$.each(vmarkers[categoryId], function() {
+				var vmarker = this;
+				map.addLayer(vmarker);
+			});
+}
+		}
+	});
+
+	$('.map_search_input').val('');
+	$('#search-content').empty();
+
+if (!isNewSearch) {
+        var controlCategories = $('.leaflet-control-layers-selector');
+        if (controlCategories != null && controlCategories.length > 0) {
+                $.each($('.leaflet-control-layers-selector'), function() {
+                        var ocategory = (this).checked;
+                        if (ocategory) {
+                                $(this).click();
+                                $(this).click();
+                        }
+                });
+        }
+}
+
+	if (isMobile) {
+		if ($('#toggleMobileMenu').hasClass('map_menu_toggle_up')) {
+			$('#sidebar').children().eq(0).addClass('map_mobile_menu_folded');
+			$('#categoriesContent').addClass('map_mobile_menu_folded');
+			$('#search-content').parent().addClass('map_mobile_menu_folded');
+			$('#toggleMobileMenu').removeClass('map_menu_toggle_up');
+			$('#toggleMobileMenu').addClass('map_menu_toggle_down');
+			$('#toggleMobileMenu').css('outline','none');
+			$('#sidebar').parent().addClass('map_mobile_menu_folded');
+			$('#search-content').parent().attr('style','');
+		}
+		$('#categoriesContent').hide();		
+	} else {
+		$('#map_sidebar_search_content').hide();
+		$('#categoriesContent').show();	
+	}
+//	map.fitBounds(initialBounds); // no center no zoom
+	return false;
+}
+
+
+
+
+
+
+
+var searchContent = document.getElementById('search-content');
+try {
+	searchContent.addEventListener('click', function(event) {
+		if (event.target.classList.contains('search-res-item')) {
+			handleSearchResultItemClick(event.target);
+		}
+		if (event.target.classList.contains('link_icon')) {
+			handleSearchResultItemImageClick(event.target);
+		}
+		if (event.target.classList.contains('another-map-search-res-item')) {
+			handleAnotherMapItemComplete(event.target);		
+		}
+		return false;
+	});
+} catch (error) {
+}
+
+var searchCategoryList = document.getElementById('searchCategoryList');
+try {
+	searchCategoryList.addEventListener('click', function(event) {
+		handleSearchCategoryItemClick(event.target);
+		return false;
+	});
+} catch (error) {
+}
+
+var mapFilterContent = document.getElementById('categories');
+try {
+	mapFilterContent.addEventListener('click', function(event) {
+		if (event.target.classList.contains('map_sidebar_category')) {
+			handleFilterCategoryClick(event.target);
+		}
+		return false;
+	});
+} catch (error) {
+}
+
+
+$('#searchType').change(function() {
+// do search!!!
+	var category = $('#searchCategorySelection').attr('data');
+	if (isNewSearch) {category = category.replace(/ /g, '');}
+console.log('xxcategory: ' + category);
+	var type = $('#searchType').val();
+	var text = $('#searchField').val();
+	var fcompleted = ($('#searchCompleted').hasClass('map_show_completed_button_checked') ? 'completed' : $('#searchCompleted').hasClass('map_show_completed_button_unchecked') ? 'uncompleted' : 'none');
+	doSearch(category, type, text, fcompleted);
+	$('#btn-clear').show();
+	$('#mbtn-clear').show();
+	return false;
+});
+$('#searchCategorySelection').click(function() {
+	var control = $(this);
+	if (control.parent().hasClass('open')) {
+		control.parent().removeClass('open');
+	} else {
+		control.parent().addClass('open');
+	}
+	return false;
+});
+$(document).off('keyup', '#searchCategorySelection');
+$(document).on('keyup', '#searchCategorySelection', function(e) {
+	if (e.which == 27) {
+		$('#searchCategorySelection').parent().removeClass('open');
+    }
+	return false;
+});
+$(document).ready(function () {
+  $(document).on('click', function (event) {
+    if (!$(event.target).closest('.dropdown').length && !$(event.target).closest('#searchCategoryList').length) {
+      var $dropdown = $('.dropdown');
+      if ($dropdown.hasClass('open')) {
+        $dropdown.removeClass('open');
+      }
+    }
+  });
+});
+$(document).off('keyup', '#searchField');
+$(document).on('keyup', '#searchField', function(e) {
+	delay(function() {
+		$('#btn-clear').show();
+		var category = $('#searchCategorySelection').attr('data');
+		if (isNewSearch) {category = category.replace(/ /g, '');}
+console.log('zcategory: ' + category);
+		var type = $('#searchType').val();
+		var text = $('#searchField').val();
+		var fcompleted = ($('#searchCompleted').hasClass('map_show_completed_button_checked') ? 'completed' : $('#searchCompleted').hasClass('map_show_completed_button_unchecked') ? 'uncompleted' : 'none');
+		doSearch(category, type, text, fcompleted);
+		$('#btn-clear').show();
+	}, 150);
+	return false;
+});
+$(document).off('keyup', '#msearchField');
+$(document).on('keyup', '#msearchField', function(e) {
+	delay(function() {
+		$('#mbtn-clear').show();
+		var category = $('#searchCategorySelection').attr('data');
+		if (isNewSearch) {category = category.replace(/ /g, '');}
+		var type = $('#searchType').val();
+		var text = $('#msearchField').val();
+		var fcompleted = ($('#searchCompleted').hasClass('map_show_completed_button_checked') ? 'completed' : $('#searchCompleted').hasClass('map_show_completed_button_unchecked') ? 'uncompleted' : 'none');
+		doSearch(category, type, text, fcompleted);
+		$('#mbtn-clear').show();
+		if ($('#toggleMobileMenu').hasClass('map_menu_toggle_down')) {
+			$('#toggleMobileMenu').click();
+		}
+	}, 150);
+	return false;
+});
+$('#searchCompleted').click(function() {
+	var control = $(this);
+	if (control.hasClass('map_show_completed_button_checked')) {
+		$(this).removeClass('map_show_completed_button_checked');
+		$(this).addClass('map_show_completed_button_unchecked');
+	} else if (control.hasClass('map_show_completed_button_unchecked')) {
+		$(this).removeClass('map_show_completed_button_unchecked');
+		$(this).addClass('map_show_completed_button_checked');
+	}
+// do search!!!
+	var category = $('#searchCategorySelection').attr('data');
+	if (isNewSearch) {category = category.replace(/ /g, '');}
+	var type = $('#searchType').val();
+	var text = $('#searchField').val();
+	var fcompleted = ($('#searchCompleted').hasClass('map_show_completed_button_checked') ? 'completed' : $('#searchCompleted').hasClass('map_show_completed_button_unchecked') ? 'uncompleted' : 'none');
+	doSearch(category, type, text, fcompleted);
+	$('#btn-clear').show();
+	$('#mbtn-clear').show();
+	return false;
+});
+$('#msearchCompleted').click(function() {
+	var control = $(this);
+	if (control.hasClass('map_show_completed_button_checked')) {
+		$(this).removeClass('map_show_completed_button_checked');
+		$(this).addClass('map_show_completed_button_unchecked');
+	} else if (control.hasClass('map_show_completed_button_unchecked')) {
+		$(this).removeClass('map_show_completed_button_unchecked');
+		$(this).addClass('map_show_completed_button_checked');
+	}
+// do search!!!
+	var category = $('#searchCategorySelection').attr('data');
+	if (isNewSearch) {category = category.replace(/ /g, '');}
+	var type = $('#searchType').val();
+	var text = $('#searchField').val();
+	var fcompleted = ($('#msearchCompleted').hasClass('map_show_completed_button_checked') ? 'completed' : $('#msearchCompleted').hasClass('map_show_completed_button_unchecked') ? 'uncompleted' : 'none');
+	doSearch(category, type, text, fcompleted);
+	$('#btn-clear').show();
+	$('#mbtn-clear').show();
+	return false;
+});
+$('#mbtn-clear').click(function() {
+	resetView();
+	return false;
+});
+$('#btn-clear').click(function() {
+	resetView();
+	return false;
+});
+var isSearchResultCollapsed = false;
+$('#collapse').click(function() {
+	if (isSearchResultCollapsed) {
+		$('.map_sidebar_description').show();
+		$('.map_sidebar_tags').show();
+		$('.d4breakline').show();
+		$('.map_sidebar_search_element').css('padding-top', '5px');
+		$('.map_sidebar_search_element').css('padding-bottom', '5px');
+		isSearchResultCollapsed = false;
+		$(this).removeClass('map_search_list');
+		$(this).addClass('map_sidebar_collapse');
+	} else {
+		$('.map_sidebar_description').hide();
+		$('.map_sidebar_tags').hide();
+		$('.d4breakline').hide();
+		$('.map_sidebar_search_element').css('padding-top', 'unset');
+		$('.map_sidebar_search_element').css('padding-bottom', 'unset');
+		isSearchResultCollapsed = true;
+		$(this).removeClass('map_sidebar_collapse');
+		$(this).addClass('map_search_list');
+	}
+	return false;
+});
+$('#mapReset').click(function() {
+	resetView();
+	return false;
+});
+$('#mmapReset').click(function() {
+	resetView();
+	return false;
+});
+$('#toggleMobileMenu').click(function() {
+	if ($('#toggleMobileMenu').hasClass('map_menu_toggle_up')) {
+		// do close
+        $('#sidebar').children().eq(0).addClass('map_mobile_menu_folded');
+        $('#categoriesContent').addClass('map_mobile_menu_folded');
+        $('#search-content').parent().addClass('map_mobile_menu_folded');
+        $('#toggleMobileMenu').removeClass('map_menu_toggle_up');
+        $('#toggleMobileMenu').addClass('map_menu_toggle_down');
+        $('#toggleMobileMenu').css('outline','none');
+		$('#sidebar').parent().addClass('map_mobile_menu_folded');
+		$('#categoriesContent').hide();
+	} else {
+		// do open
+		if ($('#search-content').children().length == 0) {
+			$('#categoriesContent').show();
+			var wmmim = document.getElementById('wmmim');
+			if (wmmim != null) {
+				wmmim.style.display = 'none';
+			}
+		}
+        $('#sidebar').children().eq(0).removeClass('map_mobile_menu_folded');
+        $('#categoriesContent').removeClass('map_mobile_menu_folded');
+        $('#search-content').parent().removeClass('map_mobile_menu_folded');
+        $('#toggleMobileMenu').removeClass('map_menu_toggle_down');
+        $('#toggleMobileMenu').addClass('map_menu_toggle_up');
+        $('#toggleMobileMenu').css('outline','');
+		$('#sidebar').parent().removeClass('map_mobile_menu_folded');
+		$('#search-content').parent().attr('style','');
+		if ($('#categoriesContent').css('display') == 'none') {
+			$('#search-content').parent().attr('style','display: block;');
+		}
+	}
+	return false;
+});
+
+document.getElementById('map-overground').addEventListener('click', showMapA, false);
+document.getElementById('map-underground').addEventListener('click', showMapB, false);
+document.getElementById('map-shadowoftheerdtree').addEventListener('click', showMapD, false);
+function showMapA() {
+	$('#mapD',parent.document).hide();
+	$('#mapC',parent.document).hide();
+	$('#mapB',parent.document).hide();
+	$('#mapA',parent.document).show();
+	$('#sidebar').parent().removeClass('visible');
+	return false;
+}
+function showMapB() {
+	$('#mapD',parent.document).hide();
+	$('#mapC',parent.document).hide();
+	$('#mapA',parent.document).hide();
+	$('#mapB',parent.document).show();
+	$('#sidebar').parent().removeClass('visible');
+	return false;
+}
+function showMapD() {
+	if (this.tagName.toLowerCase() == 'button') {
+		$('#mapA',parent.document).hide();
+		$('#mapB',parent.document).hide();
+		$('#mapC',parent.document).hide();
+		$('#mapD',parent.document).show();
+		$('#sidebar').parent().removeClass('visible');
+	}
+	return false;
+}
+
+var delay = (function() {
+	var timer = 0;
+	return function(callback, ms) {
+		clearTimeout (timer);
+		timer = setTimeout(callback, ms);
+	};
+})();
+
+if (isMobile) {
+	setTimeout(function() {
+		if (params == null || (params.id == null && params.code == null)) {
+			if (isNewSearch) {
+				var mapSize = map.getSize();
+				var pixelX = mapSize.x;
+				var pixelY = mapSize.y;
+				var pixelPoint = L.point(pixelX, pixelY);
+				var latLng = map.containerPointToLatLng(pixelPoint);
+				var centerLat = latLng.lat;
+				var centerLng = latLng.lng;
+				map.setView([centerLat, centerLng], 2);
+			}
+		}
+	}, 1000);
+
+	// collapse menu mobile (when required)
+	if (isNewSearch && isMenuCollapsed) {
+		$('#toggleMobileMenu').click();
+		var wmmim = document.getElementById('wmmim');
+		if (wmmim != null) {
+			wmmim.style.display = 'initial';
+		}
+	}
+}
+		</script>
+	
+
+</body></html>

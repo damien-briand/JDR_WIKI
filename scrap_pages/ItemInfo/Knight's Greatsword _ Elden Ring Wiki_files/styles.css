@@ -1,0 +1,226 @@
+/**** Add Checklist Item Menu START ****/
+.btnAddItem {
+    width: calc(100% - 40px);
+    margin-left: 20px;
+    margin-bottom: 10px;
+}
+
+.add_found_item_menu {
+    display: flex;
+    flex-wrap: wrap;
+    background-color: #50505050;
+    padding: 20px;
+    margin: 20px;
+    border-radius: 15px;
+    margin-top: 0;
+}
+
+.add_found_item_menu .form-group {
+    width: 100%;
+}
+
+.add_found_item_menu .control-label {
+    font-size: 15px;
+    font-family: 'Cinzel Decorative';
+}
+
+.add_found_item_buttons {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: flex-end;
+}
+
+.add_found_item_buttons button {
+    margin-left: 5px;
+    width: 100px;
+}
+
+.add_found_item_completed {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    height: 35px;
+    align-items: center;
+}
+
+.add_found_item_completed label {
+    margin-right: 20px;
+    margin-bottom: 0px;
+}
+
+.add_found_item_completed input[type=checkbox] {
+    width: 18px;
+    height: 18px;
+}
+
+/**** Add Checklist Item Menu END****/
+
+
+
+
+
+
+
+
+
+
+
+.special {
+  text-align: center;
+  font-size: 18px;
+  word-wrap: normal;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 3px solid #ab966f;
+}
+
+.special .wiki_link {
+  margin-left: 5px;
+    margin-right: 5px;
+}
+
+.youtubebuildembed  {
+  width: 100%;
+  height: 160px!important;
+}
+
+@media only screen and (min-width: 800px) {
+.youtubebuildembed {
+  width: 100%;
+  height: 180px!important;
+}
+}
+
+@media only screen and (min-width: 1200px) {
+.youtubebuildembed  {
+  width: 100%;
+  height: 235px!important;
+}
+}
+ @media only screen and (min-width: 1601px) {
+.youtubebuildembed  {
+  width: 100%;
+  height: 280px!important;
+}
+}
+
+  @media only screen and (min-width: 1800px) {
+.youtubebuildembed  {
+  width: 100%;
+  height: 315px!important;
+}
+}
+
+.youtube .play {
+  background: url("/file/Elden-Ring/youtube-play-button.png") no-repeat center center;
+  margin-top: -15px;
+}
+
+.grow { transition: all .2s ease-in-out; }
+.grow:hover { transform: scale(1.3); }
+.wiki_link {
+display: inline-block;
+max-width: 100% !Important;
+}
+
+blockquote p {
+font-family: "arial";
+color: #B4B2B0;
+font-style: italic;
+font-weight: normal;
+text-indent: 20px;
+font-size: 17px;
+max-width: 800px;
+}
+@media only screen and (max-width: 1366px) {
+img, input {
+max-width: 100% !important;
+}
+iframe, object, embed {
+display: inline-block;
+max-width: 100%;
+}
+.bonfire {line-height:inherit !Important; height:inherit!important;}
+.titlearea {line-height:inherit !Important; height:inherit !Important}
+}
+.spoilertitle { cursor: pointer; padding-left: 10px; background-color: #7C6C50; background-image: linear-gradient(to right, #AB966F, #000); color: #EEE; font-size: 15px; font-weight: bold; line-height: 24px }
+#.spoilercontent { height: 0px; overflow: hidden; transition: height 0.5s ease 0s }
+.spoilercontent { height: 0px; transition: height 0.5s ease 0s }
+
+.row {
+margin-right: 0px;
+margin-left: 0px;
+}
+p {
+font-size: 14px;
+}
+.videoWrapper {
+position: relative;
+padding-bottom: 56.25%; /* 16:9 */
+padding-top: 25px;
+height: 0;
+}
+.videoWrapper iframe {
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+}
+.titlearea {
+text-align: center;
+font-size: 18px;
+word-wrap: normal;
+background: url(https://eldenring.wiki.fextralife.com/file/Elden-Ring/elden-ring-wiki-titlearea.png) no-repeat left center;
+background-position: 3px 4px;
+border-top: 3px solid #ab966f;
+border-bottom: 3px solid #ab966f;
+margin: 18px 0px;
+height: 45px;
+line-height: 40px;
+clear: both;
+}
+.bonfire {
+word-wrap: normal;
+background: url(https://eldenring.wiki.fextralife.com/file/Elden-Ring/elden-ring-wiki-bonfire.png) no-repeat left center;
+padding-left: 50px;
+height: 60px;
+text-align: -moz-left;
+}
+
+.popover-content .wiki_table{margin:0px 0!Important;}
+
+#wiki-content-block #ifrmDiv{position:absolute !important;}
+
+
+
+
+.gsc-webResult.gsc-result {
+
+    padding: .25em;
+    border: none !important;
+    margin-bottom: 0;
+}
+.gsc-above-wrapper-area {
+
+    border-bottom: none !important;
+    padding: 5px 0 5px 0;
+}
+.cse .gsc-webResult.gsc-result:hover, .gsc-webResult.gsc-result:hover, .gsc-webResult.gsc-result.gsc-promotion:hover, .gsc-results .gsc-imageResult-classic:hover, .gsc-results .gsc-imageResult-column:hover {
+
+    border: none !important;
+}
+.gsc-tabsArea {
+
+    margin-top: 12px;
+    margin-bottom: 0;
+    height: 29px;
+    border-bottom: none !important;
+}
+.gsc-result-info-container {
+
+    text-align: left;
+    display: none !important;
+}
